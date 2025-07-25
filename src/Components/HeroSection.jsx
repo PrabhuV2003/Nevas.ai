@@ -7,7 +7,7 @@ import LightRays from '../ReactBits/LightRays';
 const HeroSection = () => {
     return (
         <div className=' w-full h-screen relative '>
-            <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+            <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
                 <LightRays
                     raysOrigin="top-center"
                     raysColor="#4080F5"
