@@ -3,11 +3,12 @@
 
 @theme {
   --font-poppins: "Poppins", sans-serif;
-  --color-primay: #4080F5
+  --color-primay: #4080F5;
+  --color-secoundary: #572AC2;
 }
 
 body {
-  @apply bg-black text-white
+  @apply bg-black text-white pb-[1000px] 
 }
 
 @layer utilities {

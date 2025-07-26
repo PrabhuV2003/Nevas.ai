@@ -21,7 +21,7 @@ const HeroSection = () => {
                     className="custom-rays"
                 />
             </div>
-            <div className=' w-full h-[70%]  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2 justify-center items-center z-50 '>
+            <div className=' w-full h-[70%]  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2 justify-center items-center z-10 '>
                 <h1 className=' lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-balance text-center font-poppins gradient-text '>Supercharge Your Business with</h1>
                 <div className=' flex justify-center items-center gap-2 '>
                     <h1 className=' lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-center font-poppins gradient-text transition-all duration-1000 '>AI-Driven</h1>
@@ -41,7 +41,7 @@ const HeroSection = () => {
 
                 <p className=' mt-5 text-center text-gray-600 text-[14px] '>Automate operations, gain real-time insights, and stay ahead of the competition — all with our next-generation AI ERP platform.</p>
             </div>
-            <div className=' absolute bottom-5 left-1/2 -translate-x-1/2 text-3xl animate-bounce z-50 cursor-pointer '><CiSaveDown1 /></div>
+            <div className=' absolute bottom-5 left-1/2 -translate-x-1/2 text-3xl animate-bounce z-10 cursor-pointer '><CiSaveDown1 /></div>
         </div>
     )
 }
