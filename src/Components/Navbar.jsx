@@ -39,7 +39,7 @@ export function NavbarDemo() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full">
+    <div className="relative z-40 w-full">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>

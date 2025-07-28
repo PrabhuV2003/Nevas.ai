@@ -23,7 +23,7 @@ const HeroSection = () => {
             </div>
             <div className=' w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2 justify-center items-center z-10 '>
                 <h1 className=' lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-balance text-center font-poppins gradient-text '>Supercharge Your Business with</h1>
-                <div className=' flex justify-center items-center gap-2 '>
+                <div className=' sm:flex justify-center items-center gap-2 '>
                     <h1 className=' lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-center font-poppins gradient-text transition-all duration-1000 '>AI-Driven</h1>
                     <RotatingText
                         texts={['EPR', 'Development', 'Consulting', 'Cool!']}

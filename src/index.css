@@ -7,8 +7,12 @@
   --color-secoundary: #572AC2;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
-  @apply bg-black text-white
+  @apply bg-black text-white overflow-x-hidden
 }
 
 @layer utilities {

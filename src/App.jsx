@@ -1,17 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SplashCursor from './ReactBits/SplashCursor'
 import HeroSection from './Components/HeroSection'
 import { NavbarDemo } from './Components/Navbar'
 import Solution from './Components/Solution'
+import WeDo from './Components/WeDo'
+import Preloader from './Components/PreLoader'
 
 const App = () => {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fake loading timeout
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3s
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div>
-      {/* <NavbarDemo /> */}
-      {/* <SplashCursor /> */}
-      <HeroSection />
-      <Solution />
-    </div>
+    <>
+      {loading && <Preloader />}
+      <div>
+        <NavbarDemo />
+        <SplashCursor />
+        <div>
+          <HeroSection />
+          <Solution />
+          <WeDo />
+        </div>
+      </div>
+    </>
   )
 }
 

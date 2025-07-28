@@ -13,10 +13,11 @@ const Solution = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headingRef.current,
-        { y: -300,  },
+        { y: -300, opacity: 0},
         {
           
           y: 0,
+          opacity: 1,
           duration: 1,
           scrollTrigger: {
             trigger: containerRef.current,
@@ -35,7 +36,7 @@ const Solution = () => {
     <div ref={containerRef} className='w-full h-screen overflow-hidden relative'>
       <h1
         ref={headingRef}
-        className='absolute top-[200px] left-1/2 -translate-x-1/2 text-4xl w-[90%] text-center uppercase font-poppins gradient-text font-semibold'
+        className='absolute top-[200px] left-1/2 -translate-x-1/2 lg:text-5xl md:text-4xl text-3xl w-[95%] text-center uppercase font-poppins gradient-text font-semibold'
       >
         We spend our days empowering teams through our 3-step AI Success Plan.
       </h1>
