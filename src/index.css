@@ -8,13 +8,13 @@
 }
 
 body {
-  @apply bg-black text-white pb-[1000px] 
+  @apply bg-black text-white
 }
 
 @layer utilities {
   .gradient-text {
     background: #fff6;
-    background: linear-gradient(360deg, #fff6, white 90%);
+    background: linear-gradient(360deg, var(--color-primay), white 90%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

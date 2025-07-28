@@ -21,13 +21,13 @@ const HeroSection = () => {
                     className="custom-rays"
                 />
             </div>
-            <div className=' w-full h-[70%]  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2 justify-center items-center z-10 '>
+            <div className=' w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2 justify-center items-center z-10 '>
                 <h1 className=' lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-balance text-center font-poppins gradient-text '>Supercharge Your Business with</h1>
                 <div className=' flex justify-center items-center gap-2 '>
                     <h1 className=' lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-center font-poppins gradient-text transition-all duration-1000 '>AI-Driven</h1>
                     <RotatingText
                         texts={['EPR', 'Development', 'Consulting', 'Cool!']}
-                        mainClassName="lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-balance text-center font-poppins text-primay "
+                        mainClassName="lg:text-5xl md:text-4xl text-3xl uppercase font-semibold text-balance text-center font-poppins text-[#fff] "
                         staggerFrom={"last"}
                         initial={{ y: "100%" }}
                         animate={{ y: 0 }}
@@ -41,6 +41,9 @@ const HeroSection = () => {
 
                 <p className=' mt-5 text-center text-gray-600 text-[14px] '>Automate operations, gain real-time insights, and stay ahead of the competition — all with our next-generation AI ERP platform.</p>
             </div>
+
+            {/* <img className=' absolute -bottom-[150px] ' src="https://wordpress.themeholy.com/robor/wp-content/uploads/2025/06/hero-category-bg2.png" alt="" /> */}
+
             <div className=' absolute bottom-5 left-1/2 -translate-x-1/2 text-3xl animate-bounce z-10 cursor-pointer '><CiSaveDown1 /></div>
         </div>
     )
