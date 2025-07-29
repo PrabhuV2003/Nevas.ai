@@ -5,6 +5,8 @@ import { NavbarDemo } from './Components/Navbar'
 import Solution from './Components/Solution'
 import WeDo from './Components/WeDo'
 import Preloader from './Components/PreLoader'
+import Footer from './Components/Footer'
+import Orb from './Components/Orb'
 
 const App = () => {
 
@@ -24,12 +26,12 @@ const App = () => {
       {loading && <Preloader />}
       <div>
         <NavbarDemo />
-        <SplashCursor />
-        <div>
-          <HeroSection />
-          <Solution />
-          <WeDo />
-        </div>
+        {/* <SplashCursor /> */}
+        <HeroSection />
+        <Orb />
+        {/* <Solution /> */}
+        <WeDo />
+        <Footer />
       </div>
     </>
   )

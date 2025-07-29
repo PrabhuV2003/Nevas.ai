@@ -36,11 +36,11 @@ const Solution = () => {
     <div ref={containerRef} className='w-full h-screen overflow-hidden relative'>
       <h1
         ref={headingRef}
-        className='absolute top-[200px] left-1/2 -translate-x-1/2 lg:text-5xl md:text-4xl text-3xl w-[95%] text-center uppercase font-poppins gradient-text font-semibold'
+        className='absolute z-40 top-[200px] left-1/2 -translate-x-1/2 lg:text-5xl md:text-4xl text-3xl w-[95%] text-center uppercase font-poppins gradient-text font-semibold'
       >
         We spend our days empowering teams through our 3-step AI Success Plan.
       </h1>
-      <div className='w-full h-screen z-40 absolute -bottom-[300px]'>
+      <div className='w-full h-screen z-10 absolute '>
         <Orb hoverIntensity={0} rotateOnHover={true} hue={0} forceHoverState={false} />
       </div>
     </div>

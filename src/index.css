@@ -11,6 +11,11 @@
   display: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
   @apply bg-black text-white overflow-x-hidden
 }
