@@ -7,6 +7,7 @@ import WeDo from './Components/WeDo'
 import Preloader from './Components/Preloader'
 import Footer from './Components/Footer'
 import Orb from './Components/Orb'
+import SecoundSection from './Components/SecoundSection'
 
 const App = () => {
 
@@ -28,10 +29,11 @@ const App = () => {
         <NavbarDemo />
         {/* <SplashCursor /> */}
         <HeroSection />
-        {/* <Orb /> */}
+        <SecoundSection />
+        <Orb />
         {/* <Solution /> */}
-        <WeDo />
-        <Footer />
+        {/* <WeDo />
+        <Footer /> */}
       </div>
     </>
   )

@@ -1,17 +1,32 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { assets } from '../assets/assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Orb = () => {
   const containerRef = useRef(null);
   const videoWrapperRef = useRef(null);
+  const videoRef = useRef(null); // add video ref
   const h1Ref = useRef(null);
   const h2Ref = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const video = videoRef.current;
+
+      // Create ScrollTrigger for playing the video when container enters viewport
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top bottom', // when container enters viewport
+        onEnter: () => {
+          if (video && video.paused) {
+            video.play();
+          }
+        },
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -19,16 +34,15 @@ const Orb = () => {
           end: '+=1000',
           scrub: true,
           pin: containerRef.current,
-        //   markers: true,
+          // markers: true,
         },
       });
 
-      // Step 1: scale & move video
       tl.fromTo(
         videoWrapperRef.current,
         {
           scale: 1,
-          top: '-100px',
+          top: '0',
         },
         {
           scale: 1.5,
@@ -38,7 +52,6 @@ const Orb = () => {
         }
       );
 
-      // Step 2: when video is done → animate first h1 up
       tl.fromTo(
         h1Ref.current,
         {
@@ -52,7 +65,6 @@ const Orb = () => {
         }
       );
 
-      // Step 3: push first h1 up & animate second h1
       tl.to(
         h1Ref.current,
         {
@@ -75,8 +87,6 @@ const Orb = () => {
         }
       );
 
-      // You don’t need an extra `.to` to unpin — the timeline’s `end` automatically stops the pin.
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -89,8 +99,8 @@ const Orb = () => {
         className="absolute left-1/2 -translate-x-1/2 z-20"
       >
         <video
-          src="https://static.octagoshealth.com/assets/videos/orb-safari.mp4"
-          autoPlay
+          ref={videoRef} // use video ref
+          src='https://res.cloudinary.com/ddvsj2zxd/video/upload/v1753773216/Sequence_02_zykltx.mp4'
           loop
           muted
           playsInline

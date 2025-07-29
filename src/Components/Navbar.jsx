@@ -14,26 +14,26 @@ import { useState } from "react";
 
 export function NavbarDemo() {
   const navItems = [
-    {
-      name: "Home",
-      link: "#features",
-    },
-    {
-      name: "Solution",
-      link: "#pricing",
-    },
-    {
-      name: "Features",
-      link: "#contact",
-    },
-    {
-      name: "Benefits",
-      link: "#contact",
-    },
-    {
-      name: "FAQ",
-      link: "#contact",
-    },
+    // {
+    //   name: "Home",
+    //   link: "#features",
+    // },
+    // {
+    //   name: "Solution",
+    //   link: "#pricing",
+    // },
+    // {
+    //   name: "Features",
+    //   link: "#contact",
+    // },
+    // {
+    //   name: "Benefits",
+    //   link: "#contact",
+    // },
+    // {
+    //   name: "FAQ",
+    //   link: "#contact",
+    // },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
