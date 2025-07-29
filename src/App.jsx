@@ -28,7 +28,7 @@ const App = () => {
         <NavbarDemo />
         {/* <SplashCursor /> */}
         <HeroSection />
-        <Orb />
+        {/* <Orb /> */}
         {/* <Solution /> */}
         <WeDo />
         <Footer />
