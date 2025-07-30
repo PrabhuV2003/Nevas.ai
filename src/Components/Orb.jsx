@@ -1,57 +1,41 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { assets } from '../assets/assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Orb = () => {
   const containerRef = useRef(null);
-  const videoWrapperRef = useRef(null);
-  const videoRef = useRef(null); // add video ref
+  const orbRef = useRef(null);
   const h1Ref = useRef(null);
   const h2Ref = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const video = videoRef.current;
-
-      // Create ScrollTrigger for playing the video when container enters viewport
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top bottom', // when container enters viewport
-        onEnter: () => {
-          if (video && video.paused) {
-            video.play();
-          }
-        },
-      });
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
           end: '+=1000',
           scrub: true,
-          pin: containerRef.current,
+          pin: true,
           // markers: true,
         },
       });
 
+      // Animate orb scaling
       tl.fromTo(
-        videoWrapperRef.current,
+        orbRef.current,
         {
-          scale: 1,
-          top: '0',
+          scale: 0.8,
         },
         {
-          scale: 1.5,
-          top: '50%',
-          yPercent: -50,
+          scale: 1,
           ease: 'power2.out',
         }
       );
 
+      // Animate text 1 in
       tl.fromTo(
         h1Ref.current,
         {
@@ -65,6 +49,18 @@ const Orb = () => {
         }
       );
 
+      // Animate orb half-fill when text 1 is visible
+      tl.to(
+        orbRef.current,
+        {
+          background: 'conic-gradient(from 180deg at 50% 50%, #4080F5, #572AC2)',
+          borderWidth: 0,
+          ease: 'power2.out',
+        },
+        '<' // sync with previous
+      );
+
+      // Animate text 1 out
       tl.to(
         h1Ref.current,
         {
@@ -74,6 +70,7 @@ const Orb = () => {
         }
       );
 
+      // Animate text 2 in
       tl.fromTo(
         h2Ref.current,
         {
@@ -87,39 +84,44 @@ const Orb = () => {
         }
       );
 
+      // Animate orb full-fill when text 2 is visible
+      tl.to(
+        orbRef.current,
+        {
+          background: 'radial-gradient(circle at center, #4080F5, #572AC2)',
+          ease: 'power2.out',
+        },
+        '<'
+      );
+
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-screen relative">
+    <div ref={containerRef} className="w-full h-screen relative overflow-hidden">
       <div
-        ref={videoWrapperRef}
-        className="absolute left-1/2 -translate-x-1/2 z-20"
-      >
-        <video
-          ref={videoRef} // use video ref
-          src='https://res.cloudinary.com/ddvsj2zxd/video/upload/v1753773216/Sequence_02_zykltx.mp4'
-          loop
-          muted
-          playsInline
-          className="w-[400px] h-[400px] object-cover origin-center"
-        />
-      </div>
+        ref={orbRef}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[400px] h-[400px] rounded-full border-4 border-primay border-gradient-to-r from-blue-500 to-cyan-500"
+        style={{
+          background: 'transparent',
+          transition: 'background 0.5s ease',
+        }}
+      />
 
       <h1
         ref={h1Ref}
-        className="absolute top-1/2 left-3 -translate-y-1/2 z-30 h-screen font-poppins text-3xl uppercase text-white"
+        className="absolute top-1/2 left-10 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
       >
-        First H1 comes up.
+        We Will
       </h1>
 
       <h1
         ref={h2Ref}
-        className="absolute top-1/2 right-3 -translate-y-1/2 z-30 h-screen font-poppins text-3xl uppercase text-white"
+        className="absolute top-1/2 w-[400px] right-10 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
       >
-        Second H1 comes up.
+        Make You Shaped
       </h1>
     </div>
   );

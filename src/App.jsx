@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SplashCursor from './ReactBits/SplashCursor'
+import Navbar from './Components/Navbar'
 import HeroSection from './Components/HeroSection'
-import { NavbarDemo } from './Components/Navbar'
 import Solution from './Components/Solution'
 import WeDo from './Components/WeDo'
 import Preloader from './Components/Preloader'
@@ -10,14 +10,12 @@ import Orb from './Components/Orb'
 import SecoundSection from './Components/SecoundSection'
 
 const App = () => {
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fake loading timeout
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // 3s
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -26,14 +24,26 @@ const App = () => {
     <>
       {loading && <Preloader />}
       <div>
-        <NavbarDemo />
         {/* <SplashCursor /> */}
-        <HeroSection />
-        <SecoundSection />
+        <div className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+          <section className="h-screen snap-start flex items-center justify-center">
+            <HeroSection />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <SecoundSection />
+          </section>
+        </div>
+
         <Orb />
-        {/* <Solution /> */}
-        {/* <WeDo />
-        <Footer /> */}
+        
+        <div className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+          <section className="h-screen snap-start flex items-center justify-center">
+            <WeDo />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Footer />
+          </section>
+        </div>
       </div>
     </>
   )
