@@ -11,6 +11,10 @@ const Orb = () => {
   const h2Ref = useRef(null);
 
   useEffect(() => {
+    // Always set the initial transforms
+    gsap.set(h1Ref.current, { xPercent: -50 });
+    gsap.set(h2Ref.current, { xPercent: -50 });
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -39,11 +43,11 @@ const Orb = () => {
       tl.fromTo(
         h1Ref.current,
         {
-          y: '100%',
+          yPercent: 100,
           opacity: 0,
         },
         {
-          y: '0%',
+          yPercent: 0,
           opacity: 1,
           ease: 'power2.out',
         }
@@ -64,7 +68,7 @@ const Orb = () => {
       tl.to(
         h1Ref.current,
         {
-          y: '-100%',
+          yPercent: -100,
           opacity: 0,
           ease: 'power2.in',
         }
@@ -74,11 +78,11 @@ const Orb = () => {
       tl.fromTo(
         h2Ref.current,
         {
-          y: '100%',
+          yPercent: 100,
           opacity: 0,
         },
         {
-          y: '0%',
+          yPercent: 0,
           opacity: 1,
           ease: 'power2.out',
         }
@@ -93,7 +97,6 @@ const Orb = () => {
         },
         '<'
       );
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -110,16 +113,16 @@ const Orb = () => {
         }}
       />
 
-    <h1
-      ref={h1Ref}
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
-    >
-      We Will
-    </h1>
+      <h1
+        ref={h1Ref}
+        className="absolute w-full top-1/2 left-1/2 translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-3xl md:text-6xl lg:text-7xl text-center"
+      >
+        We Will
+      </h1>
 
       <h1
         ref={h2Ref}
-        className="absolute top-1/2 right-1/2 -translate-x-1/2 md:right-10 md:translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
+        className="absolute w-full top-1/2 left-1/2 translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-3xl md:text-6xl lg:text-7xl text-center"
       >
         Make You Shaped
       </h1>
