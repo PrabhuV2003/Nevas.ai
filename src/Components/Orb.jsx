@@ -100,7 +100,7 @@ const Orb = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-screen relative overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-full overflow-hidden">
       <div
         ref={orbRef}
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[400px] h-[400px] rounded-full border-4 border-primay border-gradient-to-r from-blue-500 to-cyan-500"

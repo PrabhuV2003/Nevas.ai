@@ -36,9 +36,12 @@ const App = () => {
           <section className="h-screen snap-start flex items-center justify-center">
             <SecoundSection />
           </section>
+          {/* <section className="h-screen snap-start flex items-center justify-center">
+            <Orb />
+          </section> */}
         </div>
 
-        <Orb />
+        {/* <Orb /> */}
         
         <div className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
           <section className="h-screen snap-start flex items-center justify-center">
