@@ -8,7 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className=' w-full h-[100vh] py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 '>
+        <div className=' w-full h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 '>
             <div>
                 <p className=' full lg:text-5xl text-5xl text-left leading-tight font-DM-Sans '>
                     Supercharge your <span className=' gradient-text '>AI journey</span>
