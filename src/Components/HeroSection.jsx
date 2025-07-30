@@ -1,6 +1,4 @@
 import React from 'react'
-import SplitText from '../Components/SplitText'
-import RotatingText from '../ReactBits/RotatingText'
 import { CiSaveDown1 } from "react-icons/ci";
 import LightRays from '../ReactBits/LightRays';
 import TypedText from './ui/TypedText';

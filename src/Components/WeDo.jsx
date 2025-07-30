@@ -1,5 +1,4 @@
 import React from 'react'
-import ScrollStack, { ScrollStackItem } from './ui/ScrollStack'
 import CardSwap, { Card } from './ui/CardSwap'
 import { IoCodeSlash } from "react-icons/io5";
 import { PiChalkboardTeacherFill } from "react-icons/pi";
@@ -27,7 +26,7 @@ const WeDo = () => {
                 <Card>
                     <div className=' w-full h-full overflow-hidden '>
                         <div className=' w-full h-[50px] mb-2 bg-gradient-to-r from-primay to-secoundary flex items-center gap-2 p-2 rounded-lg '>
-                            <IoCodeSlash />
+                            <PiChalkboardTeacherFill />
                             <h3 className=' font-DM-Mono-Italic font-semibold '>Consulting</h3>
                         </div>
                         <div className=' w-full h-full rounded-lg '>
@@ -38,7 +37,7 @@ const WeDo = () => {
                 <Card>
                     <div className=' w-full h-full overflow-hidden '>
                         <div className=' w-full h-[50px] mb-2 bg-gradient-to-r from-primay to-secoundary flex items-center gap-2 p-2 rounded-lg '>
-                            <IoCodeSlash />
+                            <FaBrain />
                             <h3 className=' font-DM-Mono-Italic font-semibold '>Training</h3>
                         </div>
                         <div className=' w-full h-full rounded-lg '>

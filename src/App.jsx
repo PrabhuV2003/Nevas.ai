@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SplashCursor from './ReactBits/SplashCursor'
-import Navbar from './Components/Navbar'
 import HeroSection from './Components/HeroSection'
-import Solution from './Components/Solution'
 import WeDo from './Components/WeDo'
 import Preloader from './Components/Preloader'
 import Footer from './Components/Footer'

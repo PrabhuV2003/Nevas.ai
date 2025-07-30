@@ -1,5 +1,4 @@
 import React from 'react'
-import TextType from './TextType'
 import { MdOutlineArrowOutward } from 'react-icons/md'
 import { SiYoutubeshorts } from "react-icons/si";
 import { FaSquareInstagram } from "react-icons/fa6";
@@ -28,31 +27,31 @@ const Footer = () => {
                 </div>
                 <div className=' flex flex-col gap-2 justify-between mt-7 md:mt-0 '>
                     <p className=' whitespace-pre-wrap text-[#D9D9D9] uppercase font-DM-Sans text-sm md:text-[16px] '>Follow</p>
-                    <ul class="flex justify-center mt-1 space-x-5">
+                    <ul className="flex justify-center mt-1 space-x-5">
                         <li>
                             <a
-                                class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                                className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                             >
                                 <SiYoutubeshorts className=' w-5 h-5 md:w-7 md:h-7 ' />
                             </a>
                         </li>
                         <li>
                             <a
-                                class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                                className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                             >
                                 <FaSquareInstagram className=' w-5 h-5 md:w-7 md:h-7 ' />
                             </a>
                         </li>
                         <li>
                             <a
-                                class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                                className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                             >
                                 <FaFacebook className=' w-5 h-5 md:w-7 md:h-7 ' />
                             </a>
                         </li>
                         <li>
                             <a
-                                class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                                className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                             >
                                 <FaXTwitter className=' w-5 h-5 md:w-7 md:h-7 ' />
                             </a>
