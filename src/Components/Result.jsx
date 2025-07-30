@@ -28,7 +28,7 @@ const Result = () => {
   ]
 
   return (
-    <div className="h-full w-full flex items-center justify-center relative">
+    <div className="h-screen w-full flex items-center justify-center relative">
       <TextHoverEffect text="nevas.ai" />
       <div className='absolute w-full h-full top-0 left-0 flex flex-col justify-center px-10'>
         
@@ -112,7 +112,7 @@ const CountUpCard = ({ result }) => {
       <div className='w-full h-0.5 bg-gradient-to-r from-primay to-secoundary md:my-4 my-0'></div>
       <p className='text-lg text-white font-DM-Sans'>{result.desc}</p>
       {result.link && (
-        <a href="#" className='decoration-none flex text-md flex-row items-center gap-1 cursor-pointer' target='_blank' rel="noreferrer">
+        <a href="https://www.youtube.com/@NevasAI" className='decoration-none flex text-md flex-row items-center gap-1 cursor-pointer' target='_blank' rel="noreferrer">
           <p className='text-md gradient-text font-bold font-DM-Sans'>{result.link}</p>
         </a>
       )}

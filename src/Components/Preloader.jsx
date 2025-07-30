@@ -12,26 +12,25 @@ const Preloader = () => {
     // Step 1: Expand span to w-full
     tl.to(spanRef.current, {
       width: '100%',
-      duration: 1
+      duration: .7
     })
 
     // Step 2: Rotate black div to 0 deg
     .to(blackDivRef.current, {
       rotate: 0,
-      duration: 1
+      duration: .7
     })
 
     // Step 3: Expand logo div to w-full
     .to(logoDivRef.current, {
       width: '100%',
-      duration: 2
+      duration: 1
     })
 
     // Step 4: Slide span up by -100%
     .to('.preloader', {
       y: '-100%',
-      delay: 1,
-      duration: 2
+      duration: 1.5
     });
 
   }, []);

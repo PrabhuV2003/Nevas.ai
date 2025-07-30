@@ -19,7 +19,7 @@ const Orb = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=500',
+          end: '+=1000',
           scrub: true,
           pin: true,
         },
@@ -66,7 +66,7 @@ const Orb = () => {
     <div ref={containerRef} className="w-full h-screen relative overflow-hidden">
       <div
         ref={orbRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[400px] h-[400px] rounded-full border-4 border-primay"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[300px] h-[300px] rounded-full border-4 border-primay"
         style={{
           background: 'transparent',
           transition: 'background 0.5s ease',

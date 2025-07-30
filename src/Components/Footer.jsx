@@ -4,7 +4,7 @@ import { SiYoutubeshorts } from "react-icons/si";
 import { FaSquareInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { motion } from 'framer-motion'
 
-const Footer = () => {
+const Footer = ({ onContactClick }) => {
   return (
     <div className='w-full h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10'>
       
@@ -34,7 +34,7 @@ const Footer = () => {
           <a href="#" className='whitespace-pre-wrap text-white cursor-pointer hover:text-white/80 text-sm md:text-[16px]'>
             Info@nevas.ai
           </a>
-          <button className='flex items-center gap-2 mt-2.5 px-4 py-2 border border-primay rounded-full text-white bg-transparent hover:bg-gradient-to-r hover:from-primay hover:to-secoundary transition-all duration-500 cursor-pointer text-sm md:text-[16px]'>
+          <button onClick={onContactClick} className='flex items-center gap-2 mt-2.5 px-4 py-2 border border-primay rounded-full text-white bg-transparent hover:bg-gradient-to-r hover:from-primay hover:to-secoundary transition-all duration-500 cursor-pointer text-sm md:text-[16px]'>
             Get In Touch
             <MdOutlineArrowOutward />
           </button>
