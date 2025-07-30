@@ -47,7 +47,7 @@ const WeDo = () => {
                     </div>
                 </Card>
             </CardSwap>
-            <div className=' absolute w-[50%] h-full top-1/2 -translate-y-1/2 flex flex-col justify-center items-center '>
+            <div className=' absolute w-full lg:w-[50%] h-full lg:top-1/2 top-6 lg:-translate-y-1/2 lg:flex flex-col justify-center items-center '>
                 <h1 className=' text-2xl md:text-4xl w-full text-center leading-tight whitespace-pre-wrap font-DM-Sans white-silver-animated-text '>We spend our days guiding companies through our 3-step <span className=' gradient-text '>AI Transformation</span> Journey.</h1>
             </div>
         </div>

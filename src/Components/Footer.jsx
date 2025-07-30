@@ -10,11 +10,11 @@ const Footer = () => {
     return (
         <div className=' w-full h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 '>
             <div>
-                <p className=' full lg:text-5xl text-5xl text-left leading-tight font-DM-Sans '>
+                <p className=' w-full lg:text-5xl text-5xl text-left leading-tight font-DM-Sans '>
                     Supercharge your <span className=' gradient-text '>AI journey</span>
                 </p>
             </div>
-            <div className=' w-full flex flex-col justify-between items-start md:flex-row md:items-center '>
+            <div className=' w-full flex flex-col justify-between items-start md:flex-row md:items-center md:justify-between '>
                 <div className=' flex flex-col gap-1 md:gap-2 justify-between '>
                     <p className=' whitespace-pre-wrap font-bold text-[#D9D9D9] uppercase font-DM-Sans text-sm md:text-[16px] '>Contact</p>
                     <a href="#" className=' whitespace-pre-wrap text-white cursor-pointer hover:text-white/80 text-sm md:text-[16px] '>Info@nevas.ai</a>
@@ -23,8 +23,8 @@ const Footer = () => {
                         <MdOutlineArrowOutward />
                     </button>
                 </div>
-                <div>
-                    <img src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="" className=' w-36 hidden md:block ' />
+                <div className=' mt-7 md:mt-0 '>
+                    <img src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="" className=' w-28 md:w-36 ' />
                 </div>
                 <div className=' flex flex-col gap-2 justify-between mt-7 md:mt-0 '>
                     <p className=' whitespace-pre-wrap text-[#D9D9D9] uppercase font-DM-Sans text-sm md:text-[16px] '>Follow</p>
@@ -57,11 +57,7 @@ const Footer = () => {
                                 <FaXTwitter className=' w-5 h-5 md:w-7 md:h-7 ' />
                             </a>
                         </li>
- 
                     </ul>
-                </div>
-                <div className=' mt-7 md:mt-0 '>
-                    <img src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="" className=' w-28 block md:hidden ' />
                 </div>
             </div>
         </div>

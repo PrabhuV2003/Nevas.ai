@@ -100,7 +100,7 @@ const Orb = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full h-full overflow-hidden">
+    <div ref={containerRef} className="w-full h-screen relative overflow-hidden">
       <div
         ref={orbRef}
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[400px] h-[400px] rounded-full border-4 border-primay border-gradient-to-r from-blue-500 to-cyan-500"
@@ -110,16 +110,16 @@ const Orb = () => {
         }}
       />
 
-      <h1
-        ref={h1Ref}
-        className="absolute top-1/2 left-10 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
-      >
-        We Will
-      </h1>
+    <h1
+      ref={h1Ref}
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
+    >
+      We Will
+    </h1>
 
       <h1
         ref={h2Ref}
-        className="absolute top-1/2 w-[400px] right-10 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
       >
         Make You Shaped
       </h1>
