@@ -119,7 +119,7 @@ const Orb = () => {
 
       <h1
         ref={h2Ref}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 md:left-10 md:translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
+        className="absolute top-1/2 right-1/2 -translate-x-1/2 md:right-10 md:translate-x-0 -translate-y-1/2 z-30 white-silver-animated-text font-DM-Mono-Italic text-4xl md:text-6xl lg:text-7xl text-center"
       >
         Make You Shaped
       </h1>
