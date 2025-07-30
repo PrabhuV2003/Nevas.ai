@@ -62,15 +62,29 @@ const WeDo = () => {
             </div>
         </div>
 
-        <div className=' w-full h-fit block md:hidden py-10 overflow-hidden '>
-            <h1 className=' text-2xl mb-5 md:text-4xl w-full text-center leading-tight whitespace-pre-wrap font-DM-Sans white-silver-animated-text '>our 3-step
-                    <span className=' gradient-text '> AI Transformation</span> Journey.
-            </h1>
-            <div className=' w-full h-[500px] relative '>
-                <p className=' gradient-text uppercase font-DM-Sans text-2xl md:text-7xl lg:text-8xl text-center w-full absolute left-0 top-0 '>• Development • Consulting • Training</p>
-                <img className=' absolute bottom-0 -right-[150px] ' src="https://sdmntprnortheu.oaiusercontent.com/files/00000000-bfc4-61f4-a6e0-1ca28662f135/raw?se=2025-07-30T13%3A34%3A52Z&sp=r&sv=2024-08-04&sr=b&scid=94a96287-f5a6-5d7e-9890-513e544bc7ea&skoid=61180a4f-34a9-42b7-b76d-9ca47d89946d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-29T18%3A54%3A49Z&ske=2025-07-30T18%3A54%3A49Z&sks=b&skv=2024-08-04&sig=7melt%2BcE8ucQ%2BnV8sO3L8FZg5uTkhde8QXYC8JmwrSY%3D" alt="" />
-            </div>
-        </div>
+    <motion.div
+      className='w-full h-fit block md:hidden py-10 overflow-hidden'
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <h1 className='text-2xl my-10 md:text-4xl w-full text-center leading-tight whitespace-pre-wrap font-DM-Sans white-silver-animated-text'>
+        our 3-step
+        <span className='gradient-text'> AI Transformation</span> Journey.
+      </h1>
+      <div className='w-full h-[500px] relative'>
+        <p className='white-silver-animated-text font-DM-Sans text-xl md:text-7xl lg:text-8xl text-center w-full absolute left-0 top-0'>
+          • Development • Consulting • Training
+        </p>
+        <img
+          className='absolute bottom-0 -right-[150px]'
+          src="https://sdmntprnortheu.oaiusercontent.com/files/00000000-bfc4-61f4-a6e0-1ca28662f135/raw?se=2025-07-30T13%3A34%3A52Z&sp=r&sv=2024-08-04&sr=b&scid=94a96287-f5a6-5d7e-9890-513e544bc7ea&skoid=61180a4f-34a9-42b7-b76d-9ca47d89946d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-29T18%3A54%3A49Z&ske=2025-07-30T18%3A54%3A49Z&sks=b&skv=2024-08-04&sig=7melt%2BcE8ucQ%2BnV8sO3L8FZg5uTkhde8QXYC8JmwrSY%3D"
+          alt=""
+        />
+      </div>
+    </motion.div>
+
         </>
     )
 }
