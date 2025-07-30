@@ -1,48 +1,61 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 const Preloader = () => {
-  const [showLeftImage, setShowLeftImage] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
+  const spanRef = useRef(null);
+  const blackDivRef = useRef(null);
+  const logoDivRef = useRef(null);
 
   useEffect(() => {
-    // Slide in after 0.5s
-    const slideTimer = setTimeout(() => {
-      setShowLeftImage(true);
-    }, 500);
+    const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-    // Then fade out after 2s
-    const fadeTimer = setTimeout(() => {
-      setFadeOut(true);
-    }, 2500);
+    // Step 1: Expand span to w-full
+    tl.to(spanRef.current, {
+      width: '100%',
+      duration: 1
+    })
 
-    return () => {
-      clearTimeout(slideTimer);
-      clearTimeout(fadeTimer);
-    };
+    // Step 2: Rotate black div to 0 deg
+    .to(blackDivRef.current, {
+      rotate: 0,
+      duration: 1
+    })
+
+    // Step 3: Expand logo div to w-full
+    .to(logoDivRef.current, {
+      width: '100%',
+      duration: 2
+    })
+
+    // Step 4: Slide span up by -100%
+    .to('.preloader', {
+      y: '-100%',
+      delay: 1,
+      duration: 2
+    });
+
   }, []);
 
   return (
-    <div
-      className={`fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity duration-1000 ${
-        fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
-    >
-      <div className="relative w-64 h-64 flex items-center justify-center">
-        {/* Right Image */}
-        <img
-          src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1753700079/logo-left_ra34jv.png"
-          alt="Right"
-          className={`w-[100px] absolute left-0 transition-all duration-700 ease-in-out object-cover z-20 ${
-            showLeftImage ? "translate-x-2 opacity-100" : "translate-x-6 opacity-0"
-          }`}
-        />
-
-        {/* Left Image (static behind) */}
-        <img
-          src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1753700083/logo-right_kwosop.png"
-          alt="Left"
-          className="w-[35px] relative z-10 object-cover"
-        />
+    <div className='fixed w-full h-screen bg-black flex justify-center items-center overflow-hidden z-50 preloader'>
+      <div
+        ref={blackDivRef}
+        className='w-[300px] h-[100px] -rotate-90 relative group'
+      >
+        <span
+          ref={spanRef}
+          className='w-0 h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primay to-secoundary duration-500 z-10'
+        ></span>
+        <div
+          ref={logoDivRef}
+          className='w-0 h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black z-10 flex justify-center items-center'
+        >
+          <img
+            src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png"
+            alt="Logo"
+            className='h-full object-contain'
+          />
+        </div>
       </div>
     </div>
   );

@@ -6,18 +6,21 @@ import Preloader from './Components/Preloader'
 import Footer from './Components/Footer'
 import Orb from './Components/Orb'
 import SecoundSection from './Components/SecoundSection'
+import Result from './Components/Result'
 
 const App = () => {
+
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+    useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
+    useEffect(() => {
+    // Example: set loader to false after animation duration
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 7000); // Adjust to match GSAP timeline duration
 
     return () => clearTimeout(timer);
   }, []);
@@ -39,6 +42,9 @@ const App = () => {
         <Orb />
         
         <div className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Result />
+          </section>
           <section className="h-screen snap-start flex items-center justify-center">
             <WeDo />
           </section>

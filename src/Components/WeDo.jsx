@@ -3,6 +3,7 @@ import CardSwap, { Card } from './ui/CardSwap'
 import { IoCodeSlash } from "react-icons/io5";
 import { PiChalkboardTeacherFill } from "react-icons/pi";
 import { FaBrain } from "react-icons/fa";
+import { motion } from 'framer-motion'
 
 const WeDo = () => {
     return (
@@ -47,7 +48,16 @@ const WeDo = () => {
                 </Card>
             </CardSwap>
             <div className=' absolute w-full lg:w-[50%] h-full lg:top-1/2 top-6 lg:-translate-y-1/2 lg:flex flex-col justify-center items-center '>
-                <h1 className=' text-2xl md:text-4xl w-full text-center leading-tight whitespace-pre-wrap font-DM-Sans white-silver-animated-text '>We spend our days guiding companies through our 3-step <span className=' gradient-text '>AI Transformation</span> Journey.</h1>
+                <motion.h1
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: false, amount: 0.5 }} // <- every time it hits 50% visible
+                    className=' text-2xl md:text-4xl w-full text-center leading-tight whitespace-pre-wrap font-DM-Sans white-silver-animated-text '
+                >
+                    We spend our days guiding companies through our 3-step
+                    <span className=' gradient-text '> AI Transformation</span> Journey.
+                </motion.h1>
             </div>
         </div>
     )
