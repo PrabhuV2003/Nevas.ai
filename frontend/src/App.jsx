@@ -8,6 +8,7 @@ import Orb from './Components/Orb';
 import SecoundSection from './Components/SecoundSection';
 import Result from './Components/Result';
 import ContactFrom from './Components/ContactFrom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -50,6 +51,7 @@ const App = () => {
           </section>
         </div> */} 
 
+        <ToastContainer />
         <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
         <SecoundSection />
         <Orb />

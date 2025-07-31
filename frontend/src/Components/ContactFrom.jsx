@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { IoIosCloseCircle } from "react-icons/io";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 const ContactForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -11,7 +13,8 @@ const ContactForm = ({ onClose }) => {
     message: ''
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({}); 
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -32,8 +35,8 @@ const ContactForm = ({ onClose }) => {
     }
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone is required";
-    } else if (!/^\d+$/.test(formData.phone)) {
-      newErrors.phone = "Phone must be numeric";
+    } else if (!/^\d{7,15}$/.test(formData.phone)) {
+      newErrors.phone = "Phone must be numeric and 7-15 digits";
     }
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
@@ -43,27 +46,38 @@ const ContactForm = ({ onClose }) => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      // Do something with formData, e.g., send to API
-      console.log(formData);
-      alert('Form submitted successfully!');
-      // Optionally reset
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
-      });
-      onClose();
+      try {
+        const BASE_URL = import.meta.env.VITE_API_URL
+        const response = await axios.post(`${BASE_URL}/api/contact`, formData);
+
+        if (response.status === 200) {
+          toast.success("Form submitted successfully!", {position: "top-left",});
+          // Optionally reset
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            message: ''
+          });
+          onClose();
+        } else {
+          toast.error("Something went wrong. Please try again later.", {position: "top-left"});
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("Failed to submit form. Please try again later.", {position: "top-left",});
+      }
     }
   };
+
 
   return (
     <motion.div
@@ -92,6 +106,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Name'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
+                required
               />
               {errors.name && <p className='text-red-600 text-sm'>{errors.name}</p>}
             </div>
@@ -103,6 +118,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Email'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
+                required 
               />
               {errors.email && <p className='text-red-600 text-sm'>{errors.email}</p>}
             </div>
@@ -116,6 +132,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Phone Number'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
+                required 
               />
               {errors.phone && <p className='text-red-600 text-sm'>{errors.phone}</p>}
             </div>
@@ -127,6 +144,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Company'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
+                required 
               />
             </div>
           </div>
@@ -137,6 +155,7 @@ const ContactForm = ({ onClose }) => {
               onChange={handleChange}
               placeholder='Message'
               className='w-full border h-[150px] border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans rounded-xl'
+              required 
             ></textarea>
           </div>
           {errors.message && <p className='text-red-600 text-sm mb-4'>{errors.message}</p>}
