@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -30,10 +30,10 @@ const CrossfadeWithPoints = () => {
   const containerRef = useRef(null)
   const slidesRef = useRef([])
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Setup slides positioning and opacity
       slidesRef.current.forEach((el, i) => {
         gsap.set(el, {
           opacity: i === 0 ? 1 : 0,
@@ -45,7 +45,6 @@ const CrossfadeWithPoints = () => {
         })
       })
 
-      // Timeline for crossfade animations
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -53,12 +52,8 @@ const CrossfadeWithPoints = () => {
           end: `+=${slides.length * 150}%`,
           scrub: 1,
           pin: true,
-          // We'll use onUpdate to track current slide
           onUpdate: (self) => {
-            // Calculate progress 0 to 1
             const progress = self.progress
-            // Determine slide index based on progress and number of slides
-            // Map progress 0-1 to 0-(slides.length - 1)
             const index = Math.min(
               slides.length - 1,
               Math.floor(progress * slides.length)
@@ -68,7 +63,6 @@ const CrossfadeWithPoints = () => {
         },
       })
 
-      // Add fade animations between slides
       slides.forEach((_, i) => {
         if (i !== slides.length - 1) {
           timeline
@@ -84,6 +78,14 @@ const CrossfadeWithPoints = () => {
             )
         }
       })
+
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top center',
+        end: 'bottom top',
+        onEnter: () => setInView(true),
+        onLeaveBack: () => setInView(false),
+      })
     }, containerRef)
 
     return () => ctx.revert()
@@ -92,7 +94,7 @@ const CrossfadeWithPoints = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-dvh md:h-screen bg-black text-white "
+      className="relative snap-start w-full h-dvh md:h-screen overflow-hidden bg-black text-white"
     >
       {slides.map((slide, i) => (
         <div
@@ -104,10 +106,9 @@ const CrossfadeWithPoints = () => {
             <motion.img
               src={slide.image}
               alt=""
-              initial={{ opacity: 0, y: -300 }}
-              whileInView={{ opacity: 1, y: -100 }}
+              initial={{ opacity: 0, }}
+              animate={inView ? { opacity: 1, y: -100 } : { opacity: 0, scale: 1.5 }}
               transition={{ duration: 1 }}
-              viewport={{ once: false }}
               style={{ width: '300px', height: '300px' }}
               className="mx-auto mb-6"
             />
@@ -115,7 +116,7 @@ const CrossfadeWithPoints = () => {
 
           {slide.title === 'Consulting' && (
             <div className="flex -mt-[220px] flex-wrap justify-center">
-              {Array(5)
+              {Array(window.innerWidth < 768 ? 3 : 5)
                 .fill(0)
                 .map((_, idx) => (
                   <img
@@ -130,27 +131,49 @@ const CrossfadeWithPoints = () => {
 
           {slide.title === 'Training' && (
             <div className="flex -mt-[220px] flex-wrap justify-center">
-              {Array(5)
+              {Array(
+                window.innerWidth < 500 ? 2 : window.innerWidth < 768 ? 4 : 5
+              )
                 .fill(0)
                 .map((_, idx) => (
                   <img
                     key={idx}
                     src={slide.image}
                     alt=""
+                    className=' max-sm:w-[150px] max-sm:h-[150px] '
                     style={{
                       width: '200px',
                       height: '200px',
-                      transform: `translateY(${idx % 2 === 0 ? '0px' : '100px'})`,
+                      transform: `translateY(${idx % 2 === 0
+                          ? '0px'
+                          : window.innerWidth < 500
+                            ? '10px'
+                            : '100px'
+                        })`,
                     }}
                   />
                 ))}
             </div>
           )}
 
-          <div className=' absolute bottom-[50px] '>
-              <p className="text-6xl lg:text-7xl font-DM-Sans mb-3">{slide.title}</p>
-              <p className="text-base lg:text-lg lg:w-9/12 m-auto text-[#A0A4A1] px-1 lg:px-2">{slide.text}</p>
-          </div>
+          {/* Animated text content */}
+          <AnimatePresence mode="wait">
+            {currentSlide === i && (
+              <motion.div
+                key={i}
+                className="absolute bottom-[50px]"
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <p className="text-4xl lg:text-7xl font-DM-Sans mb-3">{slide.title}</p>
+                <p className="text-sm lg:text-lg lg:w-9/12 m-auto text-[#A0A4A1] px-1 lg:px-2">
+                  {slide.text}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ))}
 
@@ -159,9 +182,8 @@ const CrossfadeWithPoints = () => {
         {slides.map((slide, i) => (
           <p
             key={i}
-            className={`uppercase font-DM-Mono-Light transition-opacity duration-300 cursor-default ${
-              i === currentSlide ? 'opacity-100' : 'opacity-50'
-            }`}
+            className={`uppercase font-DM-Mono-Light transition-opacity duration-300 cursor-default ${i === currentSlide ? 'opacity-100' : 'opacity-50'
+              }`}
           >
             {slide.title}
           </p>

@@ -135,3 +135,9 @@ body {
 }
 }
 
+#fullpage > div:not(.section) {
+  height: auto;
+  overflow: visible;
+}
+
+
