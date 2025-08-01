@@ -7,8 +7,13 @@ import Footer from './Components/Footer';
 import Orb from './Components/Orb';
 import SecoundSection from './Components/SecoundSection';
 import Result from './Components/Result';
+import useFullPageScroll from './Hooks/useFullPageScroll'
 import ContactFrom from './Components/ContactFrom';
 import { ToastContainer, toast } from 'react-toastify';
+import OrbSection1 from './Components/OrbSection1';
+import OrbSection3 from './Components/OrbSection3';
+import OrbSection2 from './Components/OrbSection2';
+import CTA from './Components/CTA';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -17,50 +22,43 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4500);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
+
+  useFullPageScroll()
 
   return (
     <>
       {loading && <Preloader />}
       <div>
-        {/* <SplashCursor /> */}
-        {/* <div
-          className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
-        >
-          <section className="h-screen snap-start flex items-center justify-center">
-            <HeroSection isLoaded={!loading} />
+          <section className="h-dvh md:h-screen">
+            <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="h-dvh md:h-screen">
             <SecoundSection />
           </section>
-        </div>
-
-        <Orb />
-
-        <div className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="h-dvh md:h-screen">
+            <Orb />
+          </section>
+          <section >
+            <OrbSection1 />
+          </section>
+          <section className="h-dvh md:h-screen">
             <Result />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
-            <WeDo />
+          <section className="h-dvh md:h-screen">
+            <CTA onContactClick={() => setShowContact(true)} />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
-            <Footer />
+          <section className="h-dvh md:h-screen">
+            <Footer onContactClick={() => setShowContact(true)} />
           </section>
-        </div> */} 
 
-        <ToastContainer />
-        <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
-        <SecoundSection />
-        <Orb />
-        <Result />
-        <WeDo />
-        <Footer onContactClick={() => setShowContact(true)} />
         {showContact && (
           <ContactFrom onClose={() => setShowContact(false)} />
         )}
+
+        <ToastContainer />
       </div>
     </>
   );

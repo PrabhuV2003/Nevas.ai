@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 const Footer = ({ onContactClick }) => {
   return (
-    <div className='w-full h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10'>
+    <div className='w-full h-dvh md:h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10'>
       
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -62,22 +62,22 @@ const Footer = ({ onContactClick }) => {
           </p>
           <ul className="flex justify-center mt-1 space-x-5">
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <SiYoutubeshorts className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <FaSquareInstagram className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <FaFacebook className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <FaXTwitter className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>

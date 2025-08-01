@@ -54,8 +54,7 @@ const ContactForm = ({ onClose }) => {
     } else {
       setErrors({});
       try {
-        const BASE_URL = import.meta.env.VITE_API_URL
-        const response = await axios.post(`${BASE_URL}/api/contact`, formData);
+        const response = await axios.post(`https://nevas.ai/api/contact`, formData);
 
         if (response.status === 200) {
           toast.success("Form submitted successfully!", {position: "top-left",});

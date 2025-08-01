@@ -28,8 +28,8 @@ const Result = () => {
   ]
 
   return (
-    <div className="h-screen w-full flex items-center justify-center relative">
-      <TextHoverEffect text="nevas.ai" />
+    <div className="h-dvh md:h-screen w-full flex items-center justify-center relative">
+      {/* <TextHoverEffect text="nevas.ai" /> */}
       <div className='absolute w-full h-full top-0 left-0 flex flex-col justify-center px-10'>
         
         {/* Heading with animation */}

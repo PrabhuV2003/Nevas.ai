@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
 const HeroSection = ({ isLoaded, onContactClick  }) => {
     return (
-        <div className=' w-full h-screen relative '>
+        <div className=' w-full h-dvh md:h-screen relative '>
             <Navbar onContactClick={onContactClick} />
             <div style={{ width: '100%', height: '100vh', position: 'relative', zIndex: '0' }}>
                 <LightRays
@@ -61,7 +61,7 @@ const HeroSection = ({ isLoaded, onContactClick  }) => {
                 </motion.p>
             </div>
 
-            <div className=' absolute bottom-5 left-1/2 -translate-x-1/2 text-3xl animate-bounce z-10 cursor-pointer '><CiSaveDown1 /></div>
+            {/* <div className=' absolute bottom-5 left-1/2 -translate-x-1/2 text-3xl animate-bounce z-10 cursor-pointer '><CiSaveDown1 /></div> */}
         </div>
     )
 }

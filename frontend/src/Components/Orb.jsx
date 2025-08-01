@@ -1,90 +1,52 @@
-import React, { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import React from 'react'
+import { motion } from 'framer-motion'
 
 const Orb = () => {
-  const containerRef = useRef(null)
-  const orbRef = useRef(null)
-  const h1Ref = useRef(null)
-  const h2Ref = useRef(null)
-
-  useEffect(() => {
-    gsap.set(h1Ref.current, { xPercent: -50 })
-    gsap.set(h2Ref.current, { xPercent: -50 })
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '+=1000',
-          scrub: true,
-          pin: true,
-        },
-      })
-
-      tl.fromTo(orbRef.current, { scale: 0.8 }, { scale: 1, ease: 'power2.out' })
-      tl.fromTo(
-        h1Ref.current,
-        { yPercent: 100, opacity: 0 },
-        { yPercent: 0, opacity: 1, ease: 'power2.out' }
-      )
-      tl.to(
-        orbRef.current,
-        {
-          background: 'conic-gradient(from 180deg at 50% 50%, #4080F5, #572AC2)',
-          borderWidth: 0,
-          ease: 'power2.out',
-        },
-        '<'
-      )
-      tl.to(
-        h1Ref.current,
-        { yPercent: -100, opacity: 0, ease: 'power2.in' }
-      )
-      tl.fromTo(
-        h2Ref.current,
-        { yPercent: 100, opacity: 0 },
-        { yPercent: 0, opacity: 1, ease: 'power2.out' }
-      )
-      tl.to(
-        orbRef.current,
-        {
-          background: 'radial-gradient(circle at center, #4080F5, #572AC2)',
-          ease: 'power2.out',
-        },
-        '<'
-      )
-    }, containerRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <div ref={containerRef} className="w-full h-screen relative overflow-hidden">
-      <div
-        ref={orbRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[300px] h-[300px] rounded-full border-4 border-primay"
-        style={{
-          background: 'transparent',
-          transition: 'background 0.5s ease',
+    <motion.div
+      className='w-full h-dvh md:h-screen relative overflow-hidden'
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.5 }}
+      variants={{
+        hidden: {},
+        visible: {}
+      }}
+    >
+      <motion.p
+        className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-DM-Sans text-2xl md:text-5xl w-full text-center leading-tight whitespace-pre-wrap'
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0 }
         }}
-      />
-      <h1
-        ref={h1Ref}
-        className="absolute w-full font-DM-Sans top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 text-3xl md:text-6xl lg:text-7xl text-center"
+        transition={{ duration: 1, ease: 'easeOut' }}
       >
-        We Will
-      </h1>
-      <h1
-        ref={h2Ref}
-        className="absolute w-full font-DM-Sans top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 text-3xl md:text-6xl lg:text-7xl text-center"
-      >
-        Make You Shaped
-      </h1>
-    </div>
+        <span className='white-silver-animated-text'>We </span>
+        <span className='white-silver-animated-text1'>spend </span>
+        <span className='white-silver-animated-text2'>our </span>
+        <span className='white-silver-animated-text2'>days </span>
+        <span className='white-silver-animated-text1'>guiding </span>
+        <span className='white-silver-animated-text1'>companies </span>
+        <br className='hidden lg:block' />
+        <span className='white-silver-animated-text1'>through </span>
+        <span className='white-silver-animated-text2'>our </span>
+        <span className='white-silver-animated-text'>3-step </span>
+        <span className='gradient-text'>AI </span>
+        <span className='gradient-text'>Transformation </span>
+        <span className='white-silver-animated-text'>Journey.</span>
+      </motion.p>
+
+      {/* <motion.img
+        className='w-[600px] h-[600px] absolute -bottom-[350px] left-1/2 -translate-x-1/2'
+        src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1753955520/20250731_1514_Glossy_Blue-Purple_Sphere_simple_compose_01k1fxvsaef6x8q37dfw51hp6p_g5lpjc.png"
+        alt=""
+        variants={{
+          hidden: { scale: 0.8, opacity: 0 },
+          visible: { scale: 1, opacity: 1 }
+        }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+      /> */}
+    </motion.div>
   )
 }
 
