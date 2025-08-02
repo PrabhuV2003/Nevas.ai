@@ -6,21 +6,21 @@ const Result = () => {
   const Result = [
     {
       id: 1,
-      count: 17,
+      count: 5,
       countType: 'M+',
       desc: 'Professionals upskilled in AI via our platforms',
       link: 'Watch our content here'
     },
     {
       id: 2,
-      count: 435,
+      count: 50,
       countType: '+',
       desc: 'AI Opportunities identified for businesses',
       link: ''
     },
     {
       id: 3,
-      count: 55,
+      count: 10,
       countType: '+',
       desc: 'Bespoke AI solutions developed',
       link: ''

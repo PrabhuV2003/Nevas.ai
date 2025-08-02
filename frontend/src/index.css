@@ -91,6 +91,12 @@ html {
   scroll-behavior: smooth;
 }
 
+#particles canvas {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
 
 body {
   @apply bg-black text-white overflow-x-hidden
