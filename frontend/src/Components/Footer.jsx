@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 const Footer = ({ onContactClick }) => {
   return (
-    <div className='w-full h-dvh md:h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10'>
+    <div className='w-full h-dvh md:h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 relative overflow-hidden'>
       
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -19,7 +19,7 @@ const Footer = ({ onContactClick }) => {
         </p>
       </motion.div>
 
-      <div className='w-full flex flex-col justify-between items-start md:flex-row md:items-center md:justify-between'>
+      <div className='w-full  flex flex-col justify-between items-start md:flex-row md:items-center md:justify-between'>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -40,7 +40,7 @@ const Footer = ({ onContactClick }) => {
           </button>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -48,7 +48,7 @@ const Footer = ({ onContactClick }) => {
           className='mt-7 md:mt-0'
         >
           <img src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="Logo" className='w-28 md:w-36' />
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -85,6 +85,17 @@ const Footer = ({ onContactClick }) => {
         </motion.div>
 
       </div>
+{/* 
+      <img className=' absolute -bottom-[0px] left-1/2 -translate-x-1/2 -z-20 w-full object-cover ' srcSet="https://framerusercontent.com/images/DwL4s8r5D7FlvA4RUhwbxD4sFY.png?scale-down-to=512 512w,https://framerusercontent.com/images/DwL4s8r5D7FlvA4RUhwbxD4sFY.png?scale-down-to=1024 1024w,https://framerusercontent.com/images/DwL4s8r5D7FlvA4RUhwbxD4sFY.png 1936w" alt="" /> */}
+
+      <img           initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          viewport={{ once: false, amount: 0.3 }} className=' absolute bottom-0 lg:-bottom-[50px] left-1/2 -translate-x-1/2 -z-20 w-full object-cover ' srcSet="src\assets\logo.png" alt="" />
+      <div className=' w-full h-full absolute bg-black/40 top-0 left-0 -z-10 '></div>
+      {/* <img src="src\assets\—Pngtree—old film grain noise effect_9234075.png" alt="" /> */}
+      {/* <div className=' w-full h-[100px] bg-gradient-to-t from-black via-black absolute bottom-0 left-0 -z-10 '></div> */}
+
     </div>
   )
 }

@@ -10,10 +10,10 @@ import DecryptedText from './ui/DecryptedText';
 
 const HeroSection = ({ isLoaded, onContactClick }) => {
   return (
-    <div className='w-full h-screen relative'>
+    <div className='w-full h-dvh md:h-screen relative'>
       <Navbar onContactClick={onContactClick} />
 
-       <div className=' w-full h-dvh md:h-screen absolute top-0 left-0 '>
+       <div className=' w-full h-screen absolute top-0 left-0 -z-10 '>
          <ParticlesComponent id="particles" />
       </div>
 
