@@ -310,7 +310,7 @@ const OrbSection1 = () => {
       ref={containerRef}
       className="w-full h-screen relative overflow-hidden"
     >
-      <div className="w-full h-[90vh] grid grid-cols-1 grid-rows-2 sm:grid-cols-2">
+      <div className="w-full h-[70vh] sm:h-[90vh] grid grid-cols-1 grid-rows-2 sm:grid-cols-2">
         <div className="relative sm:border-0 border-b-2 border-[#363636]">
           <h1
             ref={titleRef}
@@ -344,7 +344,7 @@ const OrbSection1 = () => {
         </div>
       </div>
 
-      <div className="w-full h-[10vh] flex justify-center items-center gap-2 sm:gap-5 font-DM-Sans absolute z-10">
+      <div className="w-full h-[30vh] sm:h-[10vh] flex justify-center items-center gap-2 sm:gap-5 font-DM-Sans absolute z-10">
         {[1, 2, 3].map((num, i) => (
           <React.Fragment key={i}>
             <p>0{num}</p>

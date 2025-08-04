@@ -30,33 +30,33 @@ const App = () => {
       {loading && <Preloader />}
       <div>
         {/* <SplashCursor /> */}
-        {/* <div
+        <div
           className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
-        > */}
-          {/* <section className="h-screen snap-start flex items-center justify-center"> */}
+        >
+          <section className="h-screen snap-start flex items-center justify-center">
             <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
-          {/* </section> */}
-          {/* <section className="h-dvh md:h-screen snap-start flex items-center justify-center"> */}
+          </section>
+          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
             <SecoundSection />
-          {/* </section> */}
-          {/* <section className="h-dvh md:h-screen snap-start flex items-center justify-center"> */}
+          </section>
+          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
             <Orb />
-          {/* </section> */}
-        {/* </div> */}
+          </section>
+        </div>
             <OrbSection1 />
-        {/* <div
+        <div
           className=" h-dvh md:h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
-        > */}
-          {/* <section className="h-dvh md:h-screen snap-start flex items-center justify-center"> */}
+        >
+          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
             <Result />
-          {/* </section> */}
-          {/* <section className="h-dvh md:h-screen snap-start flex items-center justify-center"> */}
+          </section>
+          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
             <CTA onContactClick={() => setShowContact(true)} />
-          {/* </section> */}
-          {/* <section className="h-dvh md:h-screen snap-start flex items-center justify-center"> */}
+          </section>
+          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
             <Footer onContactClick={() => setShowContact(true)} />
-          {/* </section> */}
-        {/* </div> */}
+          </section>
+        </div>
 
         {showContact && (
           <ContactFrom onClose={() => setShowContact(false)} />

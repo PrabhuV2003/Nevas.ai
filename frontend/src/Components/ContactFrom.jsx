@@ -54,7 +54,7 @@ const ContactForm = ({ onClose }) => {
     } else {
       setErrors({});
       try {
-        const response = await axios.post(`https://nevas.ai/api/contact`, formData);
+        const response = await axios.post(`http://localhost:5001/api/contact`, formData);
 
         if (response.status === 200) {
           toast.success("Form submitted successfully!", {position: "top-left",});
@@ -89,7 +89,7 @@ const ContactForm = ({ onClose }) => {
       }}
       className='w-full h-full fixed bg-black/40 z-50 top-0'
     >
-      <div className='w-[90%] sm:w-[50%] lg:w-[40%] h-[90%] absolute top-1/2 -translate-y-1/2 right-5 p-5 bg-neutral-300 rounded-2xl overflow-y-scroll'>
+      <div className='w-[90%] sm:w-[50%] lg:w-[40%] h-fit absolute top-[50px] right-5 p-5 bg-neutral-300 rounded-2xl overflow-y-scroll'>
         <IoIosCloseCircle onClick={onClose} className='absolute top-3 right-3 text-2xl z-10 text-black cursor-pointer' />
         <div className='w-full h-[100px] bg-black rounded-xl relative overflow-hidden'>
           <img src="https://cdn.pixabay.com/photo/2024/03/26/07/24/wallpaper-8656113_1280.jpg" alt="" className='w-full h-full object-cover' />

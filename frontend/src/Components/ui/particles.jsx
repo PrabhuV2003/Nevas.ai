@@ -1,26 +1,23 @@
-
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
-// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
-
-
+import { loadSlim } from "@tsparticles/slim"; // or your preferred bundle
 
 const ParticlesComponent = (props) => {
-
   const [init, setInit] = useState(false);
-  // this should be run only once per application lifetime
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Set up window resize listener to update `isMobile`
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Initialize tsParticles engine
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
       setInit(true);
     });
@@ -29,7 +26,6 @@ const ParticlesComponent = (props) => {
   const particlesLoaded = (container) => {
     console.log(container);
   };
-
 
   const options = useMemo(
     () => ({
@@ -46,8 +42,8 @@ const ParticlesComponent = (props) => {
             mode: "repulse",
           },
           onHover: {
-            enable: true,
-            mode: 'grab',
+            enable: !isMobile, // ✅ disable hover for mobile
+            mode: "grab",
           },
         },
         modes: {
@@ -84,7 +80,7 @@ const ParticlesComponent = (props) => {
         number: {
           density: {
             enable: true,
-            value_area: 1000
+            value_area: 1000,
           },
           value: 50,
         },
@@ -100,11 +96,12 @@ const ParticlesComponent = (props) => {
       },
       detectRetina: true,
     }),
-    [],
+    [isMobile] // ✅ make sure useMemo recalculates when `isMobile` changes
   );
 
-
-  return <Particles id={props.id} init={particlesLoaded} options={options} />; 
+  return (
+    <Particles id={props.id} init={particlesLoaded} options={options} />
+  );
 };
 
-export default ParticlesComponent;  
+export default ParticlesComponent;
