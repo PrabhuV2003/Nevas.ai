@@ -7,8 +7,8 @@ const CTA = ({ onContactClick }) => {
         <div className=' w-full h-screen relative '>
             <div className=' absolute top-1/2 left-1/2 -translate-1/2 w-[90%] lg:w-[70%] flex flex-col justify-center items-center '>
                 <motion.p
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, }}
                     viewport={{ once: false, amount: 0.5 }}
                     className='text-4xl md:text-6xl lg:text-7xl text-center whitespace-pre-wrap w-full font-DM-Sans white-silver-animated-text'

@@ -1,10 +1,7 @@
 import React from 'react';
-import { CiSaveDown1 } from "react-icons/ci";
-import LightRays from '../ReactBits/LightRays';
 import TypedText from './ui/TypedText';
 import Navbar from './Navbar';
 import { motion } from 'framer-motion';
-import Galaxy from './ui/Galaxy';
 import ParticlesComponent from './ui/particles';
 import DecryptedText from './ui/DecryptedText';
 
@@ -13,7 +10,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
     <div className='w-full h-screen relative'>
       <Navbar onContactClick={onContactClick} />
 
-       <div className=' w-full h-screen absolute top-0 left-0 -z-10 '>
+       <div className=' w-full h-screen absolute top-0 left-0 -z-0 '>
          <ParticlesComponent id="particles" />
       </div>
 
@@ -36,6 +33,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
         <motion.p
           initial={{ opacity: 0, y: 50 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8 }}
           className="white-silver-animated-text font-DM-Sans text-5xl md:text-7xl lg:text-8xl text-center"
         >
@@ -45,6 +43,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="white-silver-animated-text font-DM-Sans text-5xl md:text-7xl lg:text-8xl text-center"
         >
@@ -54,6 +53,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
         <motion.p
           initial={{ opacity: 0, y: 50 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="white-silver-animated-text font-DM-Sans text-5xl md:text-7xl lg:text-8xl text-center"
         >
@@ -71,6 +71,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <DecryptedText  />

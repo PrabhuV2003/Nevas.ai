@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import SplashCursor from './ReactBits/SplashCursor';
 import HeroSection from './Components/HeroSection';
-import WeDo from './Components/WeDo';
 import Preloader from './Components/Preloader';
 import Footer from './Components/Footer';
 import Orb from './Components/Orb';
@@ -10,8 +8,6 @@ import Result from './Components/Result';
 import ContactFrom from './Components/ContactFrom';
 import { ToastContainer, toast } from 'react-toastify';
 import OrbSection1 from './Components/OrbSection1';
-import OrbSection3 from './Components/OrbSection3';
-import OrbSection2 from './Components/OrbSection2';
 import CTA from './Components/CTA';
 
 const App = () => {
