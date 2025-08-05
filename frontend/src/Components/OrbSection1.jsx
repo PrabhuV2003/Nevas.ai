@@ -531,8 +531,9 @@ export default function PinScroll() {
           >
             {step === 1 && (
               <motion.img
-                animate={{ opacity: 1}}
-                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                transition={{ duration: .4 }}
                 src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310230/svgviewer-png-output_3_evt5sk.png"
                 alt="SVG 1"
                 className="md:w-80 w-40"
@@ -543,7 +544,10 @@ export default function PinScroll() {
                 {Array(5)
                   .fill(0)
                   .map((_, i) => (
-                    <img
+                    <motion.img
+                      initial={{ opacity: 0, }}
+                      animate={{ opacity: 1, }}
+                      transition={{ duration: .4 }}
                       key={i}
                       src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
                       alt="SVG 2"
@@ -590,24 +594,24 @@ export default function PinScroll() {
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.8 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
               className=" p-4 shadow rounded w-full"
             >
 
               {step === 1 && <div className=" text-center w-full ">
                 <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Development</p>
-                <p className="text-sm md:texbas lg:text-base text-[#A0A4A1] px-1 lg:px-2 ">We leverage our extensive experience and network to develop custom AI systems that are proven to move the needle inside your business.</p>
+                <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We leverage our extensive experience and network to develop custom AI systems that are proven to move the needle inside your business.</p>
               </div>}
               {step === 2 && <div className=" text-center ">
                 <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Training</p>
-                <p className="text-sm md:texbas lg:text-base text-[#A0A4A1] px-1 lg:px-2 ">We train and support your team with the right tools and know-how to embed AI across your entire organization.</p>
+                <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We train and support your team with the right tools and know-how to embed AI across your entire organization.</p>
               </div>}
               {step === 3 && <div className=" text-center ">
                 <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Consulting</p>
-                <p className="text-sm md:texbas lg:text-base text-[#A0A4A1] px-1 lg:px-2 ">We help you identify high-impact AI opportunities and build a step-by-step AI Transformation strategy to bring them to life.</p>
+                <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We help you identify high-impact AI opportunities and build a step-by-step AI Transformation strategy to bring them to life.</p>
               </div>}
             </motion.div>
           </AnimatePresence>

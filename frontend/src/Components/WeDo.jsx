@@ -63,7 +63,7 @@ const WeDo = () => {
         </div> */}
 
     <motion.div
-      className='w-full h-fit block md:hidden py-10 '
+      className='w-full h-full block md:hidden py-10 '
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
