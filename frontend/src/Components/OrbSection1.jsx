@@ -551,7 +551,7 @@ export default function PinScroll() {
                       key={i}
                       src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
                       alt="SVG 2"
-                      className={` w-24 md:w-32 ${i >= 3 ? '  md:block hidden' : ''}`}
+                      className={` w-28 md:w-32 ${i >= 3 ? '  md:block hidden' : ''}`}
                     />
                   ))}
               </div>
