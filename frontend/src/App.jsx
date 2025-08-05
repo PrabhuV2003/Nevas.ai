@@ -36,24 +36,24 @@ const App = () => {
           <section className="h-screen snap-start flex items-center justify-center">
             <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
           </section>
-          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
+          <section className="h-screen snap-start flex items-center justify-center">
             <SecoundSection />
           </section>
-          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
+          <section className="h-screen snap-start flex items-center justify-center">
             <Orb />
           </section>
         </div>
-            <OrbSection1 />
+        <OrbSection1 />
         <div
-          className=" h-dvh md:h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
+          className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
         >
-          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
+          <section className="h-screen snap-start flex items-center justify-center">
             <Result />
           </section>
-          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
+          <section className="h-screen snap-start flex items-center justify-center">
             <CTA onContactClick={() => setShowContact(true)} />
           </section>
-          <section className="h-dvh md:h-screen snap-start flex items-center justify-center">
+          <section className="h-screen snap-start flex items-center justify-center">
             <Footer onContactClick={() => setShowContact(true)} />
           </section>
         </div>

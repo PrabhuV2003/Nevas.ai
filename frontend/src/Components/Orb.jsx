@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const Orb = () => {
   return (
     <motion.div
-      className='w-full h-dvh md:h-screen relative overflow-hidden'
+      className='w-full h-screen relative overflow-hidden'
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.5 }}

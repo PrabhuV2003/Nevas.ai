@@ -487,10 +487,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function PinScroll() {
   const [step, setStep] = useState(1);
-    const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check on load
     const checkScreen = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -505,9 +504,9 @@ export default function PinScroll() {
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
 
-      if (scrollY < vh * 2) { // stays for 2 full viewport heights
+      if (scrollY < vh * 2) {
         setStep(1);
-      } else if (scrollY < vh * 4) {
+      } else if (scrollY < vh * 3) {
         setStep(2);
       } else {
         setStep(3);
@@ -520,7 +519,7 @@ export default function PinScroll() {
   }, []);
 
   return (
-    <div className="relative h-[500vh]">
+    <div className="relative h-[400vh]">
       {/* Sticky pin container */}
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
         {/* Pinned SVG */}
@@ -528,14 +527,16 @@ export default function PinScroll() {
           <motion.div
             key={step}
             transition={{ duration: 1 }}
-            className="flex items-center justify-center -mt-[180px]"
+            className="flex items-center justify-center -mt-[220px] md:-mt-[180px]"
           >
             {step === 1 && (
               <motion.img
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ opacity: 1}}
                 exit={{ opacity: 0 }}
-                src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png" alt="SVG 1" className=" md:w-80 w-40" />
+                src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310230/svgviewer-png-output_3_evt5sk.png"
+                alt="SVG 1"
+                className="md:w-80 w-40"
+              />
             )}
             {step === 2 && (
               <div className="flex gap-4">
@@ -546,46 +547,46 @@ export default function PinScroll() {
                       key={i}
                       src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
                       alt="SVG 2"
-                      className={`w-32 ${i >= 3 ? '  md:block hidden' : ''}`}
+                      className={` w-24 md:w-32 ${i >= 3 ? '  md:block hidden' : ''}`}
                     />
                   ))}
               </div>
             )}
             {step === 3 && (
-    <div className="flex flex-wrap justify-center gap-4">
-      {Array(5)
-        .fill(0)
-        .map((_, i) => (
-          <motion.img
-            key={i}
-            src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
-            alt={`Zig ${i}`}
-            className={`w-32 ${i >= 3 ? "hidden md:block" : ""}`}
-            animate={{
-              y: isMobile
-                ? i % 2 === 0
-                  ? -0 // smaller y on mobile
-                  : 0
-                : i % 2 === 0
-                ? -50 // bigger y on desktop
-                : 50,
-            }}
-          />
-        ))}
-    </div>
+              <div className="flex flex-wrap justify-center gap-4">
+                {Array(5)
+                  .fill(0)
+                  .map((_, i) => (
+                    <motion.img
+                      key={i}
+                      src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
+                      alt={`Zig ${i}`}
+                      className={` w-24 md:w-32 ${i >= 3 ? "hidden md:block" : ""}`}
+                      animate={{
+                        y: isMobile
+                          ? i % 2 === 0
+                            ? -30 // smaller y on mobile
+                            : 30
+                          : i % 2 === 0
+                            ? -50 // bigger y on desktop
+                            : 50,
+                      }}
+                    />
+                  ))}
+              </div>
             )}
           </motion.div>
         </AnimatePresence>
 
         {/* Left side Points */}
-        <div className="absolute md:left-0 md:top-1/2 top-auto bottom-0 -translate-y-1/2 flex md:flex-col md:gap-2 left-1/2 -translate-x-1/2 md:translate-x-0 text-base md:text-base">
+        <div className="absolute md:left-0 md:top-1/2 top-auto bottom-[50px] -translate-y-1/2 flex md:flex-col md:gap-2 left-1/2 -translate-x-1/2 md:translate-x-0 text-base md:text-base">
           <Point name="Development" active={step === 1} />
           <Point name="Training" active={step === 2} />
           <Point name="Consulting" active={step === 3} />
         </div>
 
         {/* Bottom Content */}
-        <div className="absolute md:bottom-[0px] bottom-[50px] left-1/2 -translate-x-1/2 w-full md:w-[80%]">
+        <div className="absolute md:bottom-[0px] bottom-[100px] left-1/2 -translate-x-1/2 w-full md:w-[80%]">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}

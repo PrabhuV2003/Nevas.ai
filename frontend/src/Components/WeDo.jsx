@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 const WeDo = () => {
     return (
         <>
-        <div className="relative w-full h-screen overflow-hidden hidden md:block ">
+        {/* <div className="relative w-full h-screen hidden md:block ">
             <CardSwap
                 cardDistance={100}
                 verticalDistance={70}
@@ -60,10 +60,10 @@ const WeDo = () => {
                     <span className=' gradient-text '> AI Transformation</span> Journey.
                 </motion.h1>
             </div>
-        </div>
+        </div> */}
 
     <motion.div
-      className='w-full h-fit block md:hidden py-10 overflow-hidden'
+      className='w-full h-fit block md:hidden py-10 '
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
