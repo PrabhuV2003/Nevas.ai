@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const CTA = ({ onContactClick }) => {
     return (
-        <div className=' w-full h-screen relative '>
+        <div className=' w-full h-screen relative bg-black '>
             <div className=' absolute top-1/2 left-1/2 -translate-1/2 w-[90%] lg:w-[70%] flex flex-col justify-center items-center '>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -22,7 +22,7 @@ const CTA = ({ onContactClick }) => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     viewport={{ once: false, amount: 0.5 }}
                     className='flex w-fit cursor-pointer mt-10 items-center gap-1 px-9 py-3 lg:px-10 lg:py-4 border-2 border-white rounded-full text-white bg-transparent hover:bg-gradient-to-r hover:from-primay hover:to-secoundary transition-all duration-300 font-DM-Sans' onClick={onContactClick}>
-                    <p className=' text-2xl lg:text-4xl '>Let's Partner Up</p>
+                    <p className=' text-2xl lg:text-4xl relative z-30 '>Let's Partner Up</p>
                 </motion.div>
             </div>
         </div>

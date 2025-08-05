@@ -480,155 +480,155 @@
 
 // src/components/ScrollPinAnimation.jsx
 
-"use client";
+// "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// import React, { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
 
-export default function PinScroll() {
-  const [step, setStep] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
+// export default function PinScroll() {
+//   const [step, setStep] = useState(1);
+//   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkScreen = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+//   useEffect(() => {
+//     const checkScreen = () => {
+//       setIsMobile(window.innerWidth < 768);
+//     };
 
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
+//     checkScreen();
+//     window.addEventListener("resize", checkScreen);
+//     return () => window.removeEventListener("resize", checkScreen);
+//   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const vh = window.innerHeight;
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const scrollY = window.scrollY;
+//       const vh = window.innerHeight;
 
-      if (scrollY < vh * 2) {
-        setStep(1);
-      } else if (scrollY < vh * 3) {
-        setStep(2);
-      } else {
-        setStep(3);
-      }
+//       if (scrollY < vh * 2) {
+//         setStep(1);
+//       } else if (scrollY < vh * 3) {
+//         setStep(2);
+//       } else {
+//         setStep(3);
+//       }
 
-    };
+//     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
 
-  return (
-    <div className="relative h-[400vh]">
-      {/* Sticky pin container */}
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
-        {/* Pinned SVG */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            transition={{ duration: 1 }}
-            className="flex items-center justify-center -mt-[220px] md:-mt-[180px]"
-          >
-            {step === 1 && (
-              <motion.img
-                initial={{ opacity: 0, }}
-                animate={{ opacity: 1, }}
-                transition={{ duration: .4 }}
-                src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310230/svgviewer-png-output_3_evt5sk.png"
-                alt="SVG 1"
-                className="md:w-80 w-40"
-              />
-            )}
-            {step === 2 && (
-              <div className="flex gap-4">
-                {Array(5)
-                  .fill(0)
-                  .map((_, i) => (
-                    <motion.img
-                      initial={{ opacity: 0, }}
-                      animate={{ opacity: 1, }}
-                      transition={{ duration: .4 }}
-                      key={i}
-                      src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
-                      alt="SVG 2"
-                      className={` w-28 md:w-32 ${i >= 3 ? '  md:block hidden' : ''}`}
-                    />
-                  ))}
-              </div>
-            )}
-            {step === 3 && (
-              <div className="flex flex-wrap justify-center gap-4">
-                {Array(5)
-                  .fill(0)
-                  .map((_, i) => (
-                    <motion.img
-                      key={i}
-                      src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
-                      alt={`Zig ${i}`}
-                      className={` w-24 md:w-32 ${i >= 3 ? "hidden md:block" : ""}`}
-                      animate={{
-                        y: isMobile
-                          ? i % 2 === 0
-                            ? -30 // smaller y on mobile
-                            : 30
-                          : i % 2 === 0
-                            ? -50 // bigger y on desktop
-                            : 50,
-                      }}
-                    />
-                  ))}
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+//   return (
+//     <div className="relative h-[400vh]">
+//       {/* Sticky pin container */}
+//       <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
+//         {/* Pinned SVG */}
+//         <AnimatePresence mode="wait">
+//           <motion.div
+//             key={step}
+//             transition={{ duration: 1 }}
+//             className="flex items-center justify-center -mt-[220px] md:-mt-[180px]"
+//           >
+//             {step === 1 && (
+//               <motion.img
+//                 initial={{ opacity: 0, }}
+//                 animate={{ opacity: 1, }}
+//                 transition={{ duration: .4 }}
+//                 src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310230/svgviewer-png-output_3_evt5sk.png"
+//                 alt="SVG 1"
+//                 className="md:w-80 w-40"
+//               />
+//             )}
+//             {step === 2 && (
+//               <div className="flex gap-4">
+//                 {Array(5)
+//                   .fill(0)
+//                   .map((_, i) => (
+//                     <motion.img
+//                       initial={{ opacity: 0, }}
+//                       animate={{ opacity: 1, }}
+//                       transition={{ duration: .4 }}
+//                       key={i}
+//                       src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
+//                       alt="SVG 2"
+//                       className={` w-28 md:w-32 ${i >= 3 ? '  md:block hidden' : ''}`}
+//                     />
+//                   ))}
+//               </div>
+//             )}
+//             {step === 3 && (
+//               <div className="flex flex-wrap justify-center gap-4">
+//                 {Array(5)
+//                   .fill(0)
+//                   .map((_, i) => (
+//                     <motion.img
+//                       key={i}
+//                       src="https://res.cloudinary.com/ddvsj2zxd/image/upload/v1754310443/svgviewer-output_2_ill8zv.png"
+//                       alt={`Zig ${i}`}
+//                       className={` w-24 md:w-32 ${i >= 3 ? "hidden md:block" : ""}`}
+//                       animate={{
+//                         y: isMobile
+//                           ? i % 2 === 0
+//                             ? -30 // smaller y on mobile
+//                             : 30
+//                           : i % 2 === 0
+//                             ? -50 // bigger y on desktop
+//                             : 50,
+//                       }}
+//                     />
+//                   ))}
+//               </div>
+//             )}
+//           </motion.div>
+//         </AnimatePresence>
 
-        {/* Left side Points */}
-        <div className="absolute md:left-0 md:top-1/2 top-auto bottom-[50px] -translate-y-1/2 flex md:flex-col md:gap-2 left-1/2 -translate-x-1/2 md:translate-x-0 text-base md:text-base">
-          <Point name="Development" active={step === 1} />
-          <Point name="Training" active={step === 2} />
-          <Point name="Consulting" active={step === 3} />
-        </div>
+//         {/* Left side Points */}
+//         <div className="absolute md:left-0 md:top-1/2 top-auto bottom-[50px] -translate-y-1/2 flex md:flex-col md:gap-2 left-1/2 -translate-x-1/2 md:translate-x-0 text-base md:text-base">
+//           <Point name="Development" active={step === 1} />
+//           <Point name="Training" active={step === 2} />
+//           <Point name="Consulting" active={step === 3} />
+//         </div>
 
-        {/* Bottom Content */}
-        <div className="absolute md:bottom-[0px] bottom-[100px] left-1/2 -translate-x-1/2 w-full md:w-[80%]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
-              className=" p-4 shadow rounded w-full"
-            >
+//         {/* Bottom Content */}
+//         <div className="absolute md:bottom-[0px] bottom-[100px] left-1/2 -translate-x-1/2 w-full md:w-[80%]">
+//           <AnimatePresence mode="wait">
+//             <motion.div
+//               key={step}
+//               initial={{ opacity: 0, x: 20 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               exit={{ opacity: 0, x: -20 }}
+//               transition={{ duration: 0.4 }}
+//               className=" p-4 shadow rounded w-full"
+//             >
 
-              {step === 1 && <div className=" text-center w-full ">
-                <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Development</p>
-                <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We leverage our extensive experience and network to develop custom AI systems that are proven to move the needle inside your business.</p>
-              </div>}
-              {step === 2 && <div className=" text-center ">
-                <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Training</p>
-                <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We train and support your team with the right tools and know-how to embed AI across your entire organization.</p>
-              </div>}
-              {step === 3 && <div className=" text-center ">
-                <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Consulting</p>
-                <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We help you identify high-impact AI opportunities and build a step-by-step AI Transformation strategy to bring them to life.</p>
-              </div>}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-    </div>
-  );
-}
+//               {step === 1 && <div className=" text-center w-full ">
+//                 <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Development</p>
+//                 <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We leverage our extensive experience and network to develop custom AI systems that are proven to move the needle inside your business.</p>
+//               </div>}
+//               {step === 2 && <div className=" text-center ">
+//                 <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Training</p>
+//                 <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We train and support your team with the right tools and know-how to embed AI across your entire organization.</p>
+//               </div>}
+//               {step === 3 && <div className=" text-center ">
+//                 <p className="text-5xl lg:text-7xl font-light font-DM-Sans mb-5 ">Consulting</p>
+//                 <p className="text-sm md:text-base md:w-[80%] mx-auto text-[#A0A4A1] px-1 lg:px-2 ">We help you identify high-impact AI opportunities and build a step-by-step AI Transformation strategy to bring them to life.</p>
+//               </div>}
+//             </motion.div>
+//           </AnimatePresence>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
-function Point({ name, active }) {
-  return (
-    <div
-      className={` px-2 md:px-4 rounded-full font-DM-Mono-Light ${active ? " opacity-100 " : " opacity-50 "
-        } transition`}
-    >
-      {name}
-    </div>
-  );
-}
+// function Point({ name, active }) {
+//   return (
+//     <div
+//       className={` px-2 md:px-4 rounded-full font-DM-Mono-Light ${active ? " opacity-100 " : " opacity-50 "
+//         } transition`}
+//     >
+//       {name}
+//     </div>
+//   );
+// }
 

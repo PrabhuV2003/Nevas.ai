@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const Orb = () => {
   return (
     <motion.div
-      className='w-full h-screen relative '
+      className='w-full h-screen relative bg-black flex flex-col justify-center items-center '
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.5 }}
@@ -14,7 +14,7 @@ const Orb = () => {
       }}
     >
       <motion.p
-        className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-DM-Sans text-2xl md:text-5xl w-full text-center leading-tight whitespace-pre-wrap'
+        className=' font-DM-Sans text-2xl md:text-5xl w-full text-center leading-tight whitespace-pre-wrap'
         variants={{
           hidden: { opacity: 0, y: 50 },
           visible: { opacity: 1, y: 0 }

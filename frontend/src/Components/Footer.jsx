@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 const Footer = ({ onContactClick }) => {
   return (
-    <div className='w-full h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 relative overflow-hidden'>
+    <div className='w-full h-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 relative overflow-hidden bg-black'>
       
       <motion.div
         initial={{ opacity: 0, y: 50 }}

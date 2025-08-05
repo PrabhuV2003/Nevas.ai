@@ -7,14 +7,14 @@ import DecryptedText from './ui/DecryptedText';
 
 const HeroSection = ({ isLoaded, onContactClick }) => {
   return (
-    <div className='w-full h-screen relative'>
+    <div className='w-full h-screen relative bg-black'>
       <Navbar onContactClick={onContactClick} />
 
-       <div className=' w-full h-screen absolute top-0 left-0 -z-0 '>
+       {/* <div className=' w-full h-screen absolute top-0 left-0 -z-0 '>
          <ParticlesComponent id="particles" />
-      </div>
+      </div> */}
 
-      <div className="fixed -bottom-[350px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 scale-50 md:scale-100">
+      {/* <div className="fixed -bottom-[350px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 scale-50 md:scale-100">
         <div
           className="rounded-full animate-float"
           style={{
@@ -26,7 +26,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
             animation: "float 20s ease-in-out infinite",
           }}
         ></div>
-      </div>
+      </div> */}
 
 
       <div className='w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2 justify-center items-center z-10'>
@@ -47,7 +47,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="white-silver-animated-text font-DM-Sans text-5xl md:text-7xl lg:text-8xl text-center"
         >
-          <TypedText words={['Education', 'Development', 'Consulting']} />
+          <TypedText words={['Consulting', 'Development', 'Training']} />
         </motion.div>
 
         <motion.p

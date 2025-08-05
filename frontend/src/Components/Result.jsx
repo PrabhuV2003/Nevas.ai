@@ -28,7 +28,7 @@ const Result = () => {
   ]
 
   return (
-    <div className="h-screen w-full flex items-center justify-center relative">
+    <div className="h-screen w-full flex items-center justify-center relative bg-black">
       {/* <TextHoverEffect text="nevas.ai" /> */}
       <div className='absolute w-full h-full top-0 left-0 flex flex-col justify-center px-10'>
         
