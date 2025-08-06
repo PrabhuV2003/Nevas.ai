@@ -187,6 +187,17 @@ useEffect(() => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+  const setVh = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+  setVh();
+  window.addEventListener('resize', setVh);
+  return () => window.removeEventListener('resize', setVh);
+}, []);
+
+
   const bgImages = [
     "url(https://assets.codepen.io/16327/site-landscape-1.jpg)",
     "url(https://assets.codepen.io/16327/site-landscape-5.jpeg)",
@@ -265,33 +276,33 @@ useEffect(() => {
       </div>
 
         <div
-          className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden"
+          className=" overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden vh-screen"
         >
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <SecoundSection />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <Orb />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <Section1 />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <Section2 />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <Section3 />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <Result />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <CTA onContactClick={() => setShowContact(true)} />
           </section>
-          <section className="h-screen snap-start flex items-center justify-center">
+          <section className="vh-screen snap-start flex items-center justify-center">
             <Footer onContactClick={() => setShowContact(true)} />
           </section>
         </div>
