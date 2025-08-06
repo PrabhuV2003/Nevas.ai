@@ -8,7 +8,7 @@ const Section3 = () => {
             <p className='text-6xl lg:text-7xl white-silver-animated-text font-DM-Sans'>
                 Training
             </p>
-            <p className='text-base lg:text-lg mt-5 text-[#A0A4A1] px-1 lg:px-2 font-DM-Sans white-silver-animated-text2'>We train and support your team with the right tools and know-how to embed <span className=' gradient-text '>AI across your entire organization.</span> </p>
+            <p className='text-base lg:text-lg mt-5 w-full text-[#A0A4A1] px-1 lg:px-2 font-DM-Sans white-silver-animated-text2'>We train and support your team with the right tools and know-how to embed <span className=' gradient-text '>AI across your entire organization.</span> </p>
         </div>
     </div>
   )

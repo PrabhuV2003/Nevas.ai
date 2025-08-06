@@ -168,7 +168,7 @@ useEffect(() => {
   };
 
   Observer.create({
-    type: "wheel",
+    type: "wheel,touch",
     wheelSpeed: -1,
     onDown: () => !animating && gotoSection(currentIndex - 1, -1),
     onUp: () => !animating && gotoSection(currentIndex + 1, 1),
