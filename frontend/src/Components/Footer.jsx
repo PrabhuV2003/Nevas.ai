@@ -13,12 +13,12 @@ const Footer = ({ onContactClick, onNewsletterClick  }) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false, amount: 0.3 }}
-        className=' flex-col md:flex-row flex justify-between items-center '
+        className=' flex-col md:flex-row flex md:justify-between md:items-center '
       >
-        <p className=' lg:text-5xl text-5xl text-left leading-tight font-DM-Sans'>
+        <p className=' lg:text-5xl text-3xl text-left leading-tight font-DM-Sans'>
           Supercharge your <span className='gradient-text'>AI journey</span>
         </p>
-        <button onClick={onNewsletterClick} className=' mt-2.5 px-5 py-2 border border-primay rounded-full text-white bg-transparent hover:bg-gradient-to-r hover:from-primay hover:to-secoundary transition-all duration-500 cursor-pointer text-sm md:text-[16px]'>
+        <button onClick={onNewsletterClick} className=' w-[150px] mt-2.5 px-5 py-2 border border-primay rounded-full text-white bg-transparent hover:bg-gradient-to-r hover:from-primay hover:to-secoundary transition-all duration-500 cursor-pointer text-sm md:text-[16px]'>
           News Letter
         </button>
       </motion.div>
