@@ -19,7 +19,7 @@ const Footer = ({ onContactClick }) => {
         </p>
       </motion.div>
 
-      <div className='w-full  flex flex-col justify-between items-start md:flex-row md:items-center md:justify-between'>
+      <div className='w-full relative z-20 flex flex-col justify-between items-start md:flex-row md:items-center md:justify-between'>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -91,7 +91,7 @@ const Footer = ({ onContactClick }) => {
       <img           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: false, amount: 0.3 }} className=' absolute bottom-0 lg:-bottom-[50px] left-1/2 -translate-x-1/2 -z-20 w-full object-cover ' srcSet="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="" />
+          viewport={{ once: false, amount: 0.3 }} className=' absolute bottom-0 lg:-bottom-[50px] left-1/2 -translate-x-1/2 -z-[1] w-full object-cover ' srcSet="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="" />
       <div className=' w-full h-full absolute bg-black/80 top-0 left-0 -z-10 '></div>
       {/* <img src="src\assets\—Pngtree—old film grain noise effect_9234075.png" alt="" /> */}
       {/* <div className=' w-full h-[100px] bg-gradient-to-t from-black via-black absolute bottom-0 left-0 -z-10 '></div> */}

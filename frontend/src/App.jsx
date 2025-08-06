@@ -214,7 +214,7 @@ useEffect(() => {
   return (
     <>
       {loading && <Preloader />}
-      <div className="relative w-full h-screen overflow-hidden bg-black text-white">
+      <div className="relative w-full h-screen overflow-hidden bg-black text-white hidden md:block ">
         <div className=' w-full h-screen absolute top-0 left-0 z-10 '>
           <ParticlesComponent id="particles" />
         </div>
@@ -263,6 +263,44 @@ useEffect(() => {
 
         <ToastContainer />
       </div>
+
+        <div
+          className=" h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden"
+        >
+          <section className="h-screen snap-start flex items-center justify-center">
+            <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <SecoundSection />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Orb />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Section1 />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Section2 />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Section3 />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Result />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <CTA onContactClick={() => setShowContact(true)} />
+          </section>
+          <section className="h-screen snap-start flex items-center justify-center">
+            <Footer onContactClick={() => setShowContact(true)} />
+          </section>
+        </div>
+
+        {showContact && (
+          <ContactFrom onClose={() => setShowContact(false)} />
+        )}
+
+        <ToastContainer />
     </>
   );
 }
