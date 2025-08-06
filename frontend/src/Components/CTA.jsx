@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const CTA = ({ onContactClick }) => {
     return (
-        <div className=' w-full h-screen relative bg-black '>
+        <div className=' w-full vh-screen relative bg-black '>
             <div className=' absolute top-1/2 left-1/2 -translate-1/2 w-[90%] lg:w-[70%] flex flex-col justify-center items-center '>
                 <motion.p
                     initial={{ opacity: 0 }}

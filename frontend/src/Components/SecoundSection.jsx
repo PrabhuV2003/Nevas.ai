@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const SecoundSection = () => {
   return (
-    <div className='h-screen bg-black w-full flex flex-col justify-center items-center z-50'>
+    <div className='vh-screen bg-black w-full flex flex-col justify-center items-center z-50'>
       <motion.p
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
