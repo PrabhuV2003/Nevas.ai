@@ -1,9 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import ParticlesComponent from './ui/particles'
 
 const SecoundSection = () => {
   return (
-    <div className='vh-screen bg-black w-full flex flex-col justify-center items-center z-50'>
+    <div className='vh-screen w-full flex flex-col justify-center items-center bg-black'>
       <motion.p
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
