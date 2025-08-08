@@ -15,6 +15,7 @@ import Newsletter from "./Components/Newsletter";
 import Section from "./Components/Section";
 import consulting from './assets/consulting.jpg'
 import training from './assets/training.jpg'
+import development from './assets/development.jpg'
 
 gsap.registerPlugin(Observer);
 
@@ -145,7 +146,7 @@ function App() {
     <Section image={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
       gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
 
-    <Section image='' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+    <Section image={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
       gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
 
     <Section image={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
@@ -187,7 +188,7 @@ function App() {
         ))}
       </div>
 
-      <div className=' w-full h-screen absolute top-0 left-0 z-10 select-none pointer-events-none '>
+      <div className=' w-full absolute top-0 left-0 z-10 select-none pointer-events-none ' style={{ height: "calc(var(--vh) * 100)" }}>
         <ParticlesComponent id="particles" />
       </div>
 
@@ -223,7 +224,7 @@ function App() {
             gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section image='.\src\assets\face-recognition-ar-hologram-screen-smart-technology.jpg' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+          <Section image={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
             gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
