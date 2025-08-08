@@ -34,81 +34,75 @@ function App() {
   const wrap = gsap.utils.wrap(0, 9); // 5 sections
 
   useEffect(() => {
-    const sections = sectionsRef.current;
-    const images = imagesRef.current;
-    const outerWrappers = outerWrappersRef.current;
-    const innerWrappers = innerWrappersRef.current;
-    const headings = headingsRef.current;
+    if (window.innerWidth >= 768) { // Only run for desktop
+      const sections = sectionsRef.current;
+      const images = imagesRef.current;
+      const outerWrappers = outerWrappersRef.current;
+      const innerWrappers = innerWrappersRef.current;
+      const headings = headingsRef.current;
 
-    gsap.set(outerWrappers, { yPercent: 100 });
-    gsap.set(innerWrappers, { yPercent: -100 });
+      gsap.set(outerWrappers, { yPercent: 100 });
+      gsap.set(innerWrappers, { yPercent: -100 });
 
-    // Set initial section (index 0) immediately
-    gsap.set(sections[0], { autoAlpha: 1, zIndex: 1 });
-    gsap.set([outerWrappers[0], innerWrappers[0]], { yPercent: 0 });
-    gsap.set(images[0], { yPercent: 0 });
-    gsap.set(headings[0], { autoAlpha: 1, yPercent: 0 });
+      gsap.set(sections[0], { autoAlpha: 1, zIndex: 1 });
+      gsap.set([outerWrappers[0], innerWrappers[0]], { yPercent: 0 });
+      gsap.set(images[0], { yPercent: 0 });
+      gsap.set(headings[0], { autoAlpha: 1, yPercent: 0 });
 
-    currentIndex = 0; // Set currentIndex immediately
+      let currentIndex = 0;
+      let animating = false;
 
-    const gotoSection = (index, direction) => {
-      if (index < 0 || index >= sections.length || index === currentIndex) return;
+      const gotoSection = (index, direction) => {
+        if (index < 0 || index >= sections.length || index === currentIndex) return;
 
-      animating = true;
-      let fromTop = direction === -1;
-      let dFactor = fromTop ? -1 : 1;
+        animating = true;
+        let fromTop = direction === -1;
+        let dFactor = fromTop ? -1 : 1;
 
-      let tl = gsap.timeline({
-        defaults: { duration: 1, ease: "power1.inOut" },
-        onComplete: () => (animating = false),
+        let tl = gsap.timeline({
+          defaults: { duration: 1, ease: "power1.inOut" },
+          onComplete: () => (animating = false),
+        });
+
+        if (currentIndex >= 0) {
+          gsap.set(sections[currentIndex], { zIndex: 0 });
+          tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
+            sections[currentIndex],
+            { autoAlpha: 0 }
+          );
+        }
+
+        gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
+        tl.fromTo(
+          [outerWrappers[index], innerWrappers[index]],
+          { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) },
+          { yPercent: 0 },
+          0
+        )
+          .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
+          .fromTo(
+            headings[index],
+            { autoAlpha: 0, yPercent: 150 * dFactor },
+            { autoAlpha: 1, yPercent: 0, ease: "power2" },
+            0.2
+          );
+
+        currentIndex = index;
+      };
+
+      const observer = Observer.create({
+        type: "wheel,touch",
+        wheelSpeed: -1,
+        onDown: () => !animating && gotoSection(currentIndex - 1, -1),
+        onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+        tolerance: 10,
+        preventDefault: true,
       });
 
-      if (currentIndex >= 0) {
-        gsap.set(sections[currentIndex], { zIndex: 0 });
-        tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
-          sections[currentIndex],
-          { autoAlpha: 0 }
-        );
-      }
-
-      gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-      tl.fromTo(
-        [outerWrappers[index], innerWrappers[index]],
-        {
-          yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor),
-        },
-        { yPercent: 0 },
-        0
-      ).fromTo(
-        images[index],
-        { yPercent: 15 * dFactor },
-        { yPercent: 0 },
-        0
-      ).fromTo(
-        headings[index],
-        { autoAlpha: 0, yPercent: 150 * dFactor },
-        {
-          autoAlpha: 1,
-          yPercent: 0,
-          ease: "power2",
-        },
-        0.2
-      );
-
-      currentIndex = index;
-    };
-
-    Observer.create({
-      type: "wheel,touch",
-      wheelSpeed: -1,
-      onDown: () => !animating && gotoSection(currentIndex - 1, -1),
-      onUp: () => !animating && gotoSection(currentIndex + 1, 1),
-      tolerance: 10,
-      preventDefault: true,
-    });
-
-    // Removed gotoSection(0, 1) here, since we already set it above
+      return () => observer.kill(); // Cleanup on unmount or resize
+    }
   }, []);
+
 
 
   useEffect(() => {
