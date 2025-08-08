@@ -28,7 +28,7 @@ const SecoundSection = ({ videoSrc }) => {
     }, []);
 
   return (
-    <div className=' w-full flex flex-col relative justify-center items-center ' style={{ height: "calc(var(--vh) * 100)" }}>
+    <div className=' w-full flex flex-col relative justify-center items-center bg-black ' style={{ height: "calc(var(--vh) * 100)" }}>
       <video
         ref={videoRef}
         src={videoSrc}
