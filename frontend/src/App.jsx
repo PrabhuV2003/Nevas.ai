@@ -13,9 +13,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import ContactFrom from './Components/ContactFrom';
 import Newsletter from "./Components/Newsletter";
 import Section from "./Components/Section";
-import consulting from './assets/consulting.jpg'
-import training from './assets/training.jpg'
-import development from './assets/development.jpg'
+import development from './assets/videos/development.mp4'
+import consulting from './assets/videos/consulting.mp4'
+import training from './assets/videos/training.mp4'
 
 gsap.registerPlugin(Observer);
 
@@ -143,13 +143,13 @@ function App() {
     <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />,
     <SecoundSection />,
     <Orb />,
-    <Section image={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
+    <Section videoSrc={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
       gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
 
-    <Section image={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+    <Section videoSrc={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
       gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
 
-    <Section image={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
+    <Section videoSrc={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
       gradientText1={' AI across your entire organization.'} />,
 
     <Result />,
@@ -220,15 +220,15 @@ function App() {
           <Orb />
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section image={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
+          <Section videoSrc={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
             gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section image={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+          <Section videoSrc={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
             gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section image={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
+          <Section videoSrc={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
             gradientText1={' AI across your entire organization.'} />,
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>

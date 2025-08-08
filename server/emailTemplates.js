@@ -5,7 +5,7 @@ export function adminEmailTemplate({ name, email, phone, company, message }) {
     <div style="text-align: center; padding: 20px 0;">
       <img src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="Nevas.ai Logo" style="max-width: 150px; height: auto;">
     </div>
-    <img src="https://cdn.pixabay.com/photo/2024/03/26/07/24/wallpaper-8656113_1280.jpg" alt="Banner" style="width: 100%; max-width: 600px; height: auto; display: block;">
+    <img src="https://cdn.pixabay.com/photo/2024/03/26/07/24/wallpaper-8656113_1280.jpg" alt="Banner" style="width: 100%; max-width: 600px; height: 150px; display: block;">
 
     <h2 style="color: #0052cc; margin-top: 20px;">New Contact Form Submission</h2>
     <p>You have received a new message from your website contact form:</p>
@@ -46,7 +46,7 @@ export function clientEmailTemplate({ name, message }) {
     <div style="text-align: center; padding: 20px 0;">
       <img src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="Nevas.ai Logo" style="max-width: 150px; height: auto;">
     </div>
-    <img src="https://cdn.pixabay.com/photo/2024/03/26/07/24/wallpaper-8656113_1280.jpg" alt="Banner" style="width: 100%; max-width: 600px; height: auto; display: block;">
+    <img src="https://cdn.pixabay.com/photo/2024/03/26/07/24/wallpaper-8656113_1280.jpg" alt="Banner" style="width: 100%; max-width: 600px; height: 150px; display: block;">
 
     <h2 style="color: #007bff; margin-top: 20px;">Thank you for contacting Nevas.ai, ${name}!</h2>
     <p>We have received your message and will get back to you shortly.</p>
