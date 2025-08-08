@@ -10,7 +10,7 @@ const HeroSection = ({ isLoaded, onContactClick }) => {
     <div className='w-full h-screen relative bg-black'>
       <Navbar onContactClick={onContactClick} />
 
-       <div className=' w-full h-screen absolute top-0 left-0 -z-0 '>
+       <div className=' w-full h-screen absolute top-0 left-0 z-10 '>
          <ParticlesComponent id="particles" />
       </div>
 

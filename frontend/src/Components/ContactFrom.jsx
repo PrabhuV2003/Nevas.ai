@@ -54,7 +54,7 @@ const ContactForm = ({ onClose }) => {
     } else {
       setErrors({});
       try {
-        const response = await axios.post(`http://localhost:5001/api/contact`, formData);
+        const response = await axios.post(`https://nevas.ai/api/contact`, formData);
 
         if (response.status === 200) {
           toast.success("Form submitted successfully!", {position: "top-left",});

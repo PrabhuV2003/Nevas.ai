@@ -1,10 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import MarqueeSlider from './MarqueeSlider'
 
 
 const CTA = ({ onContactClick }) => {
     return (
         <div className=' w-full vh-screen relative bg-black '>
+            <div className=' absolute to-[100px] left-1/2 -translate-x-1/2 w-full '>
+                <MarqueeSlider />
+            </div>
             <div className=' absolute top-1/2 left-1/2 -translate-1/2 w-[90%] lg:w-[70%] flex flex-col justify-center items-center '>
                 <motion.p
                     initial={{ opacity: 0 }}
