@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import logo from '../assets/nevas-ai.png'
 
 const Preloader = () => {
   const spanRef = useRef(null);
@@ -50,8 +51,8 @@ const Preloader = () => {
           className='w-0 h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black z-10 flex justify-center items-center'
         >
           <img
-            src="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png"
-            alt="Logo"
+            src={logo}
+            alt="Nevas ai"
             className='h-full object-contain'
           />
         </div>

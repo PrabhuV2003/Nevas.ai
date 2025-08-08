@@ -4,7 +4,7 @@ import ParticlesComponent from './ui/particles'
 
 const SecoundSection = () => {
   return (
-    <div className='vh-screen w-full flex flex-col justify-center items-center bg-black'>
+    <div className=' w-full flex flex-col justify-center items-center bg-black' style={{ height: "calc(var(--vh) * 100)" }}>
       <motion.p
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

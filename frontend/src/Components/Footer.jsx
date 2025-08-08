@@ -3,10 +3,12 @@ import { MdOutlineArrowOutward } from 'react-icons/md'
 import { SiYoutubeshorts } from "react-icons/si";
 import { FaSquareInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { motion } from 'framer-motion'
+import { FaLinkedin } from "react-icons/fa";
+import logo from '../assets/nevas-ai.png'
 
 const Footer = ({ onContactClick, onNewsletterClick }) => {
   return (
-    <div className='w-full vh-screen py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 relative overflow-hidden bg-black '>
+    <div className='w-full py-3 px-5 flex flex-col justify-between md:py-5 md:px-10 relative overflow-hidden bg-black ' style={{ height: "calc(var(--vh) * 100)" }}>
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -65,22 +67,27 @@ const Footer = ({ onContactClick, onNewsletterClick }) => {
           </p>
           <ul className="flex justify-center mt-1 space-x-5">
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
+              <a href='https://www.youtube.com/@NevasAI' target='_blank' className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <SiYoutubeshorts className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
+              <a href='https://www.instagram.com/aiwithjohnsolomon/' target='_blank' className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <FaSquareInstagram className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
+              <a href='https://www.facebook.com/nevasaiconsulting' target='_blank' className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <FaFacebook className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
             <li>
-              <a className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
+              <a href='https://www.linkedin.com/company/9376084/admin/dashboard/' target='_blank' className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
+                <FaLinkedin className='w-5 h-5 md:w-7 md:h-7' />
+              </a>
+            </li>
+            <li>
+              <a href='https://x.com/nevastech' target='_blank' className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400 cursor-pointer transition-all duration-300">
                 <FaXTwitter className='w-5 h-5 md:w-7 md:h-7' />
               </a>
             </li>
@@ -92,7 +99,7 @@ const Footer = ({ onContactClick, onNewsletterClick }) => {
       <img initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
-        viewport={{ once: false, amount: 0.3 }} className=' absolute bottom-0 lg:-bottom-[50px] left-1/2 -translate-x-1/2 z-0 w-full object-cover opacity-30 ' srcSet="https://res.cloudinary.com/ddvsj2zxd/image/upload/f_auto/v1753435753/logo_womtni.png" alt="" />
+        viewport={{ once: false, amount: 0.3 }} className=' absolute bottom-0 lg:-bottom-[50px] left-1/2 -translate-x-1/2 z-0 w-full object-cover opacity-30 ' src={logo} alt="" />
     </div>
   )
 }

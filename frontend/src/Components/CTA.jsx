@@ -5,7 +5,7 @@ import MarqueeSlider from './MarqueeSlider'
 
 const CTA = ({ onContactClick }) => {
     return (
-        <div className=' w-full vh-screen relative bg-black '>
+        <div className=' w-full relative bg-black ' style={{ height: "calc(var(--vh) * 100)" }}>
             <div className=' absolute to-[100px] left-1/2 -translate-x-1/2 w-full '>
                 <MarqueeSlider />
             </div>

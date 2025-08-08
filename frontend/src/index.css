@@ -17,14 +17,6 @@
   font-display: swap
 }
 
-/* @font-face {
-    font-family: DM-Sans-Italic;
-    src: url(/_next/static/media/DMSans-Italic.ee0ce24a.ttf) format("truetype");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap
-} */
-
 @font-face {
   font-family: DM-Mono-Light;
   src: url(./assets/fonts/DMMono-Light.559007bb.ttf) format("truetype");
@@ -40,38 +32,6 @@
   font-style: italic;
   font-display: swap
 }
-
-/* @font-face {
-    font-family: DM-Mono-Light-Italic;
-    src: url(/_next/static/media/DMMono-LightItalic.7e9afbe4.ttf) format("truetype");
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap
-} */
-
-/* @font-face {
-    font-family: DM-Mono-Medium;
-    src: url(/_next/static/media/DMMono-Medium.28f69fcc.ttf) format("truetype");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap
-} */
-
-/* @font-face {
-    font-family: DM-Mono-Medium-Italic;
-    src: url(/_next/static/media/DMMono-MediumItalic.995ca513.ttf) format("truetype");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap
-} */
-
-/* @font-face {
-    font-family: DM-Mono-Regular;
-    src: url(/_next/static/media/DMMono-Regular.bddf831d.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap
-} */
 
 @theme {
   --font-brasley: BrasleyDemo-Medium, 'Brasley Demo';
@@ -149,7 +109,7 @@ body {
   }
 
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
   }
 
   @keyframes marquee {

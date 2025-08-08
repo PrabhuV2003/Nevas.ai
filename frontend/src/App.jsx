@@ -8,18 +8,15 @@ import Result from './Components/Result';
 import CTA from './Components/CTA';
 import Footer from './Components/Footer';
 import ParticlesComponent from "./Components/ui/particles";
-import Section2 from "./Components/Section2";
-import Section3 from "./Components/Section3";
 import Preloader from './Components/Preloader';
 import { ToastContainer, toast } from 'react-toastify';
 import ContactFrom from './Components/ContactFrom';
 import Newsletter from "./Components/Newsletter";
 import Section from "./Components/Section";
-// SplitText must be imported manually or from CDN
-// import { SplitText } from "gsap/SplitText";
+import consulting from './assets/consulting.jpg'
+import training from './assets/training.jpg'
 
 gsap.registerPlugin(Observer);
-// gsap.registerPlugin(SplitText);
 
 function App() {
   const sectionsRef = useRef([]);
@@ -121,6 +118,20 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const setVh = () => {
+      document.documentElement.style.setProperty(
+        "--vh",
+        `${window.innerHeight * 0.01}px`
+      );
+    };
+
+    setVh();
+    window.addEventListener("resize", setVh);
+
+    return () => window.removeEventListener("resize", setVh);
+  }, []);
+
   const bgImages = [
     "url(https://assets.codepen.io/16327/site-landscape-1.jpg)",
     "url(https://assets.codepen.io/16327/site-landscape-5.jpeg)",
@@ -137,13 +148,13 @@ function App() {
     <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />,
     <SecoundSection />,
     <Orb />,
-    <Section image='.\src\assets\futuristic-ai-dashboard-display.jpg' point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
+    <Section image={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
       gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
 
-    <Section image='.\src\assets\face-recognition-ar-hologram-screen-smart-technology.jpg' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+    <Section image='' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
       gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
 
-    <Section image='.\src\assets\robot-handshake-human-background-futuristic-digital-age.jpg' point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
+    <Section image={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
       gradientText1={' AI across your entire organization.'} />,
 
     <Result />,
@@ -154,25 +165,7 @@ function App() {
   return (
     <>
       {loading && <Preloader />}
-      <div className="relative w-full h-screen overflow-hidden bg-black text-white hidden md:block ">
-
-        <div className=' w-full h-screen absolute top-0 left-0 z-10 select-none pointer-events-none '>
-          <ParticlesComponent id="particles" />
-        </div>
-
-        <div className="fixed -bottom-[350px] left-1/2 -translate-x-1/2 pointer-events-none -translate-y-1/2 z-10 scale-50 md:scale-100">
-          <div
-            className="rounded-full animate-float"
-            style={{
-              width: "350px",
-              height: "350px",
-              backgroundColor: "#4080f5",
-              opacity: 1,
-              filter: "blur(200px)",
-              animation: "float 20s ease-in-out infinite",
-            }}
-          ></div>
-        </div>
+      <div className="relative w-full overflow-hidden bg-black text-white hidden md:block " style={{ height: "calc(var(--vh) * 100)" }}>
 
         {bgImages.map((bg, i) => (
           <section
@@ -200,40 +193,60 @@ function App() {
         ))}
       </div>
 
+      <div className=' w-full h-screen absolute top-0 left-0 z-10 select-none pointer-events-none '>
+        <ParticlesComponent id="particles" />
+      </div>
+
+      <div className="fixed -bottom-[350px] left-1/2 -translate-x-1/2 pointer-events-none -translate-y-1/2 z-10 scale-50 md:scale-100">
+        <div
+          className="rounded-full animate-float"
+          style={{
+            width: "350px",
+            height: "350px",
+            backgroundColor: "#4080f5",
+            opacity: 1,
+            filter: "blur(200px)",
+            animation: "float 20s ease-in-out infinite",
+          }}
+        ></div>
+      </div>
+
       <div
-        className=" overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden vh-screen"
+        className=" overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden "
+        style={{ height: "calc(var(--vh) * 100)" }}
       >
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <SecoundSection />
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Orb />
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
-          <Section image='.\src\assets\futuristic-ai-dashboard-display.jpg' point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+          <Section image={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
             gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Section image='.\src\assets\face-recognition-ar-hologram-screen-smart-technology.jpg' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
             gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
-          <Section image='.\src\assets\robot-handshake-human-background-futuristic-digital-age.jpg' point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+          <Section image={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
             gradientText1={' AI across your entire organization.'} />,
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Result />
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <CTA onContactClick={() => setShowContact(true)} />
         </section>
-        <section className="vh-screen snap-start flex items-center justify-center">
+        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Footer onContactClick={() => setShowContact(true)} onNewsletterClick={() => setShowNewsletter(true)} />
         </section>
       </div>
+
 
       {showNewsletter && (
         <Newsletter onClose={() => setShowNewsletter(false)} />

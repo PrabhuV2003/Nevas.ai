@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 const Orb = () => {
   return (
     <motion.div
-      className='w-full vh-screen relative bg-black flex flex-col justify-center items-center '
+    style={{ height: "calc(var(--vh) * 100)" }}
+      className='w-full relative bg-black flex flex-col justify-center items-center '
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.5 }}

@@ -28,7 +28,7 @@ const Result = () => {
   ]
 
   return (
-    <div className="vh-screen w-full flex items-center justify-center relative bg-black">
+    <div className=" w-full flex items-center justify-center relative bg-black" style={{ height: "calc(var(--vh) * 100)" }}>
       {/* <TextHoverEffect text="nevas.ai" /> */}
       <div className='absolute w-full h-full top-0 left-0 flex flex-col justify-center px-10'>
         
