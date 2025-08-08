@@ -13,8 +13,8 @@ const ContactForm = ({ onClose }) => {
     message: ''
   });
 
-  const [errors, setErrors] = useState({}); 
-  
+  const [errors, setErrors] = useState({});
+
 
   const handleChange = (e) => {
     setFormData({
@@ -49,33 +49,45 @@ const ContactForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-    } else {
-      setErrors({});
-      try {
-        const response = await axios.post(`https://nevas.ai/api/contact`, formData);
+      return;
+    }
 
-        if (response.status === 200) {
-          toast.success("Form submitted successfully!", {position: "top-left",});
-          // Optionally reset
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            company: '',
-            message: ''
-          });
-          onClose();
-        } else {
-          toast.error("Something went wrong. Please try again later.", {position: "top-left"});
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to submit form. Please try again later.", {position: "top-left",});
+    setErrors({});
+
+    // Create the API call as a promise
+    const submitPromise = axios.post(`https://nevas.ai/api/contact`, formData);
+
+    toast.promise(
+      submitPromise,
+      {
+        pending: "Submitting your form...",
+        success: "Form submitted successfully!",
+        error: "Failed to submit form. Please try again later."
+      },
+      { position: "top-left" }
+    );
+
+    try {
+      const response = await submitPromise;
+      if (response.status === 200) {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: ''
+        });
+        onClose();
       }
+    } catch (error) {
+      console.error(error);
+      // toast.promise already handled the error toast
     }
   };
+
 
 
   return (
@@ -117,7 +129,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Email'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
-                required 
+                required
               />
               {errors.email && <p className='text-red-600 text-sm'>{errors.email}</p>}
             </div>
@@ -131,7 +143,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Phone Number'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
-                required 
+                required
               />
               {errors.phone && <p className='text-red-600 text-sm'>{errors.phone}</p>}
             </div>
@@ -143,7 +155,7 @@ const ContactForm = ({ onClose }) => {
                 onChange={handleChange}
                 placeholder='Enter Your Company'
                 className='w-full border-b border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans'
-                required 
+                required
               />
             </div>
           </div>
@@ -154,7 +166,7 @@ const ContactForm = ({ onClose }) => {
               onChange={handleChange}
               placeholder='Message'
               className='w-full border h-[150px] border-black outline-none p-2 placeholder:text-black text-black font-DM-Sans rounded-xl'
-              required 
+              required
             ></textarea>
           </div>
           {errors.message && <p className='text-red-600 text-sm mb-4'>{errors.message}</p>}

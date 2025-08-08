@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { adminNewsletterNotificationTemplate, newsletterSubscriptionTemplate } from '../emailTemplates.js';
 
 export const submitNewsletterFrom = async (req, res) => {
     const { email } = req.body;
@@ -21,7 +22,7 @@ export const submitNewsletterFrom = async (req, res) => {
             from: process.env.OUTLOOK_USER,
             to: email,
             subject: 'Thanks for subscribing!',
-            text: `You have successfully subscribed to our newsletter.`
+            html: newsletterSubscriptionTemplate()
         }
 
         // Mail To Admin
@@ -29,7 +30,7 @@ export const submitNewsletterFrom = async (req, res) => {
             from: process.env.OUTLOOK_USER,
             to: process.env.OUTLOOK_USER,
             subject: 'New Newsletter Subscription',
-            text: `New user subscribed: ${email}`
+            html: adminNewsletterNotificationTemplate({email})
         }
 
         await Promise.all([
@@ -37,7 +38,7 @@ export const submitNewsletterFrom = async (req, res) => {
             transporter.sendMail(clientMail),
         ])
 
-        res.status(200).json({ message: `Newsletter sent to both client and admin.` })
+        res.status(200).json({ message: `Welcome To Nevas.ai Newsletter Family` })
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: `Failed to send email.` })

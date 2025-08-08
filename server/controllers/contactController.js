@@ -38,7 +38,7 @@ export const submitContactForm = async (req, res) => {
             transporter.sendMail(clientMail),
         ]);
 
-        res.status(200).json({ message: 'Emails sent successfully.' });
+        res.status(200).json({ message: 'We Received Your Hello!' });
 
     } catch (error) {
         console.error(error);

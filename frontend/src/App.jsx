@@ -16,6 +16,8 @@ import Section from "./Components/Section";
 import development from './assets/videos/development.mp4'
 import consulting from './assets/videos/consulting.mp4'
 import training from './assets/videos/training.mp4'
+import secoundComponent from './assets/videos/secoundComponent.mp4'
+import OrbV from './assets/videos/Orb.mp4'
 
 gsap.registerPlugin(Observer);
 
@@ -141,8 +143,8 @@ function App() {
 
   const headings = [
     <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />,
-    <SecoundSection />,
-    <Orb />,
+    <SecoundSection videoSrc={secoundComponent} />,
+    <Orb videoSrc={OrbV} />,
     <Section videoSrc={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
       gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
 
@@ -214,10 +216,10 @@ function App() {
           <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <SecoundSection />
+          <SecoundSection videoSrc={secoundComponent} />
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Orb />
+          <Orb videoSrc={OrbV} />
         </section>
         <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Section videoSrc={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}

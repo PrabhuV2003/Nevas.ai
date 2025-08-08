@@ -1,7 +1,32 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const Orb = () => {
+const Orb = ({videoSrc}) => {
+
+      const videoRef = useRef(null);
+    
+      useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+    
+        const observer = new IntersectionObserver(
+          ([entry]) => { 
+            if (entry.isIntersecting) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          },
+          { threshold: 0.25 } // play/pause when 25% visible, adjust as needed
+        );
+    
+        observer.observe(video);
+    
+        return () => {
+          observer.disconnect();
+        };
+      }, []);
+
   return (
     <motion.div
     style={{ height: "calc(var(--vh) * 100)" }}
@@ -14,8 +39,18 @@ const Orb = () => {
         visible: {}
       }}
     >
+            <video
+        ref={videoRef}
+        src={videoSrc}
+        className="object-cover w-full h-full bg-cover absolute top-0 left-0"
+        muted
+        playsInline
+        preload="auto"
+        // autoplay attribute is unnecessary because we'll control play via IntersectionObserver
+      />
+      <div className="w-full h-full absolute top-0 left-0 bg-black opacity-70"></div>
       <motion.p
-        className=' font-DM-Sans text-2xl md:text-5xl w-full text-center leading-tight whitespace-pre-wrap'
+        className=' relative z-10 font-DM-Sans text-2xl md:text-5xl w-full text-center leading-tight whitespace-pre-wrap'
         variants={{
           hidden: { opacity: 0, y: 50 },
           visible: { opacity: 1, y: 0 }

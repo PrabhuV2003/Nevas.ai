@@ -8,7 +8,7 @@ const Section = ({ videoSrc, point, name, normalText1, normalText2, normalText3,
     if (!video) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      ([entry]) => { 
         if (entry.isIntersecting) {
           video.play();
         } else {
