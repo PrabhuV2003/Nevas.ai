@@ -48,7 +48,7 @@ const Footer = ({ onContactClick, onNewsletterClick }) => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: false, amount: 0.3 }}
-          className=' flex justify-center items-end h-full mt-7 md:mt-0 '
+          className=' flex justify-center items-end h-full mt-4 md:mt-0 '
         >
           <button onClick={onNewsletterClick} className=' px-5 py-2 border border-primay rounded-full text-white bg-transparent hover:bg-gradient-to-r hover:from-primay hover:to-secoundary transition-all duration-500 cursor-pointer text-sm md:text-[16px]'>
             News Letter
