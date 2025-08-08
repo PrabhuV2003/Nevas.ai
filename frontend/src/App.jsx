@@ -8,13 +8,13 @@ import Result from './Components/Result';
 import CTA from './Components/CTA';
 import Footer from './Components/Footer';
 import ParticlesComponent from "./Components/ui/particles";
-import Section1 from "./Components/Section1";
 import Section2 from "./Components/Section2";
 import Section3 from "./Components/Section3";
 import Preloader from './Components/Preloader';
 import { ToastContainer, toast } from 'react-toastify';
 import ContactFrom from './Components/ContactFrom';
 import Newsletter from "./Components/Newsletter";
+import Section from "./Components/Section";
 // SplitText must be imported manually or from CDN
 // import { SplitText } from "gsap/SplitText";
 
@@ -137,9 +137,15 @@ function App() {
     <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />,
     <SecoundSection />,
     <Orb />,
-    <Section1 />,
-    <Section2 />,
-    <Section3 />,
+    <Section image='.\src\assets\futuristic-ai-dashboard-display.jpg' point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
+      gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
+
+    <Section image='.\src\assets\face-recognition-ar-hologram-screen-smart-technology.jpg' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+      gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
+
+    <Section image='.\src\assets\robot-handshake-human-background-futuristic-digital-age.jpg' point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
+      gradientText1={' AI across your entire organization.'} />,
+
     <Result />,
     <CTA onContactClick={() => setShowContact(true)} />,
     <Footer onContactClick={() => setShowContact(true)} onNewsletterClick={() => setShowNewsletter(true)} />,
@@ -207,13 +213,16 @@ function App() {
           <Orb />
         </section>
         <section className="vh-screen snap-start flex items-center justify-center">
-          <Section1 />
+          <Section image='.\src\assets\futuristic-ai-dashboard-display.jpg' point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
+            gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
         </section>
         <section className="vh-screen snap-start flex items-center justify-center">
-          <Section2 />
+          <Section image='.\src\assets\face-recognition-ar-hologram-screen-smart-technology.jpg' point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
+            gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
         </section>
         <section className="vh-screen snap-start flex items-center justify-center">
-          <Section3 />
+          <Section image='.\src\assets\robot-handshake-human-background-futuristic-digital-age.jpg' point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
+            gradientText1={' AI across your entire organization.'} />,
         </section>
         <section className="vh-screen snap-start flex items-center justify-center">
           <Result />
