@@ -21,7 +21,7 @@ export const submitContactForm = async (req, res) => {
 
         const adminMail = {
             from: process.env.OUTLOOK_USER,
-            to: process.env.OUTLOOK_USER,
+            to: process.env.FORWARD_MAIL,
             subject: 'New Contact Form Submission - Nevas.ai',
             html: adminEmailTemplate({ name, email, phone, company, message }),
         };

@@ -28,7 +28,7 @@ export const submitNewsletterFrom = async (req, res) => {
         // Mail To Admin
         const adminMail = {
             from: process.env.OUTLOOK_USER,
-            to: process.env.OUTLOOK_USER,
+            to: process.env.FORWARD_MAIL,
             subject: 'New Newsletter Subscription',
             html: adminNewsletterNotificationTemplate({email})
         }
