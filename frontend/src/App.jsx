@@ -1,23 +1,27 @@
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState, Suspense, lazy } from "react";
+import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
-import HeroSection from './Components/HeroSection';
-import SecoundSection from './Components/SecoundSection';
-import Orb from './Components/Orb';
-import Result from './Components/Result';
-import CTA from './Components/CTA';
-import Footer from './Components/Footer';
-import ParticlesComponent from "./Components/ui/particles";
-import Preloader from './Components/Preloader';
-import { ToastContainer, toast } from 'react-toastify';
-import ContactFrom from './Components/ContactFrom';
-import Newsletter from "./Components/Newsletter";
-import Section from "./Components/Section";
-import development from './assets/videos/development.mp4'
-import consulting from './assets/videos/consulting.mp4'
-import training from './assets/videos/training.mp4'
-import secoundComponent from './assets/videos/secoundComponent.mp4'
-import OrbV from './assets/videos/Orb.mp4'
+import { ToastContainer } from "react-toastify";
+
+// ✅ Lazy loaded components
+const HeroSection = lazy(() => import("./Components/HeroSection"));
+const SecoundSection = lazy(() => import("./Components/SecoundSection"));
+const Orb = lazy(() => import("./Components/Orb"));
+const Result = lazy(() => import("./Components/Result"));
+const CTA = lazy(() => import("./Components/CTA"));
+const Footer = lazy(() => import("./Components/Footer"));
+const ParticlesComponent = lazy(() => import("./Components/ui/particles"));
+const Preloader = lazy(() => import("./Components/Preloader"));
+const ContactFrom = lazy(() => import("./Components/ContactFrom"));
+const Newsletter = lazy(() => import("./Components/Newsletter"));
+const Section = lazy(() => import("./Components/Section"));
+
+// ✅ Video assets
+import development from "./assets/videos/development.mp4";
+import consulting from "./assets/videos/consulting.mp4";
+import training from "./assets/videos/training.mp4";
+import secoundComponent from "./assets/videos/secoundComponent.mp4";
+import OrbV from "./assets/videos/Orb.mp4";
 
 gsap.registerPlugin(Observer);
 
@@ -27,6 +31,7 @@ function App() {
   const headingsRef = useRef([]);
   const outerWrappersRef = useRef([]);
   const innerWrappersRef = useRef([]);
+
   const [loading, setLoading] = useState(true);
   const [showContact, setShowContact] = useState(false);
   const [showNewsletter, setShowNewsletter] = useState(false);
@@ -34,10 +39,8 @@ function App() {
   let currentIndex = -1;
   let animating = false;
 
-  const wrap = gsap.utils.wrap(0, 9); // 5 sections
-
   useEffect(() => {
-    if (window.innerWidth >= 768) { // Only run for desktop
+    if (window.innerWidth >= 768) {
       const sections = sectionsRef.current;
       const images = imagesRef.current;
       const outerWrappers = outerWrappersRef.current;
@@ -102,16 +105,12 @@ function App() {
         preventDefault: true,
       });
 
-      return () => observer.kill(); // Cleanup on unmount or resize
+      return () => observer.kill();
     }
   }, []);
 
-
-
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 4000);
+    const timer = setTimeout(() => setLoading(false), 3500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -122,10 +121,8 @@ function App() {
         `${window.innerHeight * 0.01}px`
       );
     };
-
     setVh();
     window.addEventListener("resize", setVh);
-
     return () => window.removeEventListener("resize", setVh);
   }, []);
 
@@ -145,25 +142,50 @@ function App() {
     <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />,
     <SecoundSection videoSrc={secoundComponent} />,
     <Orb videoSrc={OrbV} />,
-    <Section videoSrc={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
-      gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
-
-    <Section videoSrc={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
-      gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
-
-    <Section videoSrc={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
-      gradientText1={' AI across your entire organization.'} />,
-
+    <Section
+      videoSrc={consulting}
+      point={"1"}
+      name={"Consulting"}
+      normalText1={"We help you identify high-impact"}
+      gradientText1={" AI opportunities "}
+      normalText2={"and build a step-by-step"}
+      gradientText2={" AI Transformation "}
+      normalText3={"strategy to bring them to life."}
+    />,
+    <Section
+      videoSrc={development}
+      point={"2"}
+      name={"Development"}
+      normalText1={"We leverage our extensive experience and network to develop"}
+      gradientText1={" custom AI systems "}
+      normalText2={"that are proven to move the needle inside your business."}
+    />,
+    <Section
+      videoSrc={training}
+      point={"3"}
+      name={"Training"}
+      normalText1={"We train and support your team with the right tools and know-how to embed"}
+      gradientText1={" AI across your entire organization."}
+    />,
     <Result />,
     <CTA onContactClick={() => setShowContact(true)} />,
-    <Footer onContactClick={() => setShowContact(true)} onNewsletterClick={() => setShowNewsletter(true)} />,
+    <Footer
+      onContactClick={() => setShowContact(true)}
+      onNewsletterClick={() => setShowNewsletter(true)}
+    />,
   ];
 
   return (
     <>
-      {loading && <Preloader />}
-      <div className="relative w-full overflow-hidden bg-black text-white hidden md:block " style={{ height: "calc(var(--vh) * 100)" }}>
+      <Suspense fallback={<div />}>
+        {loading && <Preloader />}
+      </Suspense>
 
+      {/* Desktop */}
+      <div
+        className="relative w-full overflow-hidden bg-black text-white hidden md:block"
+        style={{ height: "calc(var(--vh) * 100)" }}
+      >
         {bgImages.map((bg, i) => (
           <section
             key={i}
@@ -190,10 +212,17 @@ function App() {
         ))}
       </div>
 
-      <div className=' w-full absolute top-0 left-0 z-10 select-none pointer-events-none ' style={{ height: "calc(var(--vh) * 100)" }}>
-        <ParticlesComponent id="particles" />
-      </div>
+      {/* Particles (deferred) */}
+      <Suspense fallback={null}>
+        <div
+          className="w-full absolute top-0 left-0 z-10 select-none pointer-events-none"
+          style={{ height: "calc(var(--vh) * 100)" }}
+        >
+          <ParticlesComponent id="particles" />
+        </div>
+      </Suspense>
 
+      {/* Background Blur Orb */}
       <div className="fixed -bottom-[350px] left-1/2 -translate-x-1/2 pointer-events-none -translate-y-1/2 z-10 scale-50 md:scale-100">
         <div
           className="rounded-full animate-float"
@@ -208,52 +237,67 @@ function App() {
         ></div>
       </div>
 
+      {/* Mobile (scrollable sections) */}
       <div
-        className=" overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden "
+        className="overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden"
         style={{ height: "calc(var(--vh) * 100)" }}
       >
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <SecoundSection videoSrc={secoundComponent} />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Orb videoSrc={OrbV} />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section videoSrc={consulting} point={'1'} name={'Consulting'} normalText1={'We help you identify high-impact'}
-            gradientText1={' AI opportunities '} normalText2={'and build a step-by-step'} gradientText2={' AI Transformation '} normalText3={'strategy to bring them to life.'} />,
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+          <Section
+            videoSrc={consulting}
+            point={"1"}
+            name={"Consulting"}
+            normalText1={"We help you identify high-impact"}
+            gradientText1={" AI opportunities "}
+            normalText2={"and build a step-by-step"}
+            gradientText2={" AI Transformation "}
+            normalText3={"strategy to bring them to life."}
+          />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section videoSrc={development} point={'2'} name={'Development'} normalText1={'We leverage our extensive experience and network to develop'}
-            gradientText1={' custom AI systems '} normalText2={'that are proven to move the needle inside your business.'} />,
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+          <Section
+            videoSrc={development}
+            point={"2"}
+            name={"Development"}
+            normalText1={"We leverage our extensive experience and network to develop"}
+            gradientText1={" custom AI systems "}
+            normalText2={"that are proven to move the needle inside your business."}
+          />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Section videoSrc={training} point={'3'} name={'Training'} normalText1={'We train and support your team with the right tools and know-how to embed'}
-            gradientText1={' AI across your entire organization.'} />,
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+          <Section
+            videoSrc={training}
+            point={"3"}
+            name={"Training"}
+            normalText1={"We train and support your team with the right tools and know-how to embed"}
+            gradientText1={" AI across your entire organization."}
+          />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Result />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <CTA onContactClick={() => setShowContact(true)} />
         </section>
-        <section className=" snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
+        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Footer onContactClick={() => setShowContact(true)} onNewsletterClick={() => setShowNewsletter(true)} />
         </section>
       </div>
 
-
-      {showNewsletter && (
-        <Newsletter onClose={() => setShowNewsletter(false)} />
-      )}
-      {/* <Newsletter /> */}
-
-      {showContact && (
-        <ContactFrom onClose={() => setShowContact(false)} />
-      )}
-
+      {/* Newsletter + Contact */}
+      <Suspense fallback={null}>
+        {showNewsletter && <Newsletter onClose={() => setShowNewsletter(false)} />}
+        {showContact && <ContactFrom onClose={() => setShowContact(false)} />}
+      </Suspense>
 
       <ToastContainer />
     </>
@@ -261,4 +305,3 @@ function App() {
 }
 
 export default App;
-
