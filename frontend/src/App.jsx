@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
 import { ToastContainer } from "react-toastify";
+import { IoSparklesSharp } from "react-icons/io5";
 
 // ✅ Lazy loaded components
 const HeroSection = lazy(() => import("./Components/HeroSection"));
@@ -31,89 +32,122 @@ function App() {
   const headingsRef = useRef([]);
   const outerWrappersRef = useRef([]);
   const innerWrappersRef = useRef([]);
+  const heroRef = useRef(null);
+
+  // 🔧 GSAP control refs (so Back-to-Top can control desktop)
+  const currentIndexRef = useRef(0);
+  const animatingRef = useRef(false);
+  const gotoSectionRef = useRef(null);
+  const observerRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
   const [showContact, setShowContact] = useState(false);
   const [showNewsletter, setShowNewsletter] = useState(false);
 
-  let currentIndex = -1;
-  let animating = false;
-
+  // ---------- Desktop GSAP setup ----------
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      const sections = sectionsRef.current;
-      const images = imagesRef.current;
-      const outerWrappers = outerWrappersRef.current;
-      const innerWrappers = innerWrappersRef.current;
-      const headings = headingsRef.current;
+    if (window.innerWidth < 768) return;
 
-      gsap.set(outerWrappers, { yPercent: 100 });
-      gsap.set(innerWrappers, { yPercent: -100 });
+    const sections = sectionsRef.current;
+    const images = imagesRef.current;
+    const outerWrappers = outerWrappersRef.current;
+    const innerWrappers = innerWrappersRef.current;
+    const headings = headingsRef.current;
 
-      gsap.set(sections[0], { autoAlpha: 1, zIndex: 1 });
-      gsap.set([outerWrappers[0], innerWrappers[0]], { yPercent: 0 });
-      gsap.set(images[0], { yPercent: 0 });
-      gsap.set(headings[0], { autoAlpha: 1, yPercent: 0 });
+    // Initial positions (start state)
+    gsap.set(sections, { autoAlpha: 0, zIndex: 0 });
+    gsap.set(outerWrappers, { yPercent: 100 });
+    gsap.set(innerWrappers, { yPercent: -100 });
+    // Some components may not populate headings[i]; GSAP ignores null safely
+    gsap.set(headings, { autoAlpha: 0, yPercent: 150 });
 
-      let currentIndex = 0;
-      let animating = false;
+    // Reveal first section (index 0)
+    gsap.set(sections[0], { autoAlpha: 1, zIndex: 1 });
+    gsap.set([outerWrappers[0], innerWrappers[0]], { yPercent: 0 });
+    gsap.set(images[0], { yPercent: 0 });
+    gsap.set(headings[0], { autoAlpha: 1, yPercent: 0 });
 
-      const gotoSection = (index, direction) => {
-        if (index < 0 || index >= sections.length || index === currentIndex) return;
+    currentIndexRef.current = 0;
+    animatingRef.current = false;
 
-        animating = true;
-        let fromTop = direction === -1;
-        let dFactor = fromTop ? -1 : 1;
+    // Transition helper accessible from outside (button)
+    const gotoSection = (index, direction) => {
+      const currentIndex = currentIndexRef.current;
+      if (
+        index < 0 ||
+        index >= sections.length ||
+        index === currentIndex ||
+        animatingRef.current
+      ) {
+        return;
+      }
 
-        let tl = gsap.timeline({
-          defaults: { duration: 1, ease: "power1.inOut" },
-          onComplete: () => (animating = false),
-        });
+      animatingRef.current = true;
+      const fromTop = direction === -1;
+      const dFactor = fromTop ? -1 : 1;
 
-        if (currentIndex >= 0) {
-          gsap.set(sections[currentIndex], { zIndex: 0 });
-          tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
-            sections[currentIndex],
-            { autoAlpha: 0 }
-          );
-        }
-
-        gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-        tl.fromTo(
-          [outerWrappers[index], innerWrappers[index]],
-          { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) },
-          { yPercent: 0 },
-          0
-        )
-          .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-          .fromTo(
-            headings[index],
-            { autoAlpha: 0, yPercent: 150 * dFactor },
-            { autoAlpha: 1, yPercent: 0, ease: "power2" },
-            0.2
-          );
-
-        currentIndex = index;
-      };
-
-      const observer = Observer.create({
-        type: "wheel,touch",
-        wheelSpeed: -1,
-        onDown: () => !animating && gotoSection(currentIndex - 1, -1),
-        onUp: () => !animating && gotoSection(currentIndex + 1, 1),
-        tolerance: 10,
-        preventDefault: true,
+      const tl = gsap.timeline({
+        defaults: { duration: 1, ease: "power1.inOut" },
+        onComplete: () => (animatingRef.current = false),
       });
 
-      return () => observer.kill();
-    }
+      if (currentIndex >= 0) {
+        gsap.set(sections[currentIndex], { zIndex: 0 });
+        tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
+          sections[currentIndex],
+          { autoAlpha: 0 }
+        );
+      }
+
+      gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
+
+      tl.fromTo(
+        [outerWrappers[index], innerWrappers[index]],
+        { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) },
+        { yPercent: 0 },
+        0
+      )
+        .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
+        .fromTo(
+          headings[index],
+          { autoAlpha: 0, yPercent: 150 * dFactor },
+          { autoAlpha: 1, yPercent: 0, ease: "power2" },
+          0.2
+        );
+
+      currentIndexRef.current = index;
+    };
+
+    gotoSectionRef.current = gotoSection;
+
+    // GSAP Observer
+    observerRef.current = Observer.create({
+      type: "wheel,touch",
+      wheelSpeed: -1,
+      onDown: () =>
+        !animatingRef.current &&
+        gotoSectionRef.current(currentIndexRef.current - 1, -1),
+      onUp: () =>
+        !animatingRef.current &&
+        gotoSectionRef.current(currentIndexRef.current + 1, 1),
+      tolerance: 10,
+      preventDefault: true,
+    });
+
+    return () => {
+      observerRef.current && observerRef.current.kill();
+      observerRef.current = null;
+      gotoSectionRef.current = null;
+    };
   }, []);
 
+  // ---------- Preloader ----------
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3500);
+    const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
+  // ---------- Fix vh unit on mobile ----------
   useEffect(() => {
     const setVh = () => {
       document.documentElement.style.setProperty(
@@ -125,6 +159,49 @@ function App() {
     window.addEventListener("resize", setVh);
     return () => window.removeEventListener("resize", setVh);
   }, []);
+
+  // ---------- Desktop "Back to Top" behavior ----------
+  const resetDesktopToStart = () => {
+    const sections = sectionsRef.current;
+    const images = imagesRef.current;
+    const outerWrappers = outerWrappersRef.current;
+    const innerWrappers = innerWrappersRef.current;
+    const headings = headingsRef.current;
+
+    // Kill any running tweens to avoid conflicts
+    gsap.killTweensOf([sections, images, outerWrappers, innerWrappers, headings]);
+
+    // 1) Go to exact start state (instant)
+    gsap.set(sections, { autoAlpha: 0, zIndex: 0 });
+    gsap.set(outerWrappers, { yPercent: 100 });
+    gsap.set(innerWrappers, { yPercent: -100 });
+    gsap.set(images, { yPercent: 0 });
+    gsap.set(headings, { autoAlpha: 0, yPercent: 150 });
+
+    // 2) Reveal the first section as at initial load
+    gsap.set(sections[0], { autoAlpha: 1, zIndex: 1 });
+    gsap.set([outerWrappers[0], innerWrappers[0]], { yPercent: 0 });
+    gsap.set(images[0], { yPercent: 0 });
+
+    // 3) Replay the intro of the first heading for a nice "start from the start"
+    gsap.fromTo(
+      headings[0],
+      { autoAlpha: 0, yPercent: 150 },
+      { autoAlpha: 1, yPercent: 0, duration: 0.8, ease: "power2" }
+    );
+
+    currentIndexRef.current = 0;
+    animatingRef.current = false;
+  };
+
+  // ✅ Back to Top (mobile = native scroll, desktop = reset & replay)
+  const scrollToTop = () => {
+    if (window.innerWidth < 768) {
+      heroRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      resetDesktopToStart();
+    }
+  };
 
   const bgImages = [
     "url(https://assets.codepen.io/16327/site-landscape-1.jpg)",
@@ -139,7 +216,14 @@ function App() {
   ];
 
   const headings = [
-    <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />,
+    // Wrap hero so mobile scroll works
+    <section ref={heroRef} className="w-full h-full flex items-center justify-center">
+      <HeroSection
+        isLoaded={!loading}
+        videoSrc={secoundComponent}
+        onContactClick={() => setShowContact(true)}
+      />
+    </section>,
     <SecoundSection videoSrc={secoundComponent} />,
     <Orb videoSrc={OrbV} />,
     <Section
@@ -181,7 +265,7 @@ function App() {
         {loading && <Preloader />}
       </Suspense>
 
-      {/* Desktop */}
+      {/* Desktop (GSAP controlled) */}
       <div
         className="relative w-full overflow-hidden bg-black text-white hidden md:block"
         style={{ height: "calc(var(--vh) * 100)" }}
@@ -237,13 +321,20 @@ function App() {
         ></div>
       </div>
 
-      {/* Mobile (scrollable sections) */}
+      {/* Mobile (native scroll) */}
       <div
         className="overflow-y-scroll snap-y snap-mandatory scroll-smooth block md:hidden"
         style={{ height: "calc(var(--vh) * 100)" }}
       >
-        <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <HeroSection isLoaded={!loading} onContactClick={() => setShowContact(true)} />
+        <section
+          ref={heroRef}
+          className="snap-start flex items-center justify-center"
+          style={{ height: "calc(var(--vh) * 100)" }}
+        >
+          <HeroSection
+            isLoaded={!loading}
+            onContactClick={() => setShowContact(true)}
+          />
         </section>
         <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <SecoundSection videoSrc={secoundComponent} />
@@ -298,6 +389,14 @@ function App() {
         {showNewsletter && <Newsletter onClose={() => setShowNewsletter(false)} />}
         {showContact && <ContactFrom onClose={() => setShowContact(false)} />}
       </Suspense>
+
+      {/* ✅ Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-primay to-secoundary cursor-pointer text-white p-3 rounded-full shadow-lg transition-all duration-300"
+      >
+        <IoSparklesSharp className="w-5 h-5" />
+      </button>
 
       <ToastContainer />
     </>

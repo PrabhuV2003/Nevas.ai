@@ -32,9 +32,10 @@ const SecoundSection = ({ videoSrc }) => {
       <video
         ref={videoRef}
         src={videoSrc}
-        className="object-contain w-full h-full bg-cover absolute top-0 left-0"
+        className="object-cover w-full h-full absolute top-0 left-0"
         muted
         playsInline
+        loop
         preload="auto"
         // autoplay attribute is unnecessary because we'll control play via IntersectionObserver
       />

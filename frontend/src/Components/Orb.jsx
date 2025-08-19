@@ -45,6 +45,7 @@ const Orb = ({ videoSrc, posterSrc }) => {
         muted
         playsInline
         preload="metadata"
+        loop
       />
 
       {/* Overlay */}

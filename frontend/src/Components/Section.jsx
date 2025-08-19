@@ -34,6 +34,7 @@ const Section = ({ videoSrc, point, name, normalText1, normalText2, normalText3,
         muted
         playsInline
         preload="auto"
+        loop
         // autoplay attribute is unnecessary because we'll control play via IntersectionObserver
       />
       <div className="w-full h-full absolute top-0 left-0 bg-black opacity-70"></div>
