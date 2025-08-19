@@ -394,7 +394,8 @@ function App() {
 
       {/* ✅ Back to Top Button */}
       <button
-        onClick={scrollToTop}
+        // onClick={scrollToTop}
+        onClick={() => setShowContact(true)}
         className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-primay to-secoundary cursor-pointer text-white p-3 rounded-full shadow-lg transition-all duration-300"
       >
         <IoSparklesSharp className="w-5 h-5" />
