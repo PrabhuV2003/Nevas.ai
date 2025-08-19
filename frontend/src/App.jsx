@@ -18,6 +18,7 @@ const Newsletter = lazy(() => import("./Components/Newsletter"));
 const Section = lazy(() => import("./Components/Section"));
 
 // ✅ Video assets
+import hero from './assets/videos/heroSection.mp4'
 import development from "./assets/videos/development.mp4";
 import consulting from "./assets/videos/consulting.mp4";
 import training from "./assets/videos/training.mp4";
@@ -220,7 +221,7 @@ function App() {
     <section ref={heroRef} className="w-full h-full flex items-center justify-center">
       <HeroSection
         isLoaded={!loading}
-        videoSrc={secoundComponent}
+        videoSrc={hero}
         onContactClick={() => setShowContact(true)}
       />
     </section>,
@@ -333,6 +334,7 @@ function App() {
         >
           <HeroSection
             isLoaded={!loading}
+            videoSrc={hero}
             onContactClick={() => setShowContact(true)}
           />
         </section>
