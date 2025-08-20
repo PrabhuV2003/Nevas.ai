@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import { motion } from 'framer-motion';
 import DecryptedText from './ui/DecryptedText';
 
-const HeroSection = ({ isLoaded, onContactClick,videoSrc  }) => {
+const HeroSection = ({ isLoaded, onContactClick }) => {
 
       const videoRef = useRef(null);
     
@@ -35,11 +35,11 @@ const HeroSection = ({ isLoaded, onContactClick,videoSrc  }) => {
 
         <video
         ref={videoRef}
-        src={videoSrc}
+        src='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666885/heroSection_xiis5x.mp4'
         className="object-cover w-full h-full absolute top-0 left-0"
         muted
         playsInline
-        preload="auto"
+        preload="aut"
         loop
         // autoplay attribute is unnecessary because we'll control play via IntersectionObserver
       />

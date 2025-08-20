@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-const Orb = ({ videoSrc, posterSrc }) => {
+const Orb = () => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -39,8 +39,7 @@ const Orb = ({ videoSrc, posterSrc }) => {
       {/* Poster image ensures fast LCP */}
       <video
         ref={videoRef}
-        src={videoSrc}
-        poster={posterSrc}
+        src='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666868/Orb_xawk5e.mp4'
         className="object-cover w-full h-full absolute top-0 left-0"
         muted
         playsInline

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const SecoundSection = ({ videoSrc }) => {
+const SecoundSection = () => {
 
     const videoRef = useRef(null);
   
@@ -31,7 +31,7 @@ const SecoundSection = ({ videoSrc }) => {
     <div className=' w-full flex flex-col relative justify-center items-center bg-black ' style={{ height: "calc(var(--vh) * 100)" }}>
       <video
         ref={videoRef}
-        src={videoSrc}
+        src='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666862/secoundComponent_ymikng.mp4'
         className="object-cover w-full h-full absolute top-0 left-0"
         muted
         playsInline

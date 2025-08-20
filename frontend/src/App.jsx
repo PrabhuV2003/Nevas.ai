@@ -17,14 +17,6 @@ const ContactFrom = lazy(() => import("./Components/ContactFrom"));
 const Newsletter = lazy(() => import("./Components/Newsletter"));
 const Section = lazy(() => import("./Components/Section"));
 
-// ✅ Video assets
-import hero from './assets/videos/heroSection.mp4'
-import development from "./assets/videos/development.mp4";
-import consulting from "./assets/videos/consulting.mp4";
-import training from "./assets/videos/training.mp4";
-import secoundComponent from "./assets/videos/secoundComponent.mp4";
-import OrbV from "./assets/videos/Orb.mp4";
-
 gsap.registerPlugin(Observer);
 
 function App() {
@@ -144,7 +136,7 @@ function App() {
 
   // ---------- Preloader ----------
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
+    const timer = setTimeout(() => setLoading(false), 2900);
     return () => clearTimeout(timer);
   }, []);
 
@@ -221,14 +213,13 @@ function App() {
     <section ref={heroRef} className="w-full h-full flex items-center justify-center">
       <HeroSection
         isLoaded={!loading}
-        videoSrc={hero}
         onContactClick={() => setShowContact(true)}
       />
     </section>,
-    <SecoundSection videoSrc={secoundComponent} />,
-    <Orb videoSrc={OrbV} />,
+    <SecoundSection />,
+    <Orb />,
     <Section
-      videoSrc={consulting}
+      videoSrc='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666832/consulting_kbiemk.mp4'
       point={"1"}
       name={"Consulting"}
       normalText1={"We help you identify high-impact"}
@@ -238,7 +229,7 @@ function App() {
       normalText3={"strategy to bring them to life."}
     />,
     <Section
-      videoSrc={development}
+      videoSrc='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666882/development_xkt0wx.mp4'
       point={"2"}
       name={"Development"}
       normalText1={"We leverage our extensive experience and network to develop"}
@@ -246,7 +237,7 @@ function App() {
       normalText2={"that are proven to move the needle inside your business."}
     />,
     <Section
-      videoSrc={training}
+      videoSrc='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666901/training_b9rjy9.mp4'
       point={"3"}
       name={"Training"}
       normalText1={"We train and support your team with the right tools and know-how to embed"}
@@ -334,19 +325,18 @@ function App() {
         >
           <HeroSection
             isLoaded={!loading}
-            videoSrc={hero}
             onContactClick={() => setShowContact(true)}
           />
         </section>
         <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <SecoundSection videoSrc={secoundComponent} />
+          <SecoundSection />
         </section>
         <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
-          <Orb videoSrc={OrbV} />
+          <Orb />
         </section>
         <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Section
-            videoSrc={consulting}
+            videoSrc='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666832/consulting_kbiemk.mp4'
             point={"1"}
             name={"Consulting"}
             normalText1={"We help you identify high-impact"}
@@ -358,7 +348,7 @@ function App() {
         </section>
         <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Section
-            videoSrc={development}
+            videoSrc='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666882/development_xkt0wx.mp4'
             point={"2"}
             name={"Development"}
             normalText1={"We leverage our extensive experience and network to develop"}
@@ -368,7 +358,7 @@ function App() {
         </section>
         <section className="snap-start flex items-center justify-center" style={{ height: "calc(var(--vh) * 100)" }}>
           <Section
-            videoSrc={training}
+            videoSrc='https://res.cloudinary.com/dwsfxpmuo/video/upload/f_auto,q_auto,vc_auto,w_1280,h_720,c_fill/v1755666901/training_b9rjy9.mp4'
             point={"3"}
             name={"Training"}
             normalText1={"We train and support your team with the right tools and know-how to embed"}
