@@ -1,74 +1,129 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { assets } from '../assets/assest'
 
 const TABS = [
   {
-    id: 'ml',
-    title: 'Advanced Machine Learning Algorithms',
-    img: 'https://cdn.pixabay.com/photo/2024/05/27/03/47/futuristic-8789975_1280.png',
+    id: 'retail',
+    title: 'Retail & E-Commerce',
+    img: assets.kf1,
     description:
-      'Experience the frontier of technological innovation with our suite of advanced machine learning algorithms. These powerful tools are at the heart of modern data analysis, enabling us to extract meaningful insights, enhance predictive accuracy, and drive automation.',
+      'Boost conversions and customer loyalty with AI that powers dynamic pricing, smart recommendations, automated customer support, and demand forecasting. From small online stores to enterprise marketplaces, we adapt our solutions to your retail and e-commerce stack.',
   },
   {
-    id: 'workflows',
-    title: 'Customizable Automation Workflows',
+    id: 'finance',
+    title: 'Banking & Financial Services',
     img: 'https://cdn.pixabay.com/photo/2023/04/11/09/43/technology-7917037_1280.jpg',
     description:
-      'Design automation workflows that fit your business like a glove. From lead routing to back-office operations, our AI agents can be configured step-by-step to match your exact rules, approvals, and edge cases without writing complex code.',
+      'Automate routine operations while keeping risk and compliance in focus. Our AI agents support fraud detection, KYC automation, loan processing, and personalized financial guidance—helping banks, NBFCs, and fintechs deliver faster, safer, and smarter services.',
   },
   {
-    id: 'analytics',
-    title: 'Real-time Data Analytics Dashboard',
+    id: 'healthcare',
+    title: 'Healthcare & Life Sciences',
     img: 'https://cdn.pixabay.com/photo/2015/01/09/11/11/office-594119_1280.jpg',
     description:
-      'Monitor performance in real-time with interactive dashboards. Track KPIs, spot bottlenecks, and visualize the impact of automation instantly so you can make faster, smarter decisions.',
+      'Streamline patient journeys and operational workflows with AI. From appointment scheduling and triage assistants to claims processing and data-driven insights, we help hospitals, clinics, and health-tech companies deliver better care with less manual effort.',
   },
   {
-    id: 'integration',
-    title: 'Seamless Integration with Existing Systems',
+    id: 'operations',
+    title: 'Manufacturing, Logistics & Operations',
     img: 'https://cdn.pixabay.com/photo/2019/06/29/10/45/network-4308820_1280.jpg',
     description:
-      'Plug AI into your existing tools with minimal disruption. We integrate with CRMs, ERPs, marketing tools, and internal databases so everything stays in sync while your workflows get smarter.',
+      'Optimize end-to-end operations with intelligent automation. Our AI agents assist in production planning, quality checks, inventory management, and logistics coordination—reducing downtime, cutting costs, and improving delivery performance across any supply chain.',
   },
 ]
 
-const KeyFeatures = () => {
-  const [activeTab, setActiveTab] = useState('ml')
+// Reusable hook for scroll-in-view
+const useInView = (threshold = 0.2) => {
+  const ref = useRef(null)
+  const [isInView, setIsInView] = useState(false)
 
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsInView(true)
+            observer.unobserve(entry.target) // animate once
+          }
+        })
+      },
+      { threshold }
+    )
+
+    observer.observe(element)
+
+    return () => {
+      if (element) observer.unobserve(element)
+    }
+  }, [threshold])
+
+  return { ref, isInView }
+}
+
+const KeyFeatures = () => {
+  // default to the first tab’s id so you can change TABS freely
+  const [activeTab, setActiveTab] = useState(TABS[0].id)
   const currentTab = TABS.find(tab => tab.id === activeTab) || TABS[0]
 
-  return (
-    <div className='w-full min-h-screen bg-[#F2F2F2] relative py-24 px-14'>
+  const { ref: headerRef, isInView: headerInView } = useInView()
+  const { ref: leftRef, isInView: leftInView } = useInView()
+  const { ref: rightRef, isInView: rightInView } = useInView()
 
+  return (
+    <div className='w-full min-h-screen relative py-24 px-14 '>
       {/* BG Multi Colors */}
-      <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-30'></div>
-      <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-30'></div>
-      <div className='absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-30'></div>
+      <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80'></div>
+      <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80'></div>
+      <div className='absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80'></div>
 
       <div className='w-full h-full relative z-50'>
-        <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
-          Discover the Key Features of Our AI
-          <br />
-          Automation Services
-        </h2>
+        {/* Heading + intro */}
+        <div
+          ref={headerRef}
+          className={`
+            max-w-5xl space-y-4
+            transform transition-all duration-700 ease-out
+            ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+          `}
+        >
+          <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
+            AI Automation Solutions
+            <br />
+            For Every Industry
+          </h2>
 
-        <p className='font-cervino text-base leading-7 text-[#666666] w-[70%]'>
-          Experience groundbreaking AI automation services that streamline tasks, provide actionable insights from data, and
-          deliver personalized customer experiences. Our technology offers predictive maintenance, NLP communication, workflow
-          optimization, and scalability, all while ensuring security and compliance.
-        </p>
+          <p className='font-cervino text-base leading-7 text-[#666666] w-[70%]'>
+            Whether you&apos;re in retail, finance, healthcare, manufacturing, or any other sector, our AI agents are
+            built to adapt to your industry&apos;s unique workflows, data, and regulations. Explore how we tailor our
+            automation solutions for different domains—while still offering one unified platform that can support
+            <span className='font-semibold'> any industry you operate in.</span>
+          </p>
+        </div>
 
         <div className='w-full h-[500px] gap-2.5 flex mt-7'>
-          {/* LEFT SIDE: IMAGE + DESCRIPTION (changes with tab) */}
-          <div className='w-[70%] h-full relative'>
+          {/* LEFT SIDE: IMAGE + DESCRIPTION */}
+          <div
+            ref={leftRef}
+            className={`
+              w-[70%] h-full relative
+              transform transition-all duration-700 ease-out
+              ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+            `}
+            style={{ transitionDelay: leftInView ? '150ms' : '0ms' }}
+          >
             <div className='w-full h-full inverted-radius overflow-hidden'>
               <img
+                key={currentTab.id} // small fade on tab change
                 src={currentTab.img}
                 alt={currentTab.title}
-                className='w-full h-full object-cover '
+                className='w-full h-full object-cover transition-opacity duration-500'
               />
             </div>
 
-            <div className='absolute right-0 bottom-0 w-[340px] h-[240px] bg-white shadow-2xs rounded-[20px] flex justify-center items-center p-5 '>
+            <div className='absolute right-0 bottom-0 w-[340px] h-[240px] bg-white shadow-2xs rounded-[20px] flex justify-center items-center p-5'>
               <p className='font-cervino text-base leading-9 text-[#222222] text-justify'>
                 {currentTab.description}
               </p>
@@ -76,8 +131,16 @@ const KeyFeatures = () => {
           </div>
 
           {/* RIGHT SIDE: TABS */}
-          <div className='w-[30%] h-full flex flex-col gap-2.5'>
-            {TABS.map(tab => {
+          <div
+            ref={rightRef}
+            className={`
+              w-[30%] h-full flex flex-col gap-2.5
+              transform transition-all duration-700 ease-out
+              ${rightInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+            `}
+            style={{ transitionDelay: rightInView ? '250ms' : '0ms' }}
+          >
+            {TABS.map((tab, index) => {
               const isActive = tab.id === activeTab
               return (
                 <button
@@ -85,11 +148,17 @@ const KeyFeatures = () => {
                   type='button'
                   onClick={() => setActiveTab(tab.id)}
                   className={`
-                    w-full h-full rounded-2xl flex justify-center items-center p-5 transition-all duration-700
-                    ${isActive
-                      ? 'bg-white shadow-2xs text-[#222222]'
-                      : 'border border-[#666666] text-[#666666] hover:border-[#222222] hover:text-[#222222]'}
+                    w-full h-full rounded-2xl flex justify-center items-center p-5
+                    transition-all duration-300
+                    ${
+                      isActive
+                        ? 'bg-white shadow-2xs text-[#222222]'
+                        : 'border border-[#666666] text-[#666666] hover:border-[#222222] hover:text-[#222222]'
+                    }
                   `}
+                  style={{
+                    transitionDelay: rightInView ? `${300 + index * 120}ms` : '0ms', // stagger on scroll
+                  }}
                 >
                   <p className='font-cervino text-2xl leading-9 text-center uppercase cursor-pointer'>
                     {tab.title}

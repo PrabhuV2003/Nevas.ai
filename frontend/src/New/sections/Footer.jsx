@@ -6,7 +6,13 @@ import { FaSquareInstagram } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className=' w-full min-h-[400px] bg-[#F2F2F2] pt-24 pb-5 px-14 relative '>
+        <div className=' w-full min-h-[400px] pt-24 pb-5 px-14 relative '>
+
+            {/* BG Multi Colors */}
+            <div className='absolute left-0 bottom-0 w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>
+            <div className='absolute left-1/2 -translate-x-1/2 top-0 w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80 pointer-events-none'></div>
+            <div className='absolute right-0 top-0 w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80 pointer-events-none'></div>
+
             <div className=' w-full h-full border-y border-[#B4B4B4] p-5 pb-1 '>
                 <div className=' w-full h-full flex justify-between gap-2.5 '>
                     <div className=' w-full h-full flex flex-col justify-between gap-10 '>
@@ -45,7 +51,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }

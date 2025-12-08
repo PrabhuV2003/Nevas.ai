@@ -1,51 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import { assets } from '../assets/assest'
-import { IoIosArrowForward } from "react-icons/io";
-import { RiMenu3Line } from "react-icons/ri";
+// src/components/Navbar.jsx
+import React from "react";
+import { BsGlobe2 } from "react-icons/bs";
+import { assets } from "../assets/assest";
 
 const Navbar = () => {
-
-  const [isScroll, setIsScroll] = useState(false)
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (scrollY > 50) {
-        setIsScroll(true)
-      } else {
-        setIsScroll(false)
-      }
-    })
-  }, [])
-
   return (
-    <>
+    <header className="w-full">
+      <div className="relative mx-auto flex max-w-6xl items-center justify-between py-4">
+        {/* LEFT: LOGO + MENU */}
+        <div className="flex gap-12">
+          {/* Logo */}
+          <div className="flex items-center gap-1">
+            <img src={assets.logo} alt="nevas.ai logo" className=" w-[160px] " />
+          </div>
 
-      <nav className={` font-cervino w-full fixed top-0 px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between  gap-20 z-[999] transition-all duration-500 ${isScroll ? ' bg-white/50 backdrop-blur-lg shadow-sm justify-between ' : ' justify-center '} `}>
-
-        <a href="#top" className=' flex justify-center items-center '>
-          <img src={assets.logo} className=' w-28 cursor-pointer ' />
-        </a>
-
-        <ul className={` hidden w-fit md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 transition-all duration-500 ${isScroll ? '' : ' bg-white/50 shadow-sm '} `}>
-          <li><a href="#top">Home</a></li>
-          <li><a href="#top">About Us</a></li>
-          <li><a href="#top">Services</a></li>
-          <li><a href="#top">Contact Us</a></li>
-        </ul>
-
-        <div className=' flex justify-center items-center gap-4 '>
-
-          <a href="#contact" className=' hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full '>Contact <IoIosArrowForward className=' w-3 ' /></a>
-
-          <button className=' block md:hidden ml-3 '>
-            <RiMenu3Line />
-          </button>
+          <div className=" mt-5 ">
+            <nav>
+              <ul className="flex gap-10 text-[14px] font-cervino font-semibold ">
+                <li className="cursor-pointer hover:opacity-70 uppercase">HOME</li>
+                <li className="cursor-pointer hover:opacity-70 uppercase">ABOUT US</li>
+                <li className="cursor-pointer hover:opacity-70 uppercase">Contact Us</li>
+              </ul>
+            </nav>
+            <div className="mt-3 h-px w-full bg-[#d2d2d2]" />
+          </div>
 
         </div>
 
-      </nav>
-    </>
-  )
-}
+        {/* RIGHT: CTA + ICONS */}
+        <div className="flex items-center gap-4">
+          {/* BOOK A MEETING */}
+          <button className="text-[14px] font-cervino cursor-pointer font-semibold tracking-[0.25em] uppercase border-b border-black pb-0.5 hover:opacity-75">
+            BOOK A MEETING
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
 
-export default Navbar
+export default Navbar;

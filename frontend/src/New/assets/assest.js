@@ -12,6 +12,7 @@ import C6 from "./C6.png";
 import serviceimg1 from "./serviceimg1.png"
 import headerBgColor from "./header-bg-color.png"
 import john_c from "./john-c.png"
+import kf1 from "./KF1.png"
 
 export const assets = {
     HeroArtOject,
@@ -26,4 +27,5 @@ export const assets = {
     serviceimg1,
     headerBgColor,
     john_c,
+    kf1,
 };

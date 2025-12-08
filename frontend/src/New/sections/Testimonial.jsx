@@ -1,120 +1,116 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from "react";
 
-const Testimonial = () => {
+const testimonials = [
+    {
+        text: "Zen Doan is a business analyst, entrepreneur and media proprietor, and investor. She also known as the best selling book author.",
+        name: "Zen",
+        role: "Author",
+        img: "https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg",
+    },
+    {
+        text: "Jonathan Koletic is an American internet entrepreneur and media proprietor, and investor. He is the founder of the multi-national technology company Treymont.",
+        name: "Jonathan",
+        role: "Treymont Inc.",
+        img: "https://user-images.githubusercontent.com/13468728/234031617-2dfb19ea-01d0-4370-b63b-bb6bdfb4f78e.jpg",
+    },
+    {
+        text: "Charlie Green is an European entrepreneur and media consultant, and investor. He is the founder of the Hallmark Inc.",
+        name: "Charlie",
+        role: "Hallmark Inc.",
+        img: "https://user-images.githubusercontent.com/13468728/234031646-10533999-39e5-4c7b-ab54-d0299b13ce74.jpg",
+    },
+    {
+        text: "Sarah Dam is an American internet entrepreneur and media proprietor, and investor. She is the founder of the multi-national technology company Zara.",
+        name: "Sarah",
+        role: "Zara Inc.",
+        img: "https://github.com/ecemgo/ecemgo/assets/13468728/55116c98-5f9a-4b0a-9fdb-4911b52d5ef3",
+    },
+];
 
-    const TESTIMONIALS = [
-        {
-            id: 1,
-            name: "Kashen Bhatti",
-            role: "Owner",
-            quote: "I had been searching for a product like this for months and finally found it here. The team was extremely helpful in answering all of my questions and ensuring I was completely satisfied with my purchase. I couldn't be happier!",
-            image: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400",
-        },
-        {
-            id: 2,
-            name: "Abdul Rehman",
-            role: "Co-Owner",
-            quote: "The team was incredibly supportive from day one. Their attention to detail and quick responses made the entire experience smooth and stress free. I’d absolutely recommend them to anyone.",
-            image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400",
-        },
-        {
-            id: 3,
-            name: "Hammad Ali",
-            role: "CTO",
-            quote: "Their product quality and customer support exceeded my expectations. We were able to get up and running quickly and the impact on our business has been fantastic.",
-            image: "https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=400",
-        },
-        {
-            id: 4,
-            name: "Kashen Bhatti",
-            role: "Owner",
-            quote: "I had been searching for a product like this for months and finally found it here. The team was extremely helpful in answering all of my questions and ensuring I was completely satisfied with my purchase. I couldn't be happier!",
-            image: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400",
-        },
-    ]
+const TestimonialsSlider = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const AUTO_PLAY_DELAY = 7000;
-
-    const [activeIndex, setActiveIndex] = useState(1);
-
+    // ✅ Auto Slide Effect
     useEffect(() => {
-        const id = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-        }, AUTO_PLAY_DELAY);
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) =>
+                prev === testimonials.length - 1 ? 0 : prev + 1
+            );
+        }, 4000); // auto slide every 4 sec
 
-        return () => clearInterval(id);
+        return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className=' w-full min-h-screen bg-[#F2F2F2] py-24 px-14 relative '>
+        <section className="relative flex min-h-screen w-full items-center justify-center py-24 px-14">
 
             {/* BG Multi Colors */}
-            <div className=' absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-30 '></div>
-            <div className=' absolute left-1/2 -translate-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-30 '></div>
-            <div className=' absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-30 '></div>
+            <div className='absolute left-0 top-0 w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>
+            <div className='absolute left-1/2 -translate-x-1/2 top-0 w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80 pointer-events-none'></div>
+            <div className='absolute right-0 top-0 w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80 pointer-events-none'></div>
 
-            <div className=' w-full h-full z-50 flex flex-col justify-center items-center '>
-                <h1 className=' font-cervino text-[55px] leading-[75px] uppercase mb-2.5 '>What People Are Saying </h1>
-                <p className=' font-cervino text-2xl leading-8 uppercase text-[#666666] mb-5 '>Here are some testimonials from our satisfied customers</p>
+            {/* BG Multi Colors */}
+            <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>
+            <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80 pointer-events-none'></div>
+            <div className='absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80 pointer-events-none'></div>
 
-                <div className=' w-full h-[300px] flex justify-center items-center gap-3.5 overflow-scroll '>
-                    {TESTIMONIALS.map((item, index) => {
-                        const isActive = index === activeIndex;
+            <main className="w-full max-w-[800px] relative z-50">
+                <h2 className="font-cervino text-[45px] leading-[75px] uppercase text-center">
+                    What People Are Saying
+                </h2>
+                <p className="font-cervino text-[20px] leading-3 uppercase text-center text-[#666666]">
+                    Here are some testimonials from our satisfied customers
+                </p>
 
-                        return (
-                            <article key={item.id} aria-label={`${item.name} testtimonial`} className={[
-                                "group flex w-[85%] max-w-[960px] flex-col items-center gap-6 rounded-[32px] border border-white/60 bg-white/90 px-6 py-8 shadow-[0_18px_45px_rgba(15,23,42,0.12)] backdrop-blur transition-all duration-500 sm:flex-row sm:px-10 sm:py-10",
-                                "md:w-[70%] lg:w-[60%]",
-                                isActive
-                                    ? "scale-100 opacity-100"
-                                    : "scale-[0.94] opacity-40 blur-[1px]",
-                            ].join(" ")}>
-                                {/* Avatar */}
-                                <div className="flex-shrink-0">
-                                    <div className="overflow-hidden rounded-[28px] bg-slate-900">
-                                        <img
-                                            src={item.image}
-                                            alt={item.name}
-                                            className="h-40 w-40 object-cover sm:h-48 sm:w-48"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="relative flex-1">
-                                    {/* Quote mark top-right */}
-                                    <div className="pointer-events-none absolute -right-1 -top-2 text-3xl text-slate-200 sm:-right-3 sm:-top-4 sm:text-4xl">
-                                        <span aria-hidden="true">“</span>
-                                    </div>
-
-                                    <p className="text-sm leading-relaxed text-slate-700 sm:text-[15px]">
-                                        {item.quote}
+                {/* Slider */}
+                <div className="w-full overflow-hidden mt-32">
+                    <div
+                        className="flex transition-transform duration-500"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                        {testimonials.map((item, idx) => (
+                            <div key={idx} className="relative flex w-full flex-shrink-0">
+                                {/* Content card */}
+                                <div className="z-20 flex h-[400px] w-full max-w-[520px] -translate-y-1/2 flex-col justify-between rounded-lg bg-white/70 p-8 text-[#4d4352] backdrop-blur-sm md:absolute md:left-0 md:top-1/2 md:h-[270px] md:p-11 max-md:static max-md:mt-10 max-md:h-auto max-md:translate-y-0 max-md:max-w-full">
+                                    <p className="text-[1.25rem] leading-tight max-md:text-[0.9rem]">
+                                        {item.text}
                                     </p>
-
-                                    <div className="mt-6 flex flex-col items-start gap-1">
-                                        <span className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">
+                                    <div className="mt-8 md:mt-9">
+                                        <h2 className="text-[1.5rem] font-semibold max-md:text-[1.2rem]">
                                             {item.name}
-                                        </span>
-                                        <span className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
-                                            {item.role}
-                                        </span>
-                                    </div>
-
-                                    {/* Closing quote bottom-right */}
-                                    <div className="pointer-events-none absolute -bottom-1 right-0 text-2xl text-slate-200 sm:-bottom-3 sm:text-3xl">
-                                        <span aria-hidden="true">”</span>
+                                        </h2>
+                                        <p className="text-sm">{item.role}</p>
                                     </div>
                                 </div>
 
-                            </article>
-                        )
-                    })}
+                                {/* Image */}
+                                <div className="pointer-events-none w-full absolute right-0 top-0 flex h-full items-center justify-end md:static md:h-[400px]">
+                                    <img
+                                        src={item.img}
+                                        alt={item.name}
+                                        className="h-full w-[320px] rounded-lg object-cover select-none max-md:w-[200px] max-md:h-[250px] max-sm:absolute max-sm:top-[60%] max-sm:h-[100px] max-sm:w-[100px] max-sm:z-10"
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
 
-        </div>
-    )
-}
+                {/* Indicator buttons */}
+                <div className="mt-16 flex justify-center">
+                    {testimonials.map((_, index) => (
+                        <button
+                            key={index}
+                            type="button"
+                            onClick={() => setCurrentIndex(index)}
+                            className={`mx-1 h-[15px] cursor-pointer rounded-full bg-white transition-all duration-500 ${currentIndex === index ? "w-[30px]" : "w-[15px]"
+                                }`}
+                        />
+                    ))}
+                </div>
+            </main>
+        </section>
+    );
+};
 
-export default Testimonial
+export default TestimonialsSlider;
