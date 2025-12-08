@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @font-face {
   font-family: BrasleyDemo-Medium;
-  src: url(./assets/fonts/Brasley-Demo-Medium.otf) format("opentype");
+  src: url(./Nevas-ai/assets/fonts/Brasley-Demo-Medium.otf) format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap
@@ -11,7 +12,7 @@
 
 @font-face {
   font-family: DM-Sans;
-  src: url(./assets/fonts/DMSans.c25915a0.ttf) format("truetype");
+  src: url(./Nevas-ai/assets/fonts/DMSans.c25915a0.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap
@@ -19,7 +20,7 @@
 
 @font-face {
   font-family: DM-Mono-Light;
-  src: url(./assets/fonts/DMMono-Light.559007bb.ttf) format("truetype");
+  src: url(./Nevas-ai/assets/fonts/DMMono-Light.559007bb.ttf) format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap
@@ -27,9 +28,16 @@
 
 @font-face {
   font-family: DM-Mono-Italic;
-  src: url(./assets/fonts/DMMono-Italic.woff2) format("woff2");
+  src: url(./Nevas-ai/assets/fonts/DMMono-Italic.woff2) format("woff2");
   font-weight: 400;
   font-style: italic;
+  font-display: swap
+}
+
+@font-face {
+  font-family: Outfit;
+  src: url(./Nevi/assets/fonts/Outfit-Regular.ttf) format("truetype");
+  font-weight: 500;
   font-display: swap
 }
 
@@ -39,6 +47,7 @@
   --font-DM-Mono-Light: DM-Mono-Light, monospace;
   --font-DM-Mono-Italic: DM-Mono-Italic, monospace;
   --font-poppins: "Poppins", sans-serif;
+  --font-outfit: Outfit, sans-serif;
   --color-primay: #4080F5;
   --color-secoundary: #572AC2;
 }
@@ -125,4 +134,49 @@ body {
 #fullpage>div:not(.section) {
   height: auto;
   overflow: visible;
+}
+
+/* NEVI */
+
+.btn-spin::before {
+  animation: btn-spin 5000ms infinite linear;
+}
+
+@keyframes btn-spin {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.animate-scroll {
+  animation: testi-scroll 25s linear infinite;
+}
+
+.animate-scroll1 {
+  animation: testi-scroll1 25s linear infinite;
+}
+
+.testimonialCards:hover .animate-scroll1,
+.testimonialCards:hover .animate-scroll 
+{
+  animation-play-state: paused;
+}
+
+@keyframes testi-scroll1 {
+  0% {
+    transform: translateY(-10%);
+  } 100% {
+    transform: translateY(-60%);
+  }
+}
+
+@keyframes testi-scroll {
+  0% {
+    transform: translateY(0);
+  } 100% {
+    transform: translateY(-50%);
+  }
 }
