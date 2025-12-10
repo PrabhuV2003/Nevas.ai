@@ -63,7 +63,7 @@ const TestimonialsSlider = () => {
                 </p>
 
                 {/* Slider */}
-                <div className="w-full overflow-hidden mt-32">
+                <div className="w-full overflow-hidden mt-20">
                     <div
                         className="flex transition-transform duration-500"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

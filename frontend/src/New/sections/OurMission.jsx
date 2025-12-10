@@ -36,7 +36,7 @@ const OurMission = () => {
   const { ref: rightRef, isInView: rightInView } = useInView()
 
   return (
-    <div className='w-full min-h-screen relative py-24 px-14 '>
+    <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
 
       {/* BG Multi Colors */}
       <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[250px] z-10 opacity-80'></div>
@@ -52,7 +52,7 @@ const OurMission = () => {
             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
           `}
         >
-          <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
+          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
             Empowering Businesses Through
             <br /> Innovation
           </h2>
@@ -60,13 +60,13 @@ const OurMission = () => {
         </div>
 
         {/* Content row */}
-        <div className='w-full h-[400px] mt-7 flex justify-center items-center gap-5'>
+        <div className='w-full h-fit lg:h-[400px] mt-7 flex lg:flex-row flex-col justify-center items-center gap-5'>
 
           {/* Left: Image */}
           <div
             ref={leftRef}
             className={`
-              w-full h-full
+              w-full h-[300px] sm:h-[600px] lg:h-full
               transform transition-all duration-700 ease-out
               ${leftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}
             `}
@@ -89,10 +89,10 @@ const OurMission = () => {
             `}
             style={{ transitionDelay: rightInView ? '250ms' : '0ms' }}
           >
-            <h2 className='font-cervino text-5xl leading-16 text-[#222222] font-semibold uppercase'>
+            <h2 className='font-cervino text-2xl md:text-4xl leading-10 md:leading-12 lg:text-5xl lg:leading-16 text-[#222222] font-semibold uppercase'>
               At algoso, we&apos;re on a mission to drive business growth through
             </h2>
-            <p className='font-cervino text-xl leading-8 capitalize mt-5 text-[#666666]'>
+            <p className='font-cervino text-base sm:text-xl leading-8 capitalize mt-5 text-[#666666]'>
               cutting-edge AI automation solutions. With a team of AI experts and a proven track record, we&apos;re here to
               transform the way you operate.
             </p>

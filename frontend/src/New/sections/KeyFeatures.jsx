@@ -73,7 +73,7 @@ const KeyFeatures = () => {
   const { ref: rightRef, isInView: rightInView } = useInView()
 
   return (
-    <div className='w-full min-h-screen relative py-24 px-14 '>
+    <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
       {/* BG Multi Colors */}
       <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80'></div>
       <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80'></div>
@@ -89,13 +89,13 @@ const KeyFeatures = () => {
             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
           `}
         >
-          <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
+          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
             AI Automation Solutions
             <br />
             For Every Industry
           </h2>
 
-          <p className='font-cervino text-base leading-7 text-[#666666] w-[70%]'>
+          <p className='font-cervino text-base leading-7 text-[#666666] w-full sm:w-[70%]'>
             Whether you&apos;re in retail, finance, healthcare, manufacturing, or any other sector, our AI agents are
             built to adapt to your industry&apos;s unique workflows, data, and regulations. Explore how we tailor our
             automation solutions for different domains—while still offering one unified platform that can support
@@ -103,12 +103,12 @@ const KeyFeatures = () => {
           </p>
         </div>
 
-        <div className='w-full h-[500px] gap-2.5 flex mt-7'>
+        <div className='w-full h-fit md:h-[500px] gap-2.5 flex max-md:flex-col-reverse mt-7'>
           {/* LEFT SIDE: IMAGE + DESCRIPTION */}
           <div
             ref={leftRef}
             className={`
-              w-[70%] h-full relative
+              w-full md:w-[80%] lg:w-[70%] h-full relative
               transform transition-all duration-700 ease-out
               ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
             `}
@@ -123,8 +123,8 @@ const KeyFeatures = () => {
               />
             </div>
 
-            <div className='absolute right-0 bottom-0 w-[340px] h-[240px] bg-white shadow-2xs rounded-[20px] flex justify-center items-center p-5'>
-              <p className='font-cervino text-base leading-9 text-[#222222] text-justify'>
+            <div className='absolute right-0 bottom-0 w-[290px] lg:w-[340px] h-[240px] bg-white shadow-2xs rounded-[20px] flex justify-center items-center p-5'>
+              <p className='font-cervino text-sm leading-8 lg:text-base lg:leading-9 text-[#222222] text-justify'>
                 {currentTab.description}
               </p>
             </div>
@@ -134,7 +134,7 @@ const KeyFeatures = () => {
           <div
             ref={rightRef}
             className={`
-              w-[30%] h-full flex flex-col gap-2.5
+              w-full md:w-[30%] h-full flex md:flex-col gap-2.5
               transform transition-all duration-700 ease-out
               ${rightInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
             `}
@@ -148,7 +148,7 @@ const KeyFeatures = () => {
                   type='button'
                   onClick={() => setActiveTab(tab.id)}
                   className={`
-                    w-full h-full rounded-2xl flex justify-center items-center p-5
+                    w-full md:h-full rounded-2xl flex justify-center items-center p-1.5 md:p-5
                     transition-all duration-300
                     ${
                       isActive
@@ -160,7 +160,7 @@ const KeyFeatures = () => {
                     transitionDelay: rightInView ? `${300 + index * 120}ms` : '0ms', // stagger on scroll
                   }}
                 >
-                  <p className='font-cervino text-2xl leading-9 text-center uppercase cursor-pointer'>
+                  <p className='font-cervino leading-5 text-base sm:text-lg lg:text-2xl sm:leading-9 text-center uppercase cursor-pointer'>
                     {tab.title}
                   </p>
                 </button>

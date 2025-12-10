@@ -52,11 +52,11 @@ const OurExpertSection = () => {
                 `}
                 style={{ transitionDelay: `${delay}ms` }}
             >
-                <p className='font-cervino text-3xl leading-9 uppercase text-[#B4B4B4] group-hover:text-[#222222] group-hover:font-bold group-hover:text-4xl transition-all duration-700'>
+                <p className='font-cervino text-2xl sm:text-3xl leading-9 uppercase text-[#B4B4B4] group-hover:text-[#222222] group-hover:font-bold group-hover:text-4xl transition-all duration-700'>
                     {title}
                 </p>
 
-                <div className='text-3xl mr-10 text-[#B4B4B4] p-2 group-hover:bg-black group-hover:rounded-xl group-hover:text-white transition-all duration-700'>
+                <div className='text-2xl sm:text-3xl mr-5 sm:mr-10 text-[#B4B4B4] p-2 group-hover:bg-black group-hover:rounded-xl group-hover:text-white transition-all duration-700'>
                     <GoArrowUpRight className='group-hover:rotate-45 transition-all duration-700' />
                 </div>
 
@@ -73,7 +73,7 @@ const OurExpertSection = () => {
     const { ref: headerRef, isInView: headerInView } = useInView();
 
     return (
-        <div className='w-full min-h-screen py-24 px-14 relative '>
+        <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
 
             {/* BG Multi Colors */}
             <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80'></div>
@@ -89,12 +89,12 @@ const OurExpertSection = () => {
                         ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
                     `}
                 >
-                    <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
+                    <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
                         Our Expert Ai Automation
                         <br />
                         Services
                     </h2>
-                    <p className='font-cervino text-base leading-7 text-[#666666] w-[70%]'>
+                    <p className='font-cervino text-base leading-7 text-[#666666] w-full sm:w-[70%]'>
                         Discover the pinnacle of efficiency and innovation through our Expert AI Automation Services.
                         Our seasoned professionals craft tailored solutions, seamlessly integrating cutting-edge AI
                         technology to optimize operations, enhance customer experiences,

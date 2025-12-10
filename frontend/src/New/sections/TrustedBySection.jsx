@@ -41,13 +41,13 @@ const TrustedBySection = () => {
   const anim = `transition-all duration-700 ease-out transform`;
 
   return (
-    <div className='relative z-50 flex flex-col justify-center items-center w-full h-[250px] bg-white overflow-hidden shadow-2sm'>
+    <div className='relative px-5 z-50 flex flex-col justify-center items-center w-full h-[250px] bg-white overflow-hidden shadow-2sm'>
 
       {/* Title Animation */}
       <h2
         ref={titleRef}
         className={`
-          font-cervino font-semibold text-3xl text-center uppercase text-[#222]
+          font-cervino font-semibold text-xl sm:text-3xl text-center uppercase text-[#222]
           ${anim}
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
         `}
@@ -60,7 +60,7 @@ const TrustedBySection = () => {
       <p
         ref={descRef}
         className={`
-          font-cervino text-base leading-7 text-center text-[#666]
+          font-cervino text-sm leading-5 sm:text-base sm:leading-7 text-center text-[#666]
           ${anim}
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
         `}
@@ -77,10 +77,10 @@ const TrustedBySection = () => {
 
         <div className='flex animate-marquee whitespace-nowrap'>
           {brands.map((logo, i) => (
-            <img key={i} src={logo} alt="brand logo" className='mx-12 h-6 opacity-70 hover:opacity-100 transition' />
+            <img key={i} src={logo} alt="brand logo" className='mx-5 sm:mx-12 h-6 opacity-70 hover:opacity-100 transition' />
           ))}
           {brands.map((logo, i) => (
-            <img key={`dup-${i}`} src={logo} alt="brand logo" className='mx-12 h-6 opacity-70 hover:opacity-100 transition' />
+            <img key={`dup-${i}`} src={logo} alt="brand logo" className='mx-5 sm:mx-12 h-6 opacity-70 hover:opacity-100 transition' />
           ))}
         </div>
       </div>

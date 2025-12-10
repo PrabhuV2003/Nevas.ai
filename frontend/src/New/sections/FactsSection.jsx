@@ -70,7 +70,7 @@ const FactsSection = () => {
                 ref={ref}
                 className={`
                     w-full h-full
-                    transform transition-all duration-700 ease-out
+                    transform transition-all duration-700 ease-out text-center sm:text-start
                     ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                 `}
                 style={{ transitionDelay: `${delay}ms` }}
@@ -92,7 +92,7 @@ const FactsSection = () => {
     const { ref: headerRef, isInView: headerInView } = useInView();
 
     return (
-        <div className='w-full min-h-screen relative z-0 py-24 px-14 '>
+        <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
 
             {/* BG Multi Colors */}
             <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>
@@ -100,18 +100,18 @@ const FactsSection = () => {
             <div className='absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80 pointer-events-none'></div>
 
             <div className='w-full h-full space-y-16 relative z-50'>
-                <div className='grid gap-10 grid-cols-3 items-center'>
+                <div className='grid gap-10 grid-cols-1 lg:grid-cols-3 items-center'>
 
                     {/* Heading + intro text */}
                     <div
                         ref={headerRef}
                         className={`
-                            col-span-2 space-y-6
+                            col-span-0 lg:col-span-2 space-y-6
                             transform transition-all duration-700 ease-out
                             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                         `}
                     >
-                        <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
+                        <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
                             Elevate your business with AI
                             <br />
                             Auto&apos;s proven impact
@@ -128,7 +128,7 @@ const FactsSection = () => {
                 </div>
 
                 {/* Secondary stats with staggered scroll animation */}
-                <div className='grid gap-10 grid-cols-3'>
+                <div className='grid gap-10 sm:grid-cols-2 lg:grid-cols-3'>
                     {secondaryStats.map((stat, index) => (
                         <StatBlock
                             key={stat.title}
