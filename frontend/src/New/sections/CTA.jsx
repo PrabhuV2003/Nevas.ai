@@ -35,7 +35,7 @@ const CTA = () => {
   const { ref: rightRef, isInView: rightInView } = useInView()
 
   return (
-    <div className='w-full h-[500px] py-24 px-14 flex justify-center items-center shadow-lg/5 relative z-50 bg-white '>
+    <div className='w-full lg:h-[500px] py-16 px-10 lg:py-24 lg:px-14 flex flex-col lg:flex-row gap-10 lg:gap-2.5 justify-center items-center shadow-lg/5 relative z-50 bg-white '>
 
       {/* LEFT: Text block */}
       <div
@@ -46,10 +46,10 @@ const CTA = () => {
           ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
         `}
       >
-        <h2 className='font-cervino text-5xl leading-16 text-[#222222] uppercase'>
+        <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] text-[#222222] uppercase'>
           Supercharge Your Business with AI Automation!
         </h2>
-        <p className='font-cervino text-xl leading-7 text-[#666666] uppercase my-7'>
+        <p className='font-cervino text-lg md:text-xl leading-7 text-[#666666] uppercase my-5'>
           Unlock Efficiency, Insights, and Growth Today.
         </p>
         <button className='font-cervino w-[250px] h-[60px] bg-[#D9D9D9] rounded-sm text-xl text-[#222222] uppercase cursor-pointer hover:bg-[#d9d9d9b0] transition-all duration-700'>
@@ -61,7 +61,7 @@ const CTA = () => {
       <div
         ref={rightRef}
         className={`
-          w-full h-[600px] flex justify-center items-center relative
+          w-full lg:h-[600px] hidden lg:flex justify-center items-center relative
           transform transition-all duration-700 ease-out
           ${rightInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
         `}

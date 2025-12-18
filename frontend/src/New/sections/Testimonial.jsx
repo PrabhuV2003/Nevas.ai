@@ -1,116 +1,130 @@
 import React, { useState, useEffect } from "react";
 
 const testimonials = [
-    {
-        text: "Zen Doan is a business analyst, entrepreneur and media proprietor, and investor. She also known as the best selling book author.",
-        name: "Zen",
-        role: "Author",
-        img: "https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg",
-    },
-    {
-        text: "Jonathan Koletic is an American internet entrepreneur and media proprietor, and investor. He is the founder of the multi-national technology company Treymont.",
-        name: "Jonathan",
-        role: "Treymont Inc.",
-        img: "https://user-images.githubusercontent.com/13468728/234031617-2dfb19ea-01d0-4370-b63b-bb6bdfb4f78e.jpg",
-    },
-    {
-        text: "Charlie Green is an European entrepreneur and media consultant, and investor. He is the founder of the Hallmark Inc.",
-        name: "Charlie",
-        role: "Hallmark Inc.",
-        img: "https://user-images.githubusercontent.com/13468728/234031646-10533999-39e5-4c7b-ab54-d0299b13ce74.jpg",
-    },
-    {
-        text: "Sarah Dam is an American internet entrepreneur and media proprietor, and investor. She is the founder of the multi-national technology company Zara.",
-        name: "Sarah",
-        role: "Zara Inc.",
-        img: "https://github.com/ecemgo/ecemgo/assets/13468728/55116c98-5f9a-4b0a-9fdb-4911b52d5ef3",
-    },
+  {
+    text: "Zen Doan is a business analyst, entrepreneur and media proprietor, and investor. She also known as the best selling book author.",
+    name: "Zen",
+    role: "Author",
+    img: "https://user-images.githubusercontent.com/13468728/234031693-6bbaba7d-632c-4d7d-965f-75a76a549ce2.jpg",
+  },
+  {
+    text: "Jonathan Koletic is an American internet entrepreneur and media proprietor, and investor. He is the founder of the multi-national technology company Treymont.",
+    name: "Jonathan",
+    role: "Treymont Inc.",
+    img: "https://user-images.githubusercontent.com/13468728/234031617-2dfb19ea-01d0-4370-b63b-bb6bdfb4f78e.jpg",
+  },
+  {
+    text: "Charlie Green is an European entrepreneur and media consultant, and investor. He is the founder of the Hallmark Inc.",
+    name: "Charlie",
+    role: "Hallmark Inc.",
+    img: "https://user-images.githubusercontent.com/13468728/234031646-10533999-39e5-4c7b-ab54-d0299b13ce74.jpg",
+  },
+  {
+    text: "Sarah Dam is an American internet entrepreneur and media proprietor, and investor. She is the founder of the multi-national technology company Zara.",
+    name: "Sarah",
+    role: "Zara Inc.",
+    img: "https://github.com/ecemgo/ecemgo/assets/13468728/55116c98-5f9a-4b0a-9fdb-4911b52d5ef3",
+  },
 ];
 
 const TestimonialsSlider = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    // ✅ Auto Slide Effect
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prev) =>
-                prev === testimonials.length - 1 ? 0 : prev + 1
-            );
-        }, 4000); // auto slide every 4 sec
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev =>
+        prev === testimonials.length - 1 ? 0 : prev + 1
+      );
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
-        return () => clearInterval(interval);
-    }, []);
+  return (
+    <section className="relative w-full overflow-hidden py-16 px-10 lg:py-24 lg:px-14">
 
-    return (
-        <section className="relative flex min-h-screen w-full items-center justify-center py-24 px-14">
+      {/* BG Blobs */}
+      {["#FA9E59", "#24AFCD", "#DE8DC9"].map((c, i) => (
+        <div
+          key={i}
+          className="absolute top-0 w-48 h-48 sm:w-[379px] sm:h-[442px]
+          blur-[160px] sm:blur-[200px] opacity-70 pointer-events-none"
+          style={{
+            backgroundColor: c,
+            left: i === 0 ? 0 : i === 1 ? "50%" : "auto",
+            right: i === 2 ? 0 : "auto",
+            transform: i === 1 ? "translateX(-50%)" : "none",
+          }}
+        />
+      ))}
 
-            {/* BG Multi Colors */}
-            <div className='absolute left-0 top-0 w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>
-            <div className='absolute left-1/2 -translate-x-1/2 top-0 w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80 pointer-events-none'></div>
-            <div className='absolute right-0 top-0 w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80 pointer-events-none'></div>
+      <main className="relative z-10 mx-auto max-w-4xl text-center">
+        <h2 className="font-cervino uppercase text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px]">
+          What People Are Saying
+        </h2>
 
-            {/* BG Multi Colors */}
-            <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>
-            <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80 pointer-events-none'></div>
-            <div className='absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80 pointer-events-none'></div>
+        <p className="font-cervino mt-2
+          text-xs sm:text-sm lg:text-base
+          text-[#666666] uppercase">
+          Here are some testimonials from our satisfied customers
+        </p>
 
-            <main className="w-full max-w-[800px] relative z-50">
-                <h2 className="font-cervino text-[45px] leading-[75px] uppercase text-center">
-                    What People Are Saying
-                </h2>
-                <p className="font-cervino text-[20px] leading-3 uppercase text-center text-[#666666]">
-                    Here are some testimonials from our satisfied customers
-                </p>
+        {/* Slider */}
+        <div className="relative mt-10 sm:mt-16 overflow-hidden">
+          <div
+            className="flex transition-transform duration-500"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {testimonials.map((item, idx) => (
+              <div key={idx} className="w-full flex-shrink-0">
 
-                {/* Slider */}
-                <div className="w-full overflow-hidden mt-20">
-                    <div
-                        className="flex transition-transform duration-500"
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
-                        {testimonials.map((item, idx) => (
-                            <div key={idx} className="relative flex w-full flex-shrink-0">
-                                {/* Content card */}
-                                <div className="z-20 flex h-[400px] w-full max-w-[520px] -translate-y-1/2 flex-col justify-between rounded-lg bg-white/70 p-8 text-[#4d4352] backdrop-blur-sm md:absolute md:left-0 md:top-1/2 md:h-[270px] md:p-11 max-md:static max-md:mt-10 max-md:h-auto max-md:translate-y-0 max-md:max-w-full">
-                                    <p className="text-[1.25rem] leading-tight max-md:text-[0.9rem]">
-                                        {item.text}
-                                    </p>
-                                    <div className="mt-8 md:mt-9">
-                                        <h2 className="text-[1.5rem] font-semibold max-md:text-[1.2rem]">
-                                            {item.name}
-                                        </h2>
-                                        <p className="text-sm">{item.role}</p>
-                                    </div>
-                                </div>
+                <div className="flex flex-col md:flex-row items-center gap-6 md:gap-0">
 
-                                {/* Image */}
-                                <div className="pointer-events-none w-full absolute right-0 top-0 flex h-full items-center justify-end md:static md:h-[400px]">
-                                    <img
-                                        src={item.img}
-                                        alt={item.name}
-                                        className="h-full w-[320px] rounded-lg object-cover select-none max-md:w-[200px] max-md:h-[250px] max-sm:absolute max-sm:top-[60%] max-sm:h-[100px] max-sm:w-[100px] max-sm:z-10"
-                                    />
-                                </div>
-                            </div>
-                        ))}
+                  {/* Image */}
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="h-[120px] w-[120px]
+                      sm:h-[180px] sm:w-[180px]
+                      md:h-[400px] md:w-[320px]
+                      rounded-lg object-cover"
+                  />
+
+                  {/* Card */}
+                  <div className="md:-ml-24 bg-white/70 backdrop-blur-sm
+                    rounded-lg p-6 sm:p-8 md:p-10
+                    text-left max-w-xl">
+                    <p className="text-sm sm:text-base lg:text-lg">
+                      {item.text}
+                    </p>
+
+                    <div className="mt-6">
+                      <h3 className="text-lg sm:text-xl font-semibold">
+                        {item.name}
+                      </h3>
+                      <p className="text-sm">{item.role}</p>
                     </div>
-                </div>
+                  </div>
 
-                {/* Indicator buttons */}
-                <div className="mt-16 flex justify-center">
-                    {testimonials.map((_, index) => (
-                        <button
-                            key={index}
-                            type="button"
-                            onClick={() => setCurrentIndex(index)}
-                            className={`mx-1 h-[15px] cursor-pointer rounded-full bg-white transition-all duration-500 ${currentIndex === index ? "w-[30px]" : "w-[15px]"
-                                }`}
-                        />
-                    ))}
                 </div>
-            </main>
-        </section>
-    );
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Indicators */}
+        <div className="mt-10 flex justify-center gap-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              className={`h-3 rounded-full bg-white transition-all duration-300
+                ${currentIndex === i ? "w-8" : "w-3"}`}
+            />
+          ))}
+        </div>
+      </main>
+    </section>
+  );
 };
 
 export default TestimonialsSlider;

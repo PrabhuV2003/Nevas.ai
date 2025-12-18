@@ -83,7 +83,7 @@ const HeroSection = () => {
         <h1 className=' h-full w-full text-[12vw] sm:text-[11vw] font-poppins font-semibold uppercase text-center text-white AiTextStroke '>AI AUTOMATION</h1>
       </div> */}
 
-      {/* <Navbar /> */}
+      <Navbar />
 
       {/* Hero Content */}
       <div className='w-11/12 h-full pt-10 mx-auto relative z-50'>
@@ -207,24 +207,7 @@ const HeroSection = () => {
               Get Started now!
             </a>
           </div>
-          <div className=' flex flex-col justify-center items-end gap-3 '>
-            <p className='font-cervino text-lg leading-8 text-[#666666]'>
-              Discover more about us!
-            </p>
-            <a href='https://www.youtube.com/@NevasAI/' className='w-[200px] h-[60px] flex'>
-              <div className='w-[25%] h-full bg-[#222222] flex justify-center items-center text-white text-3xl'>
-                <FaGooglePlay className='animate-pulse' />
-              </div>
-              <div className='w-[75%] h-full bg-white '>
-                <img src={assets.john} alt="" className='w-full h-full object-cover' />
-              </div>
-            </a>
-            <div className='flex items-center text-3xl gap-5 '>
-              <FaSquareFacebook className=' hover:-rotate-6 transition-all duration-500 cursor-pointer ' />
-              <FaLinkedin className=' hover:-rotate-6 transition-all duration-500 cursor-pointer ' />
-              <FaSquareInstagram className=' hover:-rotate-6 transition-all duration-500 cursor-pointer ' />
-            </div>
-          </div>
+          
         </div>
 
       </div>

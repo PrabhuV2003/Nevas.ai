@@ -36,7 +36,7 @@ const YtVideos = () => {
   const { ref: sliderRef, isInView: sliderInView } = useInView()
 
   return (
-    <div className='w-full min-h-screen relative py-24 px-14 '>
+    <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
 
       {/* BG Multi Colors */}
       <div className='absolute left-0 top-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80'></div>
@@ -56,7 +56,7 @@ const YtVideos = () => {
             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
           `}
         >
-          <h2 className='font-cervino text-[55px] leading-[75px] uppercase'>
+          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
             There are so many digital
             <br />
             marketing agencies out

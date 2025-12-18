@@ -6,32 +6,26 @@ import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { SiInstagram } from "react-icons/si";
 import { assets } from '../assets/assest';
 
-// Reusable scroll in-view hook
 const useInView = (threshold = 0.2) => {
   const ref = useRef(null);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+    const el = ref.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-            observer.unobserve(entry.target); // animate only once
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
       },
       { threshold }
     );
 
-    observer.observe(element);
-
-    return () => {
-      if (element) observer.unobserve(element);
-    };
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [threshold]);
 
   return { ref, isInView };
@@ -42,145 +36,116 @@ const ContactSection = () => {
   const { ref: rightRef, isInView: rightInView } = useInView();
 
   return (
-    <div className='w-full min-h-screen relative py-24 px-14 '>
-      
-      {/* BG Multi Colors */}
-      <div className='absolute left-0 top-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-30'></div>
-      <div className='absolute left-1/2 -translate-x-1/2 top-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-30'></div>
-      <div className='absolute right-0 top-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[250px] opacity-30'></div>
-      <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[250px] z-10 opacity-30'></div>
+    <section className="relative w-full overflow-hidden
+      py-16 sm:py-20 lg:py-24
+      px-4 sm:px-6 lg:px-14">
 
-      <div className='w-full h-full relative z-50'>
-        <div className='w-full h-[600px] flex justify-center items-center gap-5 overflow-y-hidden'>
+      {/* BG Blobs */}
+      <div className="absolute left-0 top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[160px] sm:blur-[200px] opacity-30" />
+      <div className="absolute left-1/2 -translate-x-1/2 top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-30" />
+      <div className="absolute right-0 top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[200px] opacity-30" />
 
-          {/* LEFT: Contact Card */}
+      <div className="relative z-10 max-w-6xl mx-auto">
+
+        <div className="flex flex-col lg:flex-row gap-10">
+
+          {/* LEFT CARD */}
           <div
             ref={leftRef}
             className={`
-              w-full h-full bg-[#222222] rounded-2xl relative p-10
-              transform transition-all duration-700 ease-out
+              w-full lg:w-1/2 bg-[#222222] rounded-2xl p-8 sm:p-10 relative
+              transition-all duration-700
               ${leftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}
             `}
           >
-            <div className='w-[200px] h-[200px] bg-white/15 rounded-full absolute -bottom-7 -right-7'></div>
-            <div className='w-[100px] h-[100px] bg-[#FFF9F9]/15 rounded-full absolute bottom-24 right-20'></div>
-            <img src={assets.john_c} alt="" className='absolute bottom-0 -right-10 w-[300px] z-0' />
+            <img
+              src={assets.john_c}
+              alt=""
+              className="hidden sm:block absolute bottom-0 -right-10 w-[260px]"
+            />
 
-            <div className='w-full h-full flex flex-col justify-between items-center gap-1.5 relative z-10'>
-              <div className='w-full h-[20%]'>
-                <h2 className='font-cervino text-3xl text-white font-semibold leading-8'>
+            <div className="relative z-10 space-y-10 text-white">
+
+              <div>
+                <h2 className="font-cervino text-2xl sm:text-3xl">
                   Contact Information
                 </h2>
-                <p className='font-cervino text-lg leading-5 text-[#666666] mt-2.5'>
+                <p className="font-cervino text-sm sm:text-base text-[#aaaaaa] mt-2">
                   Say something to start a live chat!
                 </p>
               </div>
 
-              <div className='font-cervino w-full h-[60%] flex flex-col justify-between'>
-                <div className='w-full h-full flex items-center gap-10'>
-                  <PiPhoneCallFill className='text-2xl text-white' />
-                  <a href="#" className='text-xl text-white'>+1012 3456 789</a>
+              <div className="space-y-6 font-cervino">
+                <div className="flex gap-6 items-center">
+                  <PiPhoneCallFill className="text-xl" />
+                  <span className="text-lg">+1012 3456 789</span>
                 </div>
-                <div className='w-full h-full flex items-center gap-10'>
-                  <IoMdMail className='text-2xl text-white' />
-                  <a href="#" className='text-xl text-white'>demo@gmail.com</a>
+
+                <div className="flex gap-6 items-center">
+                  <IoMdMail className="text-xl" />
+                  <span className="text-lg">demo@gmail.com</span>
                 </div>
-                <div className='w-full h-full flex items-center gap-10'>
-                  <FaLocationDot className='text-2xl text-white' />
-                  <a href="#" className='text-xl text-white w-[70%]'>
-                    132 Dartmouth Street Boston, Massachusetts 02156 United States
-                  </a>
+
+                <div className="flex gap-6 items-start">
+                  <FaLocationDot className="text-xl mt-1" />
+                  <span className="text-lg">
+                    132 Dartmouth Street Boston, Massachusetts
+                  </span>
                 </div>
               </div>
 
-              <div className='w-full h-[20%] flex items-center gap-5'>
-                <a
-                  href='#'
-                  className='w-[40px] h-[40px] rounded-full flex justify-center items-center text-white text-lg hover:bg-white hover:text-[#222222] transition-all duration-700'
-                >
-                  <FaFacebookF />
-                </a>
-                <a
-                  href='#'
-                  className='w-[40px] h-[40px] rounded-full flex justify-center items-center text-white text-lg hover:bg-white hover:text-[#222222] transition-all duration-700'
-                >
-                  <SiInstagram />
-                </a>
-                <a
-                  href='#'
-                  className='w-[40px] h-[40px] rounded-full flex justify-center items-center text-white text-lg hover:bg-white hover:text-[#222222] transition-all duration-700'
-                >
-                  <FaLinkedinIn />
-                </a>
+              <div className="flex gap-4">
+                {[FaFacebookF, SiInstagram, FaLinkedinIn].map((Icon, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="w-10 h-10 rounded-full flex items-center justify-center
+                    hover:bg-white hover:text-black transition"
+                  >
+                    <Icon />
+                  </a>
+                ))}
               </div>
+
             </div>
           </div>
 
-          {/* RIGHT: Form */}
+          {/* RIGHT FORM */}
           <div
             ref={rightRef}
             className={`
-              w-full h-full flex flex-col justify-center gap-10
-              transform transition-all duration-700 ease-out
+              w-full lg:w-1/2 space-y-8
+              transition-all duration-700
               ${rightInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
             `}
-            style={{ transitionDelay: rightInView ? '150ms' : '0ms' }}
           >
-            <div className='w-full h-20 flex items-center justify-center gap-3'>
-              <div className='w-full h-full flex flex-col'>
-                <label htmlFor="Fname" className='font-cervino text-base text-[#8D8D8D]'>First Name</label>
-                <input
-                  type="text"
-                  name='Fname'
-                  id='Fname'
-                  className='w-full h-full border-b-2 border-[#8D8D8D] outline-none text-[#222222] font-cervino text-xl'
-                />
-              </div>
-              <div className='w-full h-full flex flex-col'>
-                <label htmlFor="Lname" className='font-cervino text-base text-[#8D8D8D]'>Last Name</label>
-                <input
-                  type="text"
-                  name='Lname'
-                  id='Lname'
-                  className='w-full h-full border-b-2 border-[#8D8D8D] outline-none text-[#222222] font-cervino text-xl'
-                />
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {["First Name", "Last Name", "Email", "Phone"].map((label, i) => (
+                <div key={i} className="flex flex-col">
+                  <label className="font-cervino text-sm text-[#8D8D8D]">
+                    {label}
+                  </label>
+                  <input
+                    className="border-b-2 border-[#8D8D8D] py-2 text-lg outline-none"
+                  />
+                </div>
+              ))}
             </div>
 
-            <div className='w-full h-20 flex items-center justify-center gap-3'>
-              <div className='w-full h-full flex flex-col'>
-                <label htmlFor="Email" className='font-cervino text-base text-[#8D8D8D]'>Email</label>
-                <input
-                  type="email"
-                  name='Email'
-                  id='Email'
-                  className='w-full h-full border-b-2 border-[#8D8D8D] outline-none text-[#222222] font-cervino text-xl'
-                />
-              </div>
-              <div className='w-full h-full flex flex-col'>
-                <label htmlFor="Phone" className='font-cervino text-base text-[#8D8D8D]'>Phone</label>
-                <input
-                  type="tel"
-                  name='Phone'
-                  id='Phone'
-                  className='w-full h-full border-b-2 border-[#8D8D8D] outline-none text-[#222222] font-cervino text-xl'
-                />
-              </div>
+            <div className="flex flex-col">
+              <label className="font-cervino text-sm text-[#8D8D8D]">
+                Message
+              </label>
+              <textarea
+                rows={4}
+                className="border-b-2 border-[#8D8D8D] text-lg outline-none"
+              />
             </div>
 
-            <div className='w-full h-[150px] flex items-center justify-center gap-3'>
-              <div className='w-full h-full flex flex-col'>
-                <label htmlFor="Message" className='font-cervino text-base text-[#8D8D8D]'>Message</label>
-                <textarea
-                  name="Message"
-                  id="Message"
-                  className='w-full h-full border-b-2 border-[#8D8D8D] outline-none text-[#222222] font-cervino text-xl'
-                ></textarea>
-              </div>
-            </div>
-
-            <div className='w-full h-[60px] text-end'>
-              <button className='font-cervino w-[200px] h-full bg-[#222222] rounded-sm text-xl text-white uppercase cursor-pointer hover:bg-[#222222ba] transition-all duration-700'>
+            <div className="text-right">
+              <button className="w-full sm:w-[200px] h-[50px]
+                bg-[#222222] text-white font-cervino uppercase
+                hover:bg-[#222222cc] transition">
                 Send
               </button>
             </div>
@@ -188,8 +153,8 @@ const ContactSection = () => {
 
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
-export default ContactSection
+export default ContactSection;

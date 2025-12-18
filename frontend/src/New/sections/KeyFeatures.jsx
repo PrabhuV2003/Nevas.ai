@@ -108,7 +108,7 @@ const KeyFeatures = () => {
           <div
             ref={leftRef}
             className={`
-              w-full md:w-[80%] lg:w-[70%] h-full relative
+              w-full md:w-[80%] lg:w-[70%] h-[250px] sm:h-full relative
               transform transition-all duration-700 ease-out
               ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
             `}
@@ -119,11 +119,11 @@ const KeyFeatures = () => {
                 key={currentTab.id} // small fade on tab change
                 src={currentTab.img}
                 alt={currentTab.title}
-                className='w-full h-full object-cover transition-opacity duration-500'
+                className='w-full h-full hidden sm:block object-cover transition-opacity duration-500'
               />
             </div>
 
-            <div className='absolute right-0 bottom-0 w-[290px] lg:w-[340px] h-[240px] bg-white shadow-2xs rounded-[20px] flex justify-center items-center p-5'>
+            <div className='absolute right-0 bottom-0 w-full sm:w-[290px] lg:w-[340px] h-full sm:h-[240px] bg-white shadow-2xs rounded-[20px] flex justify-center items-center p-5'>
               <p className='font-cervino text-sm leading-8 lg:text-base lg:leading-9 text-[#222222] text-justify'>
                 {currentTab.description}
               </p>
@@ -134,7 +134,7 @@ const KeyFeatures = () => {
           <div
             ref={rightRef}
             className={`
-              w-full md:w-[30%] h-full flex md:flex-col gap-2.5
+              w-full md:w-[30%] h-full max-sm:flex-wrap flex md:flex-col gap-2.5
               transform transition-all duration-700 ease-out
               ${rightInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
             `}
@@ -148,7 +148,7 @@ const KeyFeatures = () => {
                   type='button'
                   onClick={() => setActiveTab(tab.id)}
                   className={`
-                    w-full md:h-full rounded-2xl flex justify-center items-center p-1.5 md:p-5
+                    w-full md:h-full rounded-2xl flex justify-center items-center p-4 sm:p-1.5 md:p-5
                     transition-all duration-300
                     ${
                       isActive
@@ -160,7 +160,7 @@ const KeyFeatures = () => {
                     transitionDelay: rightInView ? `${300 + index * 120}ms` : '0ms', // stagger on scroll
                   }}
                 >
-                  <p className='font-cervino leading-5 text-base sm:text-lg lg:text-2xl sm:leading-9 text-center uppercase cursor-pointer'>
+                  <p className='font-cervino leading-5 text-sm sm:text-lg lg:text-2xl sm:leading-9 text-center uppercase cursor-pointer'>
                     {tab.title}
                   </p>
                 </button>
