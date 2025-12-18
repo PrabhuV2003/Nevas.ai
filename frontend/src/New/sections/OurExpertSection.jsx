@@ -2,119 +2,184 @@ import React, { useEffect, useRef, useState } from 'react'
 import { GoArrowUpRight } from "react-icons/go";
 import { assets } from '../assets/assest';
 
-const OurExpertSection = () => {
+/* ---------- reusable in-view hook ---------- */
+const useInView = (threshold = 0.2) => {
+    const ref = useRef(null);
+    const [isInView, setIsInView] = useState(false);
 
-    // Reusable hook for scroll in-view
-    const useInView = () => {
-        const ref = useRef(null);
-        const [isInView, setIsInView] = useState(false);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
 
-        useEffect(() => {
-            const element = ref.current;
-            if (!element) return;
-
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            setIsInView(true);
-                            observer.unobserve(entry.target); // animate once
-                        }
-                    });
-                },
-                {
-                    threshold: 0.2,
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInView(true);
+                    observer.disconnect();
                 }
-            );
+            },
+            { threshold }
+        );
 
-            observer.observe(element);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [threshold]);
 
-            return () => {
-                if (element) observer.unobserve(element);
-            };
-        }, []);
+    return { ref, isInView };
+};
 
-        return { ref, isInView };
-    };
+/* ---------- service row ---------- */
+const ServiceRow = ({ title, desc, delay = 0 }) => {
+    const { ref, isInView } = useInView();
 
-    // Single service row with scroll + hover animations
-    const ServiceRow = ({ title, delay = 0 }) => {
-        const { ref, isInView } = useInView();
-
-        return (
-            <div
-                ref={ref}
-                className={`
-                    w-full h-full border-t border-[#666666]
-                    flex justify-between items-center group relative
-                    transform transition-all duration-700 ease-out
-                    ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-                `}
-                style={{ transitionDelay: `${delay}ms` }}
-            >
-                <p className='font-cervino text-2xl sm:text-3xl leading-9 uppercase text-[#B4B4B4] group-hover:text-[#222222] group-hover:font-bold group-hover:text-4xl transition-all duration-700'>
+    return (
+        <div
+            ref={ref}
+            className={`
+        relative w-full border-t border-[#666666]
+        flex flex-col
+        py-6 sm:py-8
+        transition-all duration-700 ease-out group
+        ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
+      `}
+            style={{ transitionDelay: `${delay}ms` }}
+        >
+            {/* ROW CONTENT */}
+            <div className="flex items-center justify-between">
+                {/* title */}
+                <p className="
+          font-cervino uppercase text-[#B4B4B4]
+          text-lg sm:text-2xl lg:text-3xl
+          transition-all duration-500
+          group-hover:text-[#222222]
+          group-hover:font-bold
+          lg:group-hover:text-4xl
+        ">
                     {title}
                 </p>
 
-                <div className='text-2xl sm:text-3xl mr-5 sm:mr-10 text-[#B4B4B4] p-2 group-hover:bg-black group-hover:rounded-xl group-hover:text-white transition-all duration-700'>
-                    <GoArrowUpRight className='group-hover:rotate-45 transition-all duration-700' />
+                {/* arrow */}
+                <div className="
+          text-xl sm:text-2xl lg:text-3xl
+          text-[#B4B4B4] p-2 mr-2 sm:mr-6
+          transition-all duration-500
+          group-hover:bg-black group-hover:text-white
+          group-hover:rounded-xl
+        ">
+                    <GoArrowUpRight className="group-hover:rotate-45 transition-all duration-500" />
                 </div>
-
-                <img
-                    src={assets.serviceimg1}
-                    alt="AI teamwork"
-                    className='absolute top-1/2 right-[200px] -translate-y-1/2 h-52 w-[350px] object-contain opacity-0 group-hover:opacity-100 transition-all duration-700'
-                />
             </div>
-        );
-    };
 
-    // Heading block scroll animation
+            {/* HOVER DESCRIPTION */}
+            <p
+                className="
+          max-w-2xl mt-2
+          font-cervino text-sm sm:text-base
+          text-[#666666]
+          leading-6
+          opacity-0 translate-y-2
+          transition-all duration-500
+          group-hover:opacity-100 group-hover:translate-y-0
+        "
+            >
+                {desc}
+            </p>
+
+            {/* hover image (desktop only) */}
+            <img
+                src={assets.serviceimg1}
+                alt=""
+                className="
+          hidden lg:block
+          absolute top-1/2 right-[180px]
+          -translate-y-1/2
+          h-44 w-[300px]
+          object-contain
+          opacity-0 group-hover:opacity-100
+          transition-all duration-700
+        "
+            />
+        </div>
+    );
+};
+
+const OurExpertSection = () => {
     const { ref: headerRef, isInView: headerInView } = useInView();
 
     return (
-        <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
+        <section className="
+      relative w-full overflow-hidden
+      py-16 sm:py-20 lg:py-24
+      px-4 sm:px-6 lg:px-14
+    ">
 
-            {/* BG Multi Colors */}
-            <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80'></div>
-            <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[200px] opacity-80'></div>
-            <div className='absolute right-0 -bottom-[208px] w-[379px] h-[442px] bg-[#DE8DC9] blur-[200px] opacity-80'></div>
+            {/* BG Blobs */}
+            <div className="absolute left-0 -bottom-48 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute left-1/2 -translate-x-1/2 -bottom-48 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute right-0 -bottom-48 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[160px] sm:blur-[200px] opacity-60" />
 
-            <div className='w-full h-full relative z-50'>
+            <div className="relative z-10 max-w-6xl mx-auto">
+
+                {/* header */}
                 <div
                     ref={headerRef}
                     className={`
-                        max-w-5xl space-y-4
-                        transform transition-all duration-700 ease-out
-                        ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-                    `}
+            max-w-4xl space-y-4
+            transition-all duration-700
+            ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
+          `}
                 >
-                    <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
-                        Our Expert Ai Automation
-                        <br />
-                        Services
+                    <h2 className="
+            font-cervino uppercase
+            text-[26px] leading-[36px]
+            sm:text-[40px] sm:leading-[55px]
+            lg:text-[55px] lg:leading-[75px]
+          ">
+                        Our Expert AI Automation
+                        <br /> Services
                     </h2>
-                    <p className='font-cervino text-base leading-7 text-[#666666] w-full sm:w-[70%]'>
-                        Discover the pinnacle of efficiency and innovation through our Expert AI Automation Services.
-                        Our seasoned professionals craft tailored solutions, seamlessly integrating cutting-edge AI
-                        technology to optimize operations, enhance customer experiences,
+
+                    <p className="
+            font-cervino text-sm sm:text-base
+            leading-6 sm:leading-7
+            text-[#666666]
+            max-w-2xl
+          ">
+                        Discover the pinnacle of efficiency and innovation through our Expert AI Automation
+                        Services. Our seasoned professionals craft tailored solutions using cutting-edge AI.
                     </p>
                 </div>
 
-                <div className='w-full h-[500px] mt-10 flex flex-col'>
-
-                    <ServiceRow title="Smart Process Enhancements" delay={150} />
-                    <ServiceRow title="Insightful Data Mastery" delay={250} />
-                    <ServiceRow title="Tailored Customer Journeys" delay={350} />
-
-                    {/* last row with bottom border */}
-                    <div className='w-full h-full border-b border-[#666666]'>
-                        <ServiceRow title="Future-Proof Decisions" delay={450} />
+                {/* services */}
+                <div className="mt-10 flex flex-col">
+                    <ServiceRow
+                        title="Smart Process Enhancements"
+                        desc="Automate repetitive workflows and optimize operations with intelligent AI-driven process improvements."
+                        delay={150}
+                    />
+                    <ServiceRow
+                        title="Insightful Data Mastery"
+                        desc="Turn raw data into actionable insights using predictive analytics and real-time intelligence."
+                        delay={250}
+                    />
+                    <ServiceRow
+                        title="Tailored Customer Journeys"
+                        desc="Deliver hyper-personalized customer experiences across every touchpoint using AI automation."
+                        delay={350}
+                    />
+                    <div className="border-b border-[#666666]">
+                        <ServiceRow
+                            title="Future-Proof Decisions"
+                            desc="Leverage AI-powered forecasting and decision intelligence to stay ahead in a changing market."
+                            delay={450}
+                        />
                     </div>
                 </div>
-            </div>
-        </div>
-    )
-}
 
-export default OurExpertSection
+
+            </div>
+        </section>
+    );
+};
+
+export default OurExpertSection;

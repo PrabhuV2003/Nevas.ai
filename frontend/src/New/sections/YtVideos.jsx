@@ -36,7 +36,7 @@ const YtVideos = () => {
   const { ref: sliderRef, isInView: sliderInView } = useInView()
 
   return (
-    <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
+    <div className='w-full md:min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
 
       {/* BG Multi Colors */}
       <div className='absolute left-0 top-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80'></div>

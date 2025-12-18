@@ -7,7 +7,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-[#e5e5e5]">
+    <header className="w-full border-b relative z-50 border-[#e5e5e5]">
       <div className="relative mx-auto max-w-6xl
         flex items-center justify-between
         py-4 px-4 sm:px-6 lg:px-0">
