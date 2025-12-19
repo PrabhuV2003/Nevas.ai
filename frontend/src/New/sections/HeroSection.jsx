@@ -9,22 +9,35 @@ import { FaSquareInstagram } from "react-icons/fa6";
 const HeroSection = () => {
   const [loaded, setLoaded] = useState(false);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   useEffect(() => {
     setLoaded(true);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const baseAnim = "transform transition-all ease-out duration-700";
 
   const handleMouseMove = (e) => {
+    if (!isDesktop) return;
+
     const { innerWidth, innerHeight } = window;
-    // Normalize between -0.5 and 0.5
     const x = (e.clientX - innerWidth / 2) / innerWidth;
     const y = (e.clientY - innerHeight / 2) / innerHeight;
     setParallax({ x, y });
   };
 
+
   const handleMouseLeave = () => {
+    if (!isDesktop) return;
     setParallax({ x: 0, y: 0 });
   };
 
@@ -46,32 +59,40 @@ const HeroSection = () => {
       <div
         className='absolute left-0 top-[100px] w-[200px] h-[300px] sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[100px] sm:blur-[200px] opacity-100'
         style={{
-          transform: `translate3d(${parallax.x * -depthBgLeft}px, ${parallax.y * -depthBgLeft}px, 0)`,
-          transition: 'transform 0.15s ease-out'
+          transform: isDesktop
+            ? `translate3d(${parallax.x * depthBgLeft}px, ${parallax.y * depthBgLeft}px, 0)`
+            : 'translate3d(0px, 0px, 0px)'
+
         }}
       ></div>
 
       <div
         className='absolute left-1/2 -translate-x-1/2 top-[100px] w-[200px] h-[300px] sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[100px] sm:blur-[200px] opacity-100'
         style={{
-          transform: `translate3d(${parallax.x * -depthBgCenter}px, ${parallax.y * -depthBgCenter}px, 0)`,
-          transition: 'transform 0.15s ease-out'
+          transform: isDesktop
+            ? `translate3d(${parallax.x * depthBgLeft}px, ${parallax.y * depthBgLeft}px, 0)`
+            : 'translate3d(0px, 0px, 0px)'
+
         }}
       ></div>
 
       <div
         className='absolute right-0 top-[100px] w-[200px] h-[300px] sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[100px] sm:blur-[200px] opacity-100'
         style={{
-          transform: `translate3d(${parallax.x * depthBgRight}px, ${parallax.y * depthBgRight}px, 0)`,
-          transition: 'transform 0.15s ease-out'
+          transform: isDesktop
+            ? `translate3d(${parallax.x * depthBgLeft}px, ${parallax.y * depthBgLeft}px, 0)`
+            : 'translate3d(0px, 0px, 0px)'
+
         }}
       ></div>
 
       <div
         className='absolute left-1/2 -translate-x-1/2 -bottom-[250px] w-[200px] h-[300px] sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[100px] sm:blur-[200px] opacity-100'
         style={{
-          transform: `translate3d(${parallax.x * depthBgBottom}px, ${parallax.y * -depthBgBottom}px, 0)`,
-          transition: 'transform 0.15s ease-out'
+          transform: isDesktop
+            ? `translate3d(${parallax.x * depthBgLeft}px, ${parallax.y * depthBgLeft}px, 0)`
+            : 'translate3d(0px, 0px, 0px)'
+
         }}
       ></div>
 
@@ -155,8 +176,10 @@ const HeroSection = () => {
           >
             <div
               style={{
-                transform: `translate3d(${parallax.x * depthHeroImage}px, ${parallax.y * depthHeroImage}px, 0)`,
-                transition: 'transform 0.1s ease-out'
+                transform: isDesktop
+                  ? `translate3d(${parallax.x * depthBgLeft}px, ${parallax.y * depthBgLeft}px, 0)`
+                  : 'translate3d(0px, 0px, 0px)'
+
               }}
             >
               <img className='w-full h-full' src={assets.HeroArtOject} alt="" />
@@ -207,7 +230,7 @@ const HeroSection = () => {
               Get Started now!
             </a>
           </div>
-          
+
         </div>
 
       </div>

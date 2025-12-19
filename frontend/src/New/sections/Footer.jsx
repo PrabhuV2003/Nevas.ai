@@ -67,9 +67,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-0
           justify-between items-center
-          border-t border-[#B4B4B4] pt-5">
+          border-t border-[#B4B4B4]  py-2 sm:pt-5">
 
           <p className="font-cervino text-sm sm:text-base font-semibold text-center">
             © 2023 Nevas.ai - All Rights Reserved

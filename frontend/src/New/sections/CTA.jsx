@@ -35,7 +35,7 @@ const CTA = () => {
   const { ref: rightRef, isInView: rightInView } = useInView()
 
   return (
-    <div className='w-full lg:h-[500px] py-16 px-10 lg:py-24 lg:px-14 flex flex-col lg:flex-row gap-10 lg:gap-2.5 justify-center items-center shadow-lg/5 relative z-50 bg-white '>
+    <div className='w-full lg:h-[550px] max-lg:overflow-hidden py-16 px-10 lg:py-24 lg:px-14 flex flex-col lg:flex-row gap-10 lg:gap-2.5 justify-center items-center shadow-lg/5 relative z-50 bg-white '>
 
       {/* LEFT: Text block */}
       <div

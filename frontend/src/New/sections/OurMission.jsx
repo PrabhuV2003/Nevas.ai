@@ -36,7 +36,7 @@ const OurMission = () => {
   const { ref: rightRef, isInView: rightInView } = useInView()
 
   return (
-    <div className='w-full min-h-screen relative py-16 px-10 lg:py-24 lg:px-14 '>
+    <div className='w-full min-h-screen overflow-hidden relative py-16 px-10 lg:py-24 lg:px-14 '>
 
       {/* BG Multi Colors */}
       <div className='absolute left-1/2 -translate-x-1/2 -bottom-[208px] w-[379px] h-[442px] bg-[#24AFCD] blur-[250px] z-10 opacity-80'></div>

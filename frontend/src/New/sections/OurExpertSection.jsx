@@ -36,7 +36,7 @@ const ServiceRow = ({ title, desc, delay = 0 }) => {
         <div
             ref={ref}
             className={`
-        relative w-full border-t border-[#666666]
+        relative z-50 w-full h-[85px] sm:h-[110px] hover:h-fit border-t border-[#666666]
         flex flex-col
         py-6 sm:py-8
         transition-all duration-700 ease-out group
@@ -151,7 +151,7 @@ const OurExpertSection = () => {
                 </div>
 
                 {/* services */}
-                <div className="mt-10 flex flex-col">
+                <div className="mt-10 relative z-50 flex flex-col">
                     <ServiceRow
                         title="Smart Process Enhancements"
                         desc="Automate repetitive workflows and optimize operations with intelligent AI-driven process improvements."
