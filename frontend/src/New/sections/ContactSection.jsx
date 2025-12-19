@@ -91,7 +91,7 @@ const ContactSection = () => {
   }
 
   return (
-    <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-14">
+    <section id='contact' className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-14">
 
       {/* BG Blobs */}
       <div className="absolute left-0 top-32 w-48 h-60 bg-[#FA9E59] blur-[160px] opacity-30" />

@@ -92,7 +92,7 @@ const FactsSection = () => {
     const { ref: headerRef, isInView: headerInView } = useInView();
 
     return (
-        <div className='w-full min-h-screen overflow-hidden relative py-16 px-10 lg:py-24 lg:px-14 '>
+        <div className='w-full min-h-screen overflow-hidden relative py-16 px-10 lg:py-24 lg:px-14 ' id='about-us'>
 
             {/* BG Multi Colors */}
             <div className='absolute left-0 -bottom-[208px] w-[379px] h-[442px] bg-[#FA9E59] blur-[200px] opacity-80 pointer-events-none'></div>

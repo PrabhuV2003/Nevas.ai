@@ -52,9 +52,11 @@ const CTA = () => {
         <p className='font-cervino text-lg md:text-xl leading-7 text-[#666666] uppercase my-5'>
           Unlock Efficiency, Insights, and Growth Today.
         </p>
-        <button className='font-cervino w-[250px] h-[60px] bg-[#D9D9D9] rounded-sm text-xl text-[#222222] uppercase cursor-pointer hover:bg-[#d9d9d9b0] transition-all duration-700'>
-          Get Started
-        </button>
+        <a href="#contact">
+          <button className='font-cervino w-[250px] h-[60px] bg-[#D9D9D9] rounded-sm text-xl text-[#222222] uppercase cursor-pointer hover:bg-[#d9d9d9b0] transition-all duration-700'>
+            Get Started
+          </button>
+        </a>
       </div>
 
       {/* RIGHT: Image block */}

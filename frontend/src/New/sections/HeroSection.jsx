@@ -110,7 +110,7 @@ const HeroSection = () => {
       <div className='w-11/12 h-full pt-10 mx-auto relative z-50'>
 
         {/* Headings */}
-        <div
+        <div id='home'
           className={`
             lg:w-[900px] w-fit h-fit md:h-80 mx-auto 
             ${baseAnim}
@@ -158,7 +158,7 @@ const HeroSection = () => {
               Streamline workflows, optimize decision-making, and enhance customer experiences like never before.
             </p>
             <a
-              href="#"
+              href="#contact"
               className='font-cervino text-[26px] leading-8 uppercase underline font-bold text-[#222222]'
             >
               Get Started now!
@@ -224,7 +224,7 @@ const HeroSection = () => {
               Streamline workflows, optimize decision-making, and enhance customer experiences like never before.
             </p>
             <a
-              href="#"
+              href="#contact"
               className='font-cervino text-[20px] leading-8 uppercase underline font-bold text-[#222222]'
             >
               Get Started now!
