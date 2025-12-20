@@ -1,78 +1,95 @@
 import React, { useState } from 'react'
 
 const ExtendingSlider = () => {
-  const slides = Array.from({ length: 10 }, (_, i) => ({
-    title: `Photo ${i + 1}`,
-    image:
-      'https://img.freepik.com/photos-gratuite/beau-paysage-riviere-entouree-verdure-dans-foret_181624-40482.jpg',
-  }))
+  const slides = [
+    {
+      title: 'AI Automation Demo',
+      videoId: 'hs9_J89A2uU',
+    },
+    {
+      title: 'Conversational AI',
+      videoId: 'SrRUXGSbPsk',
+    },
+    {
+      title: 'AI Dashboard Walkthrough',
+      videoId: 'EGRyoTqpUZg',
+    },
+    {
+      title: 'Voice Bot Example',
+      videoId: '3tmd-gDcKmU9_owo',
+    },
+    {
+      title: 'AI Use Case Overview',
+      videoId: 'V1OUgX994z8',
+    },
+  ]
 
   const [active, setActive] = useState(0)
-
-  const handleKey = (e, index) => {
-    if (e.key === 'Enter' || e.key === ' ') setActive(index)
-    if (e.key === 'ArrowRight')
-      setActive(prev => Math.min(prev + 1, slides.length - 1))
-    if (e.key === 'ArrowLeft')
-      setActive(prev => Math.max(prev - 1, 0))
-  }
 
   return (
     <div className="w-full">
 
-      {/* Mobile / Tablet */}
+      {/* ================= MOBILE / TABLET ================= */}
       <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:hidden">
         {slides.map((s, i) => (
           <div
             key={i}
-            className="min-w-[75%] h-[320px] snap-center rounded-lg overflow-hidden relative"
-            style={{
-              backgroundImage: `url(${s.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+            className="min-w-[85%] h-[320px] snap-center rounded-xl overflow-hidden bg-black"
           >
-            <div className="absolute inset-0 bg-black/30" />
-            <div className="absolute bottom-4 left-4 text-white text-lg font-semibold">
-              {s.title}
-            </div>
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${s.videoId}`}
+              title={s.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
         ))}
       </div>
 
-      {/* Desktop Expanding Slider */}
+      {/* ================= DESKTOP EXPANDING SLIDER ================= */}
       <div className="hidden md:flex h-[420px] w-full items-stretch">
-        {slides.map((s, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            onKeyDown={e => handleKey(e, i)}
-            aria-pressed={active === i}
-            className="relative overflow-hidden transition-[flex] duration-500 ease-in-out 
-                       shadow-lg focus:outline-none flex items-end cursor-pointer mx-1"
-            style={{
-              flex: active === i ? 2.5 : 0.15,
-              backgroundImage: `url(${s.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <div className="absolute inset-0 bg-black/30 transition-opacity" />
-            <div
-              className={`relative p-6 z-10 transition-all duration-300 ${
-                active === i
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-6'
-              }`}
-            >
-              <h3 className="text-white text-2xl lg:text-3xl font-semibold">
-                {s.title}
-              </h3>
-            </div>
-          </button>
-        ))}
-      </div>
+        {slides.map((s, i) => {
+          const isActive = active === i
 
+          return (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className="relative overflow-hidden transition-[flex] duration-500 ease-in-out
+                         shadow-lg focus:outline-none flex items-end cursor-pointer mx-1 rounded-xl"
+              style={{
+                flex: isActive ? 2.8 : 0.2,
+                backgroundColor: '#000',
+              }}
+            >
+              {/* ACTIVE VIDEO */}
+              {isActive ? (
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${s.videoId}?autoplay=1&mute=1&rel=0`}
+                  title={s.title}
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  {/* THUMBNAIL */}
+                  <img
+                    src={`https://img.youtube.com/vi/${s.videoId}/hqdefault.jpg`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/50" />
+
+                </>
+              )}
+
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

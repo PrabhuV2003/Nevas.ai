@@ -43,7 +43,7 @@ const FAQ = () => {
           Here are some of the most frequently asked questions about our automation services
         </p>
 
-        <div className='w-[80%] m-auto h-full mt-14'>
+        <div className='sm:w-[80%] m-auto h-full mt-14'>
           {faqData.map((item, index) => (
             <div
               key={index}
@@ -54,7 +54,7 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className='w-full flex items-center justify-between cursor-pointer py-4'
               >
-                <p className='font-cervino uppercase text-xl leading-8'>
+                <p className='font-cervino uppercase sm:text-xl leading-8'>
                   {item.q}
                 </p>
 
@@ -71,7 +71,7 @@ const FAQ = () => {
                   activeIndex === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className='font-cervino text-base leading-8 text-[#777777] pb-5'>
+                <p className='font-cervino text-sm sm:text-base leading-8 text-[#777777] pb-5'>
                   {item.a}
                 </p>
               </div>

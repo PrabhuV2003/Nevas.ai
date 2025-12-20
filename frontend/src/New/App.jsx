@@ -33,7 +33,7 @@ const App = () => {
       <KeyFeatures />
       <OurMission />
       <CTA />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <YtVideos />
       <ContactSection />
       <FAQ />
