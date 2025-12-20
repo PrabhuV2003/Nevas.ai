@@ -52,7 +52,7 @@ const OurMission = () => {
             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
           `}
         >
-          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
+          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[45px] sm:leading-[75px] uppercase'>
             Empowering Businesses Through
             <br /> Innovation
           </h2>
@@ -89,7 +89,7 @@ const OurMission = () => {
             `}
             style={{ transitionDelay: rightInView ? '250ms' : '0ms' }}
           >
-            <h2 className='font-cervino text-2xl md:text-4xl leading-10 md:leading-12 lg:text-5xl lg:leading-16 text-[#222222] font-semibold uppercase'>
+            <h2 className='font-cervino text-2xl md:text-4xl leading-10 md:leading-12 lg:text-4xl lg:leading-16 text-[#222222] font-semibold uppercase'>
               At algoso, we&apos;re on a mission to drive business growth through
             </h2>
             <p className='font-cervino text-base sm:text-xl leading-8 capitalize mt-5 text-[#666666]'>

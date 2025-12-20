@@ -23,7 +23,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:block mt-5">
-            <ul className="flex gap-10 text-[14px] font-cervino font-semibold uppercase">
+            <ul className="flex gap-10 text-[14px] font-cervino uppercase">
               <li className="cursor-pointer hover:opacity-70">
                 <a href="#about-us">About us</a>
               </li>

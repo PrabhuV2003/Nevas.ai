@@ -15,11 +15,12 @@ body {
 
 @font-face {
     font-family: 'Cervino';
-    src: local('Cervino Regular Neue'), local('Cervino-Regular-Neue'),
+    /* src: local('Cervino Regular Neue'), local('Cervino-Regular-Neue'),
         url('./assets/fonts/Cervino-RegularNeue.woff2') format('woff2'),
         url('./assets/fonts/Cervino-RegularNeue.woff2') format('woff2'),
         url('./assets/fonts/Cervino-RegularNeue.woff') format('woff'),
-        url('./assets/fonts/Cervino-RegularNeue.ttf') format('truetype');
+        url('./assets/fonts/Cervino-RegularNeue.ttf') format('truetype'); */
+        src: local('Segoe UI'), url('./assets/fonts/Segoe\ UI.ttf');
     font-weight: 400;
     font-style: normal;
 }

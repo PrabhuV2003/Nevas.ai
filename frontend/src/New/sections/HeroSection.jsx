@@ -153,13 +153,13 @@ const HeroSection = () => {
             `}
             style={{ transitionDelay: "500ms" }}
           >
-            <p className='font-cervino text-lg text-[#666666] leading-8'>
+            <p className='font-cervino text-sm text-[#666666] leading-8'>
               Unleash the true potential of your business through our advanced AI-driven solutions.
               Streamline workflows, optimize decision-making, and enhance customer experiences like never before.
             </p>
             <a
               href="#contact"
-              className='font-cervino text-[26px] leading-8 uppercase underline font-bold text-[#222222]'
+              className='font-cervino text-[20px] leading-8 uppercase underline font-bold text-[#222222]'
             >
               Get Started now!
             </a>

@@ -6,14 +6,14 @@ const TABS = [
     title: 'AI Consulting Services',
     heading: 'AI Consulting Services',
     description:
-      'Not every idea is ready for full-scale AI implementation. Our AI consulting services help you validate, de-risk, and plan AI initiatives with clarity before heavy investments.',
+      'Validate, de-risk, and plan AI initiatives with clear ROI and technical feasibility.',
     points: [
       'AI Readiness Audits',
       'Cost-Benefit & ROI Analysis',
       'Discovery & Ideation Workshops',
       'Scalable AI Roadmap',
       'Rapid PoC Development',
-      'Executive Dashboard & Reporting',
+      'Executive Dashboards',
     ],
   },
   {
@@ -21,45 +21,129 @@ const TABS = [
     title: 'AI Product Development',
     heading: 'AI Product Development',
     description:
-      'We design and build AI-first products that scale. From strategy to deployment, we help you launch intelligent platforms with built-in analytics and modular architecture.',
+      'Design and launch AI-first platforms with scalability, performance, and analytics built in.',
     points: [
-      'AI Strategy, Design & Engineering',
-      'Rapid Prototyping & Usability Testing',
+      'AI Strategy & Architecture',
+      'Rapid Prototyping',
+      'Model Deployment',
       'Built-in Analytics',
       'Multi-cloud Support',
-      'Modular & Scalable Architecture',
     ],
   },
   {
     id: 'conversational',
-    title: 'Conversational AI Development',
-    heading: 'Conversational AI Development Services',
+    title: 'Conversational AI',
+    heading: 'Conversational AI Development',
     description:
-      'Get smart assistants for sales, support, onboarding, and internal operations. We build multilingual chatbots, voice bots, and AI agents for customer engagement.',
+      'Smart chatbots, voice bots, and AI agents for customer engagement and operations.',
     points: [
       'Custom Chatbots & Voicebots',
-      'Omnichannel Availability',
-      'RAG-Based Bots',
+      'Omnichannel Support',
+      'RAG-based Bots',
       'CRM & ERP Integration',
-      'Data-Interactive Chatbots',
-      'Multilingual Voice & Text Bots',
+      'Multilingual Support',
+    ],
+  },
+  {
+    id: 'automation',
+    title: 'Process Automation',
+    heading: 'AI Process Automation',
+    description:
+      'Automate repetitive workflows using AI agents and intelligent triggers.',
+    points: [
+      'Workflow Automation',
+      'AI Agents',
+      'System Integrations',
+      'Approval Flows',
+      'Monitoring & Alerts',
+    ],
+  },
+  {
+    id: 'analytics',
+    title: 'AI Analytics',
+    heading: 'AI Analytics & Insights',
+    description:
+      'Turn raw data into predictive and actionable insights.',
+    points: [
+      'Predictive Analytics',
+      'Forecasting Models',
+      'BI Dashboards',
+      'Real-time Insights',
+      'Data Visualization',
+    ],
+  },
+  {
+    id: 'vision',
+    title: 'Computer Vision',
+    heading: 'Computer Vision Solutions',
+    description:
+      'AI-powered image and video intelligence for automation and monitoring.',
+    points: [
+      'Object Detection',
+      'Face Recognition',
+      'Video Analytics',
+      'Quality Inspection',
+      'OCR Systems',
+    ],
+  },
+  {
+    id: 'nlp',
+    title: 'NLP Solutions',
+    heading: 'Natural Language Processing',
+    description:
+      'Advanced text understanding and generation systems.',
+    points: [
+      'Text Classification',
+      'Sentiment Analysis',
+      'Entity Recognition',
+      'Document Intelligence',
+      'LLM Integrations',
+    ],
+  },
+  {
+    id: 'mlops',
+    title: 'MLOps',
+    heading: 'MLOps & Model Management',
+    description:
+      'Deploy, monitor, and scale ML models reliably in production.',
+    points: [
+      'Model Versioning',
+      'CI/CD for ML',
+      'Monitoring & Drift Detection',
+      'Auto Scaling',
+      'Governance',
+    ],
+  },
+  {
+    id: 'cloud',
+    title: 'AI Cloud Solutions',
+    heading: 'AI Cloud & Infrastructure',
+    description:
+      'Cloud-native AI systems optimized for performance and cost.',
+    points: [
+      'AWS / Azure / GCP',
+      'GPU Optimization',
+      'Cost Optimization',
+      'Secure Deployments',
+      'High Availability',
     ],
   },
   {
     id: 'operations',
-    title: 'Manufacturing & Operations',
-    heading: 'Manufacturing, Logistics & Operations',
+    title: 'Manufacturing & Ops',
+    heading: 'Manufacturing & Operations',
     description:
-      'Optimize production planning, supply chains, and logistics using AI-powered automation and intelligent decision-making systems.',
+      'Optimize logistics, production, and maintenance with AI.',
     points: [
       'Predictive Maintenance',
       'Demand Forecasting',
       'Production Optimization',
       'Logistics Intelligence',
-      'AI-Powered Process Automation',
+      'Operational Dashboards',
     ],
   },
 ]
+
 
 const FeaturePoint = ({ text }) => (
   <div className="flex items-start gap-3">
@@ -83,7 +167,7 @@ const KeyFeatures = () => {
     >
       {/* HEADER */}
       <div className="max-w-5xl mb-12">
-        <h2 className="font-cervino text-[30px] sm:text-[55px] uppercase leading-tight">
+        <h2 className="font-cervino text-[30px] sm:text-[45px] uppercase leading-tight">
           AI Automation Solutions
           <br /> For Every Industry
         </h2>
@@ -96,9 +180,8 @@ const KeyFeatures = () => {
           return (
             <div
               key={tab.id}
-              className={`rounded-xl overflow-hidden transition-all ${
-                isOpen ? 'bg-white shadow-md' : 'border border-[#ddd]'
-              }`}
+              className={`rounded-xl overflow-hidden transition-all ${isOpen ? 'bg-white shadow-md' : 'border border-[#ddd]'
+                }`}
             >
               <button
                 onClick={() => setActiveTab(tab.id)}
@@ -111,9 +194,8 @@ const KeyFeatures = () => {
               </button>
 
               <div
-                className={`grid transition-all duration-500 ${
-                  isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
+                className={`grid transition-all duration-500 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
               >
                 <div className="overflow-hidden px-4 pb-4 space-y-4">
                   <p className="text-sm leading-7 text-[#444]">
@@ -134,8 +216,30 @@ const KeyFeatures = () => {
 
       {/* ================= DESKTOP VIEW ================= */}
       <div className="hidden sm:flex gap-6">
+        
         {/* LEFT CONTENT */}
-        <div className="w-[70%] bg-white rounded-2xl p-10 shadow-sm">
+        <div className="w-[30%]">
+          <div className="h-[350px] overflow-y-auto pr-2 flex flex-col gap-3">
+            {TABS.map(tab => {
+              const isActive = tab.id === activeTab
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`rounded-xl cursor-pointer p-5 text-left uppercase font-cervino transition-all ${isActive
+                      ? 'bg-white shadow-md text-[#222]'
+                      : 'border border-[#666] text-[#666] hover:text-[#222]'
+                    }`}
+                >
+                  {tab.title}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* RIGHT TABS (SCROLLABLE) */}
+        <div className="w-[70%] bg-white rounded-2xl p-10 shadow-sm min-h-[350px]">
           <h3 className="font-cervino uppercase text-[34px] leading-tight">
             {currentTab.heading}
           </h3>
@@ -151,26 +255,8 @@ const KeyFeatures = () => {
           </div>
         </div>
 
-        {/* RIGHT TABS */}
-        <div className="w-[30%] flex flex-col gap-3">
-          {TABS.map(tab => {
-            const isActive = tab.id === activeTab
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`rounded-xl cursor-pointer h-full p-5 text-left uppercase font-cervino transition-all ${
-                  isActive
-                    ? 'bg-white shadow-md text-[#222]'
-                    : 'border border-[#666] text-[#666] hover:text-[#222]'
-                }`}
-              >
-                {tab.title}
-              </button>
-            )
-          })}
-        </div>
       </div>
+
     </section>
   )
 }

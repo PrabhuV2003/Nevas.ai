@@ -56,7 +56,7 @@ const YtVideos = () => {
             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
           `}
         >
-          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
+          <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[45px] sm:leading-[75px] uppercase'>
             There are so many digital
             <br />
             marketing agencies out

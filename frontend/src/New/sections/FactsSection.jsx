@@ -111,9 +111,8 @@ const FactsSection = () => {
                             ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                         `}
                     >
-                        <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] uppercase'>
+                        <h2 className='font-cervino text-[25px] leading-[45px] sm:text-[45px] sm:leading-[75px] uppercase'>
                             Elevate your business with AI
-                            <br />
                             Auto&apos;s proven impact
                         </h2>
                         <p className='font-cervino text-base leading-7 text-[#666666]'>

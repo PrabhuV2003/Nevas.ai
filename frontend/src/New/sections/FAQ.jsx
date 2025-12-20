@@ -35,7 +35,7 @@ const FAQ = () => {
     <div className='w-full h-fit overflow-hidden relative py-16 px-10 lg:py-24 lg:px-14'>
       <div className='w-full h-full relative z-50'>
 
-        <h2 className='font-cervino uppercase text-center text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px]'>
+        <h2 className='font-cervino uppercase text-center text-[30px] leading-[45px] sm:text-[45px] sm:leading-[75px]'>
           Frequently Asked Questions
         </h2>
 

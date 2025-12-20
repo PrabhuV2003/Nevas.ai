@@ -46,7 +46,7 @@ const CTA = () => {
           ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
         `}
       >
-        <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[55px] sm:leading-[75px] text-[#222222] uppercase'>
+        <h2 className='font-cervino text-[30px] leading-[45px] sm:text-[45px] sm:leading-[75px] text-[#222222] uppercase'>
           Supercharge Your Business with AI Automation!
         </h2>
         <p className='font-cervino text-lg md:text-xl leading-7 text-[#666666] uppercase my-5'>

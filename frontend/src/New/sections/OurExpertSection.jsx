@@ -133,7 +133,7 @@ const OurExpertSection = () => {
             font-cervino uppercase
             text-[26px] leading-[36px]
             sm:text-[40px] sm:leading-[55px]
-            lg:text-[55px] lg:leading-[75px]
+            lg:text-[45px] lg:leading-[75px]
           ">
                         Our Expert AI Automation
                         <br /> Services
