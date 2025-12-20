@@ -12,6 +12,7 @@ import CTA from './sections/CTA'
 import YtVideos from './sections/YtVideos'
 import ContactSection from './sections/ContactSection'
 import Footer from './sections/Footer';
+import FAQ from './sections/FAQ';
 import './index.css'
 import BackToTop from './compoenents/BackToTop';
 
@@ -35,6 +36,7 @@ const App = () => {
       <Testimonial />
       <YtVideos />
       <ContactSection />
+      <FAQ />
       <Footer />
 
       <BackToTop />

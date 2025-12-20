@@ -207,9 +207,9 @@ const HeroSection = () => {
               </div>
             </a>
             <div className='flex items-center text-3xl gap-5 mt-5'>
-              <FaSquareFacebook className=' hover:-rotate-6 transition-all duration-500 cursor-pointer ' />
-              <FaLinkedin className=' hover:-rotate-6 transition-all duration-500 cursor-pointer ' />
-              <FaSquareInstagram className=' hover:-rotate-6 transition-all duration-500 cursor-pointer ' />
+              <FaSquareFacebook className=' hover:-rotate-6 hover:text-[#1877F2] transition-all duration-500 cursor-pointer ' />
+              <FaLinkedin className=' hover:-rotate-6 hover:text-[#0077B5] transition-all duration-500 cursor-pointer ' />
+              <FaSquareInstagram className=' hover:-rotate-6 hover:text-[#E4405F] transition-all duration-500 cursor-pointer ' />
             </div>
           </div>
 

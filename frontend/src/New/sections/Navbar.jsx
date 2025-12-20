@@ -25,13 +25,13 @@ const Navbar = () => {
           <nav className="hidden lg:block mt-5">
             <ul className="flex gap-10 text-[14px] font-cervino font-semibold uppercase">
               <li className="cursor-pointer hover:opacity-70">
-                <a href="#home">Home</a>
-              </li>
-              <li className="cursor-pointer hover:opacity-70">
                 <a href="#about-us">About us</a>
               </li>
               <li className="cursor-pointer hover:opacity-70">
-                <a href="#solutions">Solutions</a>
+                <a href="#">Services</a>
+              </li>
+              <li className="cursor-pointer hover:opacity-70">
+                <a href="#contact">Contact Us</a>
               </li>
             </ul>
             <div className="mt-3 h-px w-full bg-[#d2d2d2]" />
@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="hidden lg:block">
           <a href="#contact" className="text-[14px] font-cervino font-semibold tracking-[0.25em]
             uppercase border-b border-black pb-0.5 hover:opacity-75">
-            Book a Meeting
+            Schedule a Meeting
           </a>
         </div>
 
