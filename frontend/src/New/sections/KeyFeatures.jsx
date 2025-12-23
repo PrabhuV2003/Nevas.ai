@@ -219,7 +219,7 @@ const KeyFeatures = () => {
         
         {/* LEFT CONTENT */}
         <div className="w-[30%]">
-          <div className="h-[350px] overflow-y-auto pr-2 flex flex-col gap-3">
+          <div className="h-[350px] overflow-y-auto pr-2 flex flex-col gap-3 custom-scrollbar">
             {TABS.map(tab => {
               const isActive = tab.id === activeTab
               return (
@@ -227,7 +227,7 @@ const KeyFeatures = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`rounded-xl cursor-pointer p-5 text-left uppercase font-cervino transition-all ${isActive
-                      ? 'bg-white shadow-md text-[#222]'
+                      ? 'bg-gradient-to-r from-[#FA9E59] via-[#24AFCD] to-[#DE8DC9] shadow-md text-white'
                       : 'border border-[#666] text-[#666] hover:text-[#222]'
                     }`}
                 >

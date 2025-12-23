@@ -10,19 +10,19 @@ const FactsSection = () => {
 
     const secondaryStats = [
         {
-            value: "20%",
+            value: "34%",
             title: "Reduction in operational costs",
             description:
                 "Experience substantial savings as AI-driven automation optimizes resource allocation and minimizes wastage.",
         },
         {
-            value: "51%",
+            value: "96%",
             title: "Customer satisfaction",
             description:
                 "Delight your customers with personalized, responsive journeys that boost satisfaction and loyalty.",
         },
         {
-            value: "44%",
+            value: "51%",
             title: "Rise in revenue generation",
             description:
                 "Unlock new revenue streams with data-driven insights, smarter cross-sell and upsell opportunities.",
