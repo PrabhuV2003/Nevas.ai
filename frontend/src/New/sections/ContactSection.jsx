@@ -7,7 +7,7 @@ import { SiInstagram } from "react-icons/si"
 import { assets } from '../assets/assest'
 
 /* ---------- InView Hook ---------- */
-const useInView = (threshold = 0.2) => {
+const useInView = (threshold = 0.1) => {
   const ref = useRef(null)
   const [isInView, setIsInView] = useState(false)
 
@@ -104,8 +104,8 @@ const ContactSection = () => {
           {/* LEFT CARD */}
           <div
             ref={leftRef}
-            className={`w-full lg:w-1/2 bg-[#222222] rounded-2xl p-8 sm:p-10 relative transition-all duration-700
-            ${leftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
+            className={`w-full lg:w-1/2 bg-[#222222] rounded-2xl p-8 sm:p-10 relative transition-all duration-00
+            ${leftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'}`}
           >
             <img
               src={assets.john_c}
@@ -148,7 +148,7 @@ const ContactSection = () => {
           <form
             ref={rightRef}
             onSubmit={handleSubmit}
-            className={`w-full lg:w-1/2 space-y-8 transition-all duration-700
+            className={`w-full lg:w-1/2 space-y-8 transition-all duration-00
             ${rightInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

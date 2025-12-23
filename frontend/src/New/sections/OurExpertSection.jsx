@@ -114,9 +114,13 @@ const OurExpertSection = () => {
     ">
 
             {/* BG Blobs */}
-            <div className="absolute left-0 -bottom-48 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[160px] sm:blur-[200px] opacity-60" />
-            <div className="absolute left-1/2 -translate-x-1/2 -bottom-48 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-60" />
-            <div className="absolute right-0 -bottom-48 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute left-0 -bottom-32  w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute left-1/2 -translate-x-1/2 -bottom-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute right-0 -bottom-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[160px] sm:blur-[200px] opacity-60" />
+
+            <div className="absolute left-0 -top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute left-1/2 -translate-x-1/2 -top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute right-0 -top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[160px] sm:blur-[200px] opacity-60" />
 
             <div className="relative z-10 max-w-6xl mx-auto">
 

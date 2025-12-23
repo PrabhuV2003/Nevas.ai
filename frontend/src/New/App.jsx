@@ -16,6 +16,8 @@ import FAQ from './sections/FAQ';
 import './index.css';
 import BackToTop from './compoenents/BackToTop';
 import AiTeamSection from './sections/AiTeamSection';
+import AiSpecializations from './sections/AiSpecializations';
+import OurWorkProcess from './sections/OurWorkProcess';
 
 const App = () => {
 
@@ -32,10 +34,12 @@ const App = () => {
       <FactsSection />
       <KeyFeatures />
       <OurExpertSection />
+      <AiSpecializations />
       <AiTeamSection />
-      <OurMission />
-      <CTA />
+      {/* <OurMission />
+      <CTA /> */}
       {/* <Testimonial /> */}
+      <OurWorkProcess />
       <YtVideos />
       <ContactSection />
       <FAQ />

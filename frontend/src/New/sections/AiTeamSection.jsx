@@ -26,9 +26,14 @@ const roles = [
 
 const AiTeamSection = () => {
   return (
-    <section className="relative font-cervino py-24 px-6 md:px-12 bg-gradient-to-br from-[#f7f8f8] via-[#eef2f3] to-[#f9f9f9]">
+    <section className="relative font-cervino overflow-hidden py-24 px-6 md:px-12 bg-gradient-to-br from-[#f7f8f8] via-[#eef2f3] to-[#f9f9f9]">
 
-        
+                    {/* BG Blobs */}
+            <div className="absolute left-0 -bottom-32  w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#FA9E59] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute left-1/2 -translate-x-1/2 -bottom-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-60" />
+            <div className="absolute right-0 -bottom-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#DE8DC9] blur-[160px] sm:blur-[200px] opacity-60" />
+            
+            <div className="absolute left-1/2 -translate-x-1/2 -top-32 w-48 h-60 sm:w-[379px] sm:h-[442px] bg-[#24AFCD] blur-[160px] sm:blur-[200px] opacity-60" />
 
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
