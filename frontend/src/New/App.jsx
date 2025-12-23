@@ -30,9 +30,9 @@ const App = () => {
       <HeroSection />
       <TrustedBySection />
       <FactsSection />
+      <KeyFeatures />
       <OurExpertSection />
       <AiTeamSection />
-      <KeyFeatures />
       <OurMission />
       <CTA />
       {/* <Testimonial /> */}

@@ -153,24 +153,49 @@ const OurExpertSection = () => {
                 {/* services */}
                 <div className="mt-10 relative z-50 flex flex-col">
                     <ServiceRow
-                        title="Smart Process Enhancements"
-                        desc="Automate repetitive workflows and optimize operations with intelligent AI-driven process improvements."
+                        title="Smart Customer Service Automation"
+                        desc="We help businesses provide more personalized customer support through AI-first automation. Our smart virtual assistants understand human language and integrate easily with your CRM and live chat platforms."
                         delay={150}
                     />
                     <ServiceRow
-                        title="Insightful Data Mastery"
-                        desc="Turn raw data into actionable insights using predictive analytics and real-time intelligence."
+                        title="Predictive Maintenance Systems"
+                        desc="Our predictive AI solutions use sensor-based anomaly detection and machine learning development to identify early signs of equipment issues and schedule maintenance based on actual risk."
                         delay={250}
                     />
                     <ServiceRow
-                        title="Tailored Customer Journeys"
-                        desc="Deliver hyper-personalized customer experiences across every touchpoint using AI automation."
+                        title="AI-Powered Personalization Engines"
+                        desc="Our AI app development company in India and USA build personalization engines that can offer tailored experiences to every user. With predictive segmentation, you can run hyper-targeted marketing campaigns that convert better."
                         delay={350}
+                    />
+                    <ServiceRow
+                        title="Fraud Detection & Risk Intelligence"
+                        desc="Protect revenue with AI-powered fraud detection systems that spot threats in real time. Our AI models use pattern recognition and behavior-based scoring to flag suspicious activity across finance, crypto, and eCommerce platforms."
+                        delay={450}
+                    />
+                    <ServiceRow
+                        title="Document Intelligence & OCR Solutions"
+                        desc="As a best AI development company in India and USA, we automate document-heavy workflows with AI-powered tools that extract, classify, and summarize information at scale."
+                        delay={450}
+                    />
+                    <ServiceRow
+                        title="AI for Smart Logistics & Supply Chain"
+                        desc="Optimize logistics and reduce operational costs with our AI-driven planning and automation. Our enterprise AI development company brings intelligence to every step of your logistics workflow."
+                        delay={450}
+                    />
+                    <ServiceRow
+                        title="AI in Healthcare & Diagnostics"
+                        desc="Enhance care delivery with AI solutions that improve diagnosis speed and clinical decision-making. We specialize in predictive risk scoring, treatment recommendations, image-based diagnostics, and smart patient triage."
+                        delay={450}
+                    />
+                    <ServiceRow
+                        title="AI for IoT & Edge Devices"
+                        desc="As a leading AI IoT software development company, we make devices, sensors, and physical systems smarter and more responsive. Our AI-powered IoT solutions run in real time at the edge."
+                        delay={450}
                     />
                     <div className="border-b border-[#666666]">
                         <ServiceRow
-                            title="Future-Proof Decisions"
-                            desc="Leverage AI-powered forecasting and decision intelligence to stay ahead in a changing market."
+                            title="AI for Blockchain & Crypto"
+                            desc="We make decentralized platforms and token ecosystems smart with AI-driven solutions for crypto and Web3. Our AI-powered blockchain development company builds tools that can integrate easily with exchanges, wallets, and DAOs."
                             delay={450}
                         />
                     </div>

@@ -6,14 +6,104 @@ const TABS = [
     title: 'AI Consulting Services',
     heading: 'AI Consulting Services',
     description:
-      'Validate, de-risk, and plan AI initiatives with clear ROI and technical feasibility.',
+      'Not every idea is ready for full-scale AI implementation, and that’s okay. Our AI consulting and PoC services help you explore, validate, and de-risk your AI initiatives before making major investments.',
     points: [
       'AI Readiness Audits',
       'Cost-Benefit & ROI Analysis',
       'Discovery & Ideation Workshops',
-      'Scalable AI Roadmap',
       'Rapid PoC Development',
-      'Executive Dashboards',
+      'Scalable AI Roadmaps',
+      'Executive Dashboards & Reporting',
+    ],
+  },
+  {
+    id: 'automation',
+    title: 'Custom AI & ML Development',
+    heading: 'Custom AI & ML Development',
+    description:
+      'We build AI and machine learning solutions from the ground up. The purpose of our AI app development company is to develop solutions tailored to your data, your use case, and your industry. We manage the full lifecycle of AI model development.',
+    points: [
+      'Predictive analytics',
+      'Forecasting tools',
+      'Recommendation systems',
+      'Fraud detection',
+      'Dynamic pricing models',
+      'Image and text classification',
+    ],
+  },
+  {
+    id: 'analytics',
+    title: 'Generative AI Development',
+    heading: 'Generative AI Development',
+    description:
+      'As a leading name in the top generative AI development company list, we build GenAI-powered systems that think, write, talk, and create using the world’s most advanced language models. From chatbots to content creators, our tools are fine-tuned to deliver value fast.',
+    points: [
+      'LLM Integration',
+      'Knowledge Embedding & Retrieval (RAG)',
+      'Custom Fine-Tuning',
+      'Enterprise-grade security',
+      'Generative AI Copilots',
+      'Real-time, context-aware responses',
+    ],
+  },
+  {
+    id: 'conversational',
+    title: 'Conversational AI',
+    heading: 'Conversational AI Development Services',
+    description:
+      'Get smart assistants for sales, support, onboarding, and internal operations.Our AI chatbot development company designs multilingual chatbots, voice bots, and AI agents for customer service  and engagement.',
+    points: [
+      'Custom Chatbots & Voicebots',
+      'Omnichannel Availability',
+      'RAG-Based Bots',
+      'CRM & ERP Integration',
+      'Data-Interactive Chatbots',
+      'Multilingual Voice & Text Bots',
+    ],
+  },
+  {
+    id: 'vision',
+    title: 'AI App Development',
+    heading: 'AI App Development',
+    description:
+      'Known for the #1 AI app development company in India, we integrate smart features to your web and mobile apps, so they work better and faster. Your apps will anticipate user needs, deliver lightning-fast responses, and keep people engaged.',
+    points: [
+      'Voice, Vision & NLP Features',
+      'Cross-Platform Compatibility',
+      'Custom AI API Integration',
+      'AI-Driven Personalization',
+      'Real-Time Intelligence & Prediction',
+      'Mobile & Edge Optimization',
+    ],
+  },
+  {
+    id: 'nlp',
+    title: 'LLM Fine-Tuning & Customization',
+    heading: 'LLM Fine-Tuning & Customization',
+    description:
+      'As an enterprise AI software development company, we help businesses train, fine-tune, and host LLMs like GPT, Claude, or LLaMA to their specific industry, data, and use cases. Plus, we ensure more relevant, secure, and high-performing AI experiences.',
+    points: [
+      'Private LLM Fine-Tuning',
+      'Web Scraping for Real-Time Context',
+      'Retrieval-Augmented Generation',
+      'Custom Guardrails & Filters',
+      'Generative AI Tasks',
+      'Secure Hosting & Latency Optimization',
+    ],
+  },
+  {
+    id: 'mlops',
+    title: 'Image-Based AI Solutions',
+    heading: 'Image-Based AI Solutions',
+    description:
+      'We develop AI tools that understand, generate, and transform images with precision. From visual content creation to intelligent editing, custom solutions by our AI development company support a wide range of business needs.',
+    points: [
+      'Image-to-Text Summarizers',
+      'AI Image Upscaling',
+      'Text-to-Image Generation',
+      'AI Outpainting & Background Fill',
+      'AI Face Swapping',
+      'AI-Powered Image Editing',
     ],
   },
   {
@@ -21,125 +111,28 @@ const TABS = [
     title: 'AI Product Development',
     heading: 'AI Product Development',
     description:
-      'Design and launch AI-first platforms with scalability, performance, and analytics built in.',
+      'AI is the foundation of modern software products. Being the best AI product development company in India, our team plan, prototype, and launch AI-first platforms that are impactful, and built for scale. From strategy to deployment, we partner with you at every step.',
     points: [
-      'AI Strategy & Architecture',
-      'Rapid Prototyping',
-      'Model Deployment',
+      'AI Strategy + Design + Engineering',
       'Built-in Analytics',
+      'Rapid Prototyping and Usability Testing',
+      'Seamless Integration',
+      'Modular Architecture',
       'Multi-cloud Support',
     ],
   },
   {
-    id: 'conversational',
-    title: 'Conversational AI',
-    heading: 'Conversational AI Development',
-    description:
-      'Smart chatbots, voice bots, and AI agents for customer engagement and operations.',
-    points: [
-      'Custom Chatbots & Voicebots',
-      'Omnichannel Support',
-      'RAG-based Bots',
-      'CRM & ERP Integration',
-      'Multilingual Support',
-    ],
-  },
-  {
-    id: 'automation',
-    title: 'Process Automation',
-    heading: 'AI Process Automation',
-    description:
-      'Automate repetitive workflows using AI agents and intelligent triggers.',
-    points: [
-      'Workflow Automation',
-      'AI Agents',
-      'System Integrations',
-      'Approval Flows',
-      'Monitoring & Alerts',
-    ],
-  },
-  {
-    id: 'analytics',
-    title: 'AI Analytics',
-    heading: 'AI Analytics & Insights',
-    description:
-      'Turn raw data into predictive and actionable insights.',
-    points: [
-      'Predictive Analytics',
-      'Forecasting Models',
-      'BI Dashboards',
-      'Real-time Insights',
-      'Data Visualization',
-    ],
-  },
-  {
-    id: 'vision',
-    title: 'Computer Vision',
-    heading: 'Computer Vision Solutions',
-    description:
-      'AI-powered image and video intelligence for automation and monitoring.',
-    points: [
-      'Object Detection',
-      'Face Recognition',
-      'Video Analytics',
-      'Quality Inspection',
-      'OCR Systems',
-    ],
-  },
-  {
-    id: 'nlp',
-    title: 'NLP Solutions',
-    heading: 'Natural Language Processing',
-    description:
-      'Advanced text understanding and generation systems.',
-    points: [
-      'Text Classification',
-      'Sentiment Analysis',
-      'Entity Recognition',
-      'Document Intelligence',
-      'LLM Integrations',
-    ],
-  },
-  {
-    id: 'mlops',
-    title: 'MLOps',
-    heading: 'MLOps & Model Management',
-    description:
-      'Deploy, monitor, and scale ML models reliably in production.',
-    points: [
-      'Model Versioning',
-      'CI/CD for ML',
-      'Monitoring & Drift Detection',
-      'Auto Scaling',
-      'Governance',
-    ],
-  },
-  {
     id: 'cloud',
-    title: 'AI Cloud Solutions',
-    heading: 'AI Cloud & Infrastructure',
+    title: 'AIOps Services',
+    heading: 'AIOps Services',
     description:
-      'Cloud-native AI systems optimized for performance and cost.',
+      'We help enterprises bring intelligence to their IT and  DevOps operations. Our team uses machine learning to detect anomalies, prevent outages, and accelerate root cause analysis. Our AIOps solutions add intelligence across observability and incident response pipelines.',
     points: [
-      'AWS / Azure / GCP',
-      'GPU Optimization',
-      'Cost Optimization',
-      'Secure Deployments',
-      'High Availability',
-    ],
-  },
-  {
-    id: 'operations',
-    title: 'Manufacturing & Ops',
-    heading: 'Manufacturing & Operations',
-    description:
-      'Optimize logistics, production, and maintenance with AI.',
-    points: [
-      'Predictive Maintenance',
-      'Demand Forecasting',
-      'Production Optimization',
-      'Logistics Intelligence',
-      'Operational Dashboards',
+      'Log & Metrics Analysis',
+      'Cloud & Hybrid Environment Support',
+      'AI/ML Workload & Infra Optimization',
+      'Automated Remediation',
+      'Predictive Alerting',
     ],
   },
 ]
@@ -168,8 +161,8 @@ const KeyFeatures = () => {
       {/* HEADER */}
       <div className="max-w-5xl mb-12">
         <h2 className="font-cervino text-[30px] sm:text-[45px] uppercase leading-tight">
-          AI Automation Solutions
-          <br /> For Every Industry
+          AI Development Service
+          <br /> We Offer
         </h2>
       </div>
 
@@ -216,7 +209,7 @@ const KeyFeatures = () => {
 
       {/* ================= DESKTOP VIEW ================= */}
       <div className="hidden sm:flex gap-6">
-        
+
         {/* LEFT CONTENT */}
         <div className="w-[30%]">
           <div className="h-[350px] overflow-y-auto pr-2 flex flex-col gap-3 custom-scrollbar">
@@ -227,8 +220,8 @@ const KeyFeatures = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`rounded-xl cursor-pointer p-5 text-left uppercase font-cervino transition-all ${isActive
-                      ? 'bg-gradient-to-r from-[#FA9E59] via-[#24AFCD] to-[#DE8DC9] shadow-md text-white'
-                      : 'border border-[#666] text-[#666] hover:text-[#222]'
+                    ? 'bg-gradient-to-r from-[#FA9E59] via-[#24AFCD] to-[#DE8DC9] shadow-md text-white'
+                    : 'border border-[#666] text-[#666] hover:text-[#222]'
                     }`}
                 >
                   {tab.title}
@@ -244,7 +237,7 @@ const KeyFeatures = () => {
             {currentTab.heading}
           </h3>
 
-          <p className="mt-4 text-[#444] text-sm lg:text-base leading-10 max-w-3xl">
+          <p className="mt-4 text-[#444] text-sm lg:text-base leading-7 max-w-3xl">
             {currentTab.description}
           </p>
 
