@@ -1,41 +1,47 @@
 import React from "react";
+import { assets } from "../assets/assest";
 
-const ICONS = {
-  ml: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M4 4v16M4 12h6l2-4 3 8 2-4h3" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
-  nlp: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
-  vision: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
-  genai: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
-  rl: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M6 18c6 0 6-12 12-12" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M18 6v6h-6" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
-  edge: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
-      <rect x="14" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
-  ),
+/* ---------- IMAGE ICONS ---------- */
+const ICON_IMAGES = {
+  ml: {
+    default: assets.ML_B,
+    hover: assets.ML_W,
+  },
+  nlp: {
+    default: assets.NLP_B,
+    hover: assets.NLP_W,
+  },
+  vision: {
+    default: "/icons/vision.png",
+    hover: "/icons/vision-hover.png",
+  },
+  genai: {
+    default: assets.GenerativeAI_B,
+    hover: assets.GenerativeAI_W,
+  },
+  rl: {
+    default: assets.ReinforcementLearning_B,
+    hover: assets.ReinforcementLearning_W,
+  },
+  edge: {
+    default: assets.EdgeAI_B,
+    hover: assets.EdgeAI_W,
+  },
+  dp: {
+    default: assets.DL_B,
+    hover: assets.DL_W,
+  },
+  xai: {
+    default: assets.XAI_B,
+    hover: assets.XAI_W,
+  },
+  aiethics: {
+    default: assets.AIEthics_B,
+    hover: assets.AIEthics_W,
+  },
 };
 
+/* ---------- DATA ---------- */
 const SPECIALIZATIONS = [
   {
     title: "Machine Learning",
@@ -75,26 +81,25 @@ const SPECIALIZATIONS = [
   },
   {
     title: "Deep Learning",
-    icon: "edge",
+    icon: "dp",
     description:
       "Our neural networks power complex tasks like speech recognition, emotion detection, and advanced predictions.",
   },
   {
     title: "Explainable AI (XAI)",
-    icon: "edge",
+    icon: "xai",
     description:
       "We build AI systems that provide transparency and reasoning behind predictions.",
   },
   {
     title: "AI Ethics & Bias Mitigation",
-    icon: "edge",
+    icon: "aiethics",
     description:
       "We implement fairness checks and bias mitigation strategies to ensure responsible AI outcomes.",
   },
 ];
 
-
-
+/* ---------- COMPONENT ---------- */
 const AiSpecializations = () => {
   return (
     <section className="w-full py-24 px-6 lg:px-14 bg-[#F2F2F2]">
@@ -113,46 +118,61 @@ const AiSpecializations = () => {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {SPECIALIZATIONS.map((item, index) => (
-            <div
-              key={index}
-              className="
-                group
-                rounded-3xl
-                p-8
-                border border-[#ccc]
-                bg-transparent
-                transition-all duration-300
-                hover:bg-white
-                hover:shadow-lg
-                hover:-translate-y-1
-              "
-            >
-              {/* Icon */}
+          {SPECIALIZATIONS.map((item, index) => {
+            const icon = ICON_IMAGES[item.icon];
+
+            return (
               <div
+                key={index}
                 className="
-                  w-12 h-12 rounded-xl
-                  flex items-center justify-center
-                  mb-6
-                  border border-[#999]
-                  text-black
+                  group
+                  rounded-3xl
+                  p-8
+                  border border-[#ccc]
+                  bg-transparent
                   transition-all duration-300
-                  group-hover:bg-black
-                  group-hover:text-white
+                  hover:bg-white
+                  hover:shadow-lg
+                  hover:-translate-y-1
                 "
               >
-                {ICONS[item.icon]}
+                {/* Icon Wrapper */}
+                <div
+                  className="
+                    w-12 h-12 rounded-xl
+                    flex items-center justify-center
+                    mb-6
+                    border border-[#999]
+                    overflow-hidden
+                    transition-all duration-300
+                    group-hover:bg-black
+                  "
+                >
+                  {/* Default Image */}
+                  <img
+                    src={icon.default}
+                    alt={item.title}
+                    className="w-6 h-6 object-contain transition-opacity duration-300 group-hover:opacity-0"
+                  />
+
+                  {/* Hover Image */}
+                  <img
+                    src={icon.hover}
+                    alt={`${item.title} hover`}
+                    className="w-6 h-6 object-contain absolute opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                </div>
+
+                <h3 className="font-cervino uppercase text-lg mb-4 text-[#111]">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed text-[#555]">
+                  {item.description}
+                </p>
               </div>
-
-              <h3 className="font-cervino uppercase text-lg mb-4 text-[#111]">
-                {item.title}
-              </h3>
-
-              <p className="text-sm leading-relaxed text-[#555]">
-                {item.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
@@ -161,4 +181,3 @@ const AiSpecializations = () => {
 };
 
 export default AiSpecializations;
-

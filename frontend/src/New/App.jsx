@@ -17,7 +17,7 @@ import './index.css';
 import BackToTop from './compoenents/BackToTop';
 import AiTeamSection from './sections/AiTeamSection';
 import AiSpecializations from './sections/AiSpecializations';
-import OurWorkProcess from './sections/OurWorkProcess';
+import OurWorkProcess from './sections/WhyChooseUs';
 
 const App = () => {
 
