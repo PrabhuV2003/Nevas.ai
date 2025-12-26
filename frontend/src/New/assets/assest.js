@@ -13,6 +13,7 @@ import serviceimg1 from "./serviceimg1.png"
 import headerBgColor from "./header-bg-color.png"
 import john_c from "./john-c.png"
 import kf1 from "./KF1.png"
+import robot from "./robot.png"
 
 export const assets = {
     HeroArtOject,
@@ -28,4 +29,5 @@ export const assets = {
     headerBgColor,
     john_c,
     kf1,
+    robot,
 };
