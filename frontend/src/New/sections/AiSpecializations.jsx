@@ -108,8 +108,8 @@ const AiSpecializations = () => {
         {/* Header */}
         <div className="max-w-4xl mb-16">
           <h2 className="font-cervino uppercase text-[30px] sm:text-[45px] leading-tight">
-            Specialized Areas of Artificial Intelligence
-            <br /> We Excel In
+            Specialized Areas of Artificial <br /> 
+            Intelligence We Excel In
           </h2>
           <p className="mt-4 text-[#555]">
             Core AI capabilities we leverage to solve complex business challenges.

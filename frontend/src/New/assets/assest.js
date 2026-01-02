@@ -30,6 +30,12 @@ import ReinforcementLearning_B from "./ReinforcementLearning-B.png"
 import ReinforcementLearning_W from "./ReinforcementLearning-W.png"
 import XAI_B from "./XAI-B.png"
 import XAI_W from "./XAI-W.png"
+import AIMeasurement_hero from "./AIMeasurement-hero.png"
+import AiChatbot_hero from "./AiChatbot-hero.png"
+import Fabric_AI_Model from "./Fabric-AI-Model.png"
+import Fabric from "./Fabric.png"
+import f1 from "./f1.png"
+import f2 from "./f2.png"
 
 export const assets = {
     HeroArtOject,
@@ -62,4 +68,10 @@ export const assets = {
     ReinforcementLearning_W,
     XAI_B,
     XAI_W,
+    AIMeasurement_hero,
+    AiChatbot_hero,
+    Fabric_AI_Model,
+    Fabric,
+    f1,
+    f2,
 };

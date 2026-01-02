@@ -41,8 +41,8 @@ const App = () => {
       {/* <Testimonial /> */}
       <OurWorkProcess />
       <YtVideos />
-      <ContactSection />
       <FAQ />
+      <ContactSection />
       <Footer />
 
       <BackToTop />

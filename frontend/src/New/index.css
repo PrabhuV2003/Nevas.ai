@@ -131,3 +131,20 @@ body {
   scrollbar-width: thin;
   scrollbar-color: rgba(0,0,0,0.3) transparent;
 }
+
+.slider {
+  -webkit-appearance: none;
+  height: 100%;
+  background: transparent;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  background-image: url('./assets/slider-icon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
