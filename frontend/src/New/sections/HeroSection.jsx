@@ -95,7 +95,7 @@ const HeroSection = () => {
       {/* ================= Images ================= */}
       <div
         ref={imagesView.ref}
-        className={`w-full min-h-[90vh] md:min-h-[70vh] flex justify-center relative z-50 transition-all duration-1000 ease-out
+        className={`w-full min-h-[70vh] flex justify-center relative z-50 transition-all duration-1000 ease-out
         ${imagesView.inView ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-20 scale-95"}`}
       >
         <div className=' w-[80%] h-[80%] md:w-[400px] md:-[400px] xl:w-[300px] xl:h-[300px] rounded-2xl absolute top-10 left-1/2 -translate-x-1/2'>
